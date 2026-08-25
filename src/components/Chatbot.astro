@@ -11,12 +11,14 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// The knowledge base is resolved to the current language on the server, so the
-// browser only ever downloads the half it needs, with links already turned
-// into real hrefs.
+// Answers and links are resolved to the page's language on the server, but the
+// *patterns* from both languages are shipped. Visitors in Egypt and the Gulf
+// mix Arabic and English constantly — someone reading the English page will
+// still type "بكام الكورس؟" — so matching has to be bilingual even though the
+// reply is not. The extra patterns cost about 2 kB.
 const kb = intents.map((intent) => ({
   id: intent.id,
-  p: intent.patterns[lang],
+  p: [...intent.patterns.en, ...intent.patterns.ar],
   a: intent.answer[lang],
   l: (intent.links ?? []).map((link) => ({ href: path(link.key, lang), label: link.label[lang] })),
 }));
