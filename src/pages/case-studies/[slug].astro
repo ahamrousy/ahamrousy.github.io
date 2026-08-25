@@ -1,0 +1,13 @@
+---
+import { pathsFor } from '~/i18n/content';
+import CaseStudyDetail from '~/components/pages/CaseStudyDetail.astro';
+
+export async function getStaticPaths() {
+  return pathsFor('caseStudies', 'en');
+}
+
+const { entry, lang } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<CaseStudyDetail lang={lang} entry={entry} slug={slug!} />

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="200" height="48" role="img" aria-label="Menova">
+  <path d="M7 36V13l9 11" stroke="#9B1B30" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M25 36V13l-9 11" stroke="#1B7A4A" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="40" y="33" font-family="IBM Plex Sans, Segoe UI, system-ui, sans-serif" font-size="25" font-weight="700" fill="#14151A" letter-spacing="-0.5">Menova</text>
+</svg>

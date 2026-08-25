@@ -1,0 +1,156 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '~/site.config';
+import { render } from 'astro:content';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entriesFor } from '~/i18n/content';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import CourseCard from '~/components/CourseCard.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import LogoWall from '~/components/LogoWall.astro';
+import TodoNote from '~/components/TodoNote.astro';
+
+interface Props {
+  lang: Locale;
+  entry: CollectionEntry<'geo'>;
+  slug: string;
+}
+const { lang, entry, slug } = Astro.props;
+const t = useTranslations(lang);
+const d = entry.data;
+const { Content } = await render(entry);
+
+const allCourses = await entriesFor('courses', lang);
+const featured = d.featuredCourses
+  .map((courseSlug) => allCourses.find((course) => course.slug === courseSlug))
+  .filter((course): course is (typeof allCourses)[number] => Boolean(course));
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+
+/**
+ * A geo page carries a Service node with an explicit areaServed. That is the
+ * signal that separates "a company that mentions Saudi Arabia" from "a company
+ * that serves Saudi Arabia" — which is the distinction a location-qualified
+ * query is actually trying to resolve.
+ */
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: d.title, key: slug }], lang),
+  {
+    '@type': 'Service',
+    name: d.title,
+    description: d.summary,
+    serviceType: lang === 'ar' ? 'تدريب الذكاء الاصطناعي للشركات' : 'Corporate AI training',
+    provider: { '@id': `${Astro.site?.origin ?? ''}/#menova` },
+    areaServed: [
+      { '@type': 'Country', name: d.region },
+      ...d.cities.map((city) => ({ '@type': 'City', name: city })),
+    ],
+    availableLanguage: ['ar', 'en'],
+    audience: { '@type': 'BusinessAudience' },
+  },
+  faqSchema(d.faqs),
+]);
+---
+
+<BaseLayout lang={lang} routeKey={slug} title={d.seoTitle} description={d.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={d.title} />
+  <PageHeader lang={lang} eyebrow={d.region} title={d.title} summary={d.summary} updated={d.updated} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--3">
+        {
+          d.proofPoints.map((point) => (
+            <div class="stat">
+              <span class="stat__label" style="font-size:var(--step-0);color:var(--ink)">{point}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container grid grid--sidebar">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="stack" style="--flow:1.5rem">
+        <div class="card">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'التفاصيل التشغيلية' : 'Logistics'}</h2>
+          <dl class="spec">
+            {d.logistics.map((row) => <div><dt>{row.label}</dt><dd>{row.value}</dd></div>)}
+          </dl>
+        </div>
+        <div>
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'المدن' : 'Cities'}</h2>
+          <div class="tag-row" style="margin-block-start:0.75rem">
+            {d.cities.map((city) => <span class="pill pill--neutral">{city}</span>)}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {
+    featured.length > 0 && (
+      <section class="section section--tinted" aria-labelledby="geo-courses">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="geo-courses">
+              {lang === 'ar' ? `البرامج الأكثر طلبًا في ${d.region}` : `Most requested in ${d.region}`}
+            </h2>
+          </div>
+          <div class="grid grid--3">
+            {featured.map((course) => (
+              <CourseCard
+                lang={lang}
+                slug={course.slug}
+                title={course.data.title}
+                tagline={course.data.tagline}
+                duration={course.data.duration}
+                audience={course.data.level}
+                flagship={course.data.flagship}
+              />
+            ))}
+          </div>
+          <p style="margin-block-start:1.5rem">
+            <a class="btn btn--ghost" href={path('courses', lang)}>{t('cta.allCourses')}</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  <LogoWall lang={lang} />
+
+  <section class="section" aria-labelledby="geo-faq">
+    <div class="container container--narrow">
+      <h2 id="geo-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={d.faqs} showHeading={false} />
+      {
+        d.todos.length > 0 && (
+          <div style="margin-block-start:2.5rem">
+            <TodoNote lang={lang} items={d.todos} />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <CtaBand lang={lang} subject={d.title} />
+</BaseLayout>

@@ -1,0 +1,102 @@
+---
+import type { Locale } from '~/site.config';
+import { contact, mailtoUrl, whatsappUrl } from '~/site.config';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import Faq from '~/components/Faq.astro';
+import ContactForm from '~/components/ContactForm.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('contact', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'contact' }], lang),
+  faqSchema(c.faqs ?? []),
+  { '@type': 'ContactPage', name: c.title, description: c.summary, inLanguage: lang },
+]);
+
+const waText =
+  lang === 'ar'
+    ? 'أهلًا أحمد، أود الاستفسار عن تدريب مِنوفا.'
+    : 'Hello Ahmed — I’d like to ask about Menova training.';
+---
+
+<BaseLayout lang={lang} routeKey="contact" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container grid grid--sidebar">
+      <div>
+        <h2>{lang === 'ar' ? 'اطلب عرضًا' : 'Request a proposal'}</h2>
+        <p class="lede" style="margin-block-start:0.75rem">{t('note.pricing')}</p>
+        <ContactForm lang={lang} />
+      </div>
+
+      <aside class="stack" style="--flow:1.25rem">
+        <div class="card card--flag">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'الطريق الأسرع' : 'The fastest route'}</h2>
+          <p>
+            {
+              lang === 'ar'
+                ? 'واتساب. يردّ أحمد بنفسه، وعادةً في نفس اليوم.'
+                : 'WhatsApp. Ahmed replies personally, usually the same day.'
+            }
+          </p>
+          <a class="btn btn--whatsapp" href={whatsappUrl(waText)} rel="noopener" target="_blank">
+            {t('cta.whatsapp')} — {contact.whatsappDisplay}
+          </a>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'قنوات أخرى' : 'Other channels'}</h2>
+          <dl class="spec">
+            <div>
+              <dt>{lang === 'ar' ? 'البريد' : 'Email'}</dt>
+              <dd><a href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>{contact.email}</a></dd>
+            </div>
+            <div>
+              <dt>LinkedIn</dt>
+              <dd><a href={contact.linkedin} rel="noopener me" target="_blank">ahmed-amrousy</a></dd>
+            </div>
+            <div>
+              <dt>{lang === 'ar' ? 'المقر' : 'Based in'}</dt>
+              <dd>{lang === 'ar' ? 'القاهرة، مصر' : 'Cairo, Egypt'}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'ما نحتاج معرفته' : 'What to include'}</h2>
+          <ul>
+            {
+              (lang === 'ar'
+                ? ['الجهة والقطاع', 'عدد المشاركين ومستواهم الوظيفي', 'لغة التقديم المفضلة', 'المدينة والتواريخ المقترحة', 'ما تريد أن يصبح الفريق قادرًا عليه']
+                : ['Organisation and sector', 'Team size and seniority', 'Preferred delivery language', 'City and proposed dates', 'What you want the team to be able to do']
+              ).map((item) => <li>{item}</li>)
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="contact-faq">
+    <div class="container container--narrow">
+      <h2 id="contact-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+</BaseLayout>

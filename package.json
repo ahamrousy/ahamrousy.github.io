@@ -1,0 +1,32 @@
+{
+  "name": "menova-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Menova — AI-for-Business training by Eng. Ahmed Amrousy. Static site for GitHub Pages.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "build:only": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "placeholders": "node scripts/generate-placeholders.mjs",
+    "audit": "node scripts/lighthouse.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-sans-arabic": "^5.3.0",
+    "astro": "^5.14.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/pdfkit": "^0.17.6",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.2.1",
+    "pdfkit": "^0.15.2",
+    "satori": "^0.12.1",
+    "typescript": "^5.9.3"
+  }
+}

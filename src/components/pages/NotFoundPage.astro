@@ -1,0 +1,44 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('notFound', lang);
+
+const links = [
+  { key: '', label: t('nav.home') },
+  { key: 'courses', label: t('nav.courses') },
+  { key: 'about', label: t('nav.about') },
+  { key: 'case-studies', label: t('nav.cases') },
+  { key: 'contact', label: t('nav.contact') },
+];
+---
+
+{/* noindex: a 404 must never be indexed, and GitHub Pages serves this file
+    for any unmatched path, so it would otherwise accumulate URLs. */}
+<BaseLayout lang={lang} routeKey="404" title={c.seoTitle} description={c.metaDescription} noindex>
+  <section class="section">
+    <div class="container container--narrow">
+      <p class="eyebrow">404</p>
+      <h1>{c.title}</h1>
+      <p class="lede" style="margin-block-start:1rem">{c.summary}</p>
+      <div class="btn-row" style="margin-block-start:2rem">
+        {
+          links.map((link, index) => (
+            <a class={index === 0 ? 'btn btn--primary' : 'btn btn--secondary'} href={path(link.key, lang)}>
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

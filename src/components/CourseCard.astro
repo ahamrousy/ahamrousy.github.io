@@ -1,0 +1,56 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+
+interface Props {
+  lang: Locale;
+  slug: string;
+  title: string;
+  tagline: string;
+  duration: string;
+  audience: string;
+  flagship?: boolean;
+}
+const { lang, slug, title, tagline, duration, audience, flagship = false } = Astro.props;
+const t = useTranslations(lang);
+const href = path(`courses/${slug}`, lang);
+---
+
+<article class={`card ${flagship ? 'card--flag-green' : 'card--flag'}`}>
+  {flagship && <span class="pill pill--green" style="align-self:flex-start">{t('heading.courses')}</span>}
+  <h3>
+    <a href={href} class="card__title-link">{title}</a>
+  </h3>
+  <p class="muted card__meta">
+    <span>{duration}</span>
+    <span>{audience}</span>
+  </p>
+  <p>{tagline}</p>
+  <p style="margin-block-start:auto;padding-block-start:0.75rem">
+    {/* Decorative, not a second link: the stretched title anchor already
+        covers the whole card, and two links to one destination is noise
+        for keyboard and screen-reader users. */}
+    <span class="btn btn--ghost" aria-hidden="true">{t('cta.viewCourse')}</span>
+  </p>
+</article>
+
+<style>
+  /* Stretches the anchor over the whole card so the entire tile is clickable,
+     while keeping a single, properly-labelled link for screen readers. */
+  .card {
+    position: relative;
+  }
+  .card__title-link {
+    text-decoration: none;
+  }
+  .card__title-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .card:hover .card__title-link {
+    color: var(--crimson);
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import type { Locale } from '~/site.config';
+import { contact, mailtoUrl, whatsappUrl, brand } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { footerExplore, geoKeys } from '~/data/nav';
+import { entriesFor } from '~/i18n/content';
+import BrandMark from '~/components/BrandMark.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// The footer links every course and every geo page from every page on the
+// site. It is the cheapest way to guarantee internal-link depth of 1 for the
+// pages that actually carry commercial intent.
+const courses = await entriesFor('courses', lang);
+const geoPages = await entriesFor('geo', lang);
+const geoByKey = new Map(geoPages.map((entry) => [entry.slug, entry]));
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href={path('', lang)} style="color:#fff;margin-block-end:0.75rem">
+          <BrandMark class="brand__mark" />
+          <span>Menova</span>
+        </a>
+        <p style="max-width:32ch">{t('footer.tagline')}</p>
+        <ul style="margin-block-start:1rem;gap:0.35rem">
+          <li><a href={mailtoUrl('Menova — enquiry')}>{contact.email}</a></li>
+          <li>
+            <a href={whatsappUrl(lang === 'ar' ? 'أهلًا أحمد، عندي استفسار عن تدريب مِنوفا.' : 'Hello Ahmed — a question about Menova training.')} rel="noopener">
+              {t('cta.whatsapp')}: {contact.whatsappDisplay}
+            </a>
+          </li>
+          <li><a href={contact.linkedin} rel="noopener me">LinkedIn</a></li>
+        </ul>
+      </div>
+
+      <nav aria-label={t('footer.explore')}>
+        <h2>{t('footer.explore')}</h2>
+        <ul>
+          {footerExplore.map((item) => <li><a href={path(item.key, lang)}>{t(item.label)}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-label={t('footer.programmes')}>
+        <h2>{t('footer.programmes')}</h2>
+        <ul>
+          {
+            courses.map((course) => (
+              <li>
+                <a href={path(`courses/${course.slug}`, lang)}>
+                  {course.data.shortTitle ?? course.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-label={t('footer.regions')}>
+        <h2>{t('footer.regions')}</h2>
+        <ul>
+          {
+            geoKeys.map((key) => {
+              const entry = geoByKey.get(key);
+              return entry ? <li><a href={path(key, lang)}>{entry.data.region}</a></li> : null;
+            })
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} {brand.name} — {t('footer.rights')}</span>
+      <span>{t('footer.built')}</span>
+    </div>
+  </div>
+</footer>

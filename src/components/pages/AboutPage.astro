@@ -1,0 +1,202 @@
+---
+import type { Locale } from '~/site.config';
+import { asset, path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+import { person } from '~/data/person';
+import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import LogoWall from '~/components/LogoWall.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('about', lang);
+
+/**
+ * This page is the hub for the name entity.
+ *
+ * It carries the fullest Person JSON-LD on the site, the media kit, and
+ * internal links out to every other section — so a crawler arriving on any
+ * page can reach the canonical description of Ahmed Amrousy in one hop.
+ */
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'about' }], lang),
+  faqSchema(c.faqs ?? []),
+]);
+
+const updated = new Date('2026-08-24');
+---
+
+<BaseLayout
+  lang={lang}
+  routeKey="about"
+  title={c.seoTitle}
+  description={c.metaDescription}
+  jsonLd={jsonLd}
+  ogType="profile"
+>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={updated} />
+
+  <section class="section section--tight">
+    <div class="container grid grid--sidebar">
+      <div>
+        <p class="lede" style="font-weight:600;color:var(--ink)">“{person.tagline[lang]}”</p>
+        <div class="prose" style="margin-block-start:2rem">
+          <p>{person.bios[lang].long}</p>
+        </div>
+      </div>
+      <aside>
+        {/* TODO: replace with the real headshot — see public/images/README.md */}
+        <img
+          class="hero__portrait"
+          src={asset('images/ahmed-amrousy-headshot.jpg')}
+          alt={`${person.name} — ${person.jobTitle[lang]}`}
+          width="640"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+        <p style="margin-block-start:1rem">
+          <a class="btn btn--secondary" href={asset('downloads/ahmed-amrousy-profile.pdf')} download>
+            {t('cta.download')}
+          </a>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="roles-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="roles-heading">{lang === 'ar' ? 'المواقع الحالية' : 'Current roles'}</h2>
+      </div>
+      <div class="grid grid--3">
+        {
+          person.roles.map((role) => (
+            <article class="card card--flag">
+              <p class="eyebrow" style="margin:0">{role.title[lang]}</p>
+              <h3>{role.org[lang]}</h3>
+              <p class="muted">{role.unit[lang]}</p>
+              {'note' in role && role.note && <p>{role.note[lang]}</p>}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="credentials-heading">
+    <div class="container grid grid--2">
+      <div>
+        <h2 id="credentials-heading">{lang === 'ar' ? 'المؤهلات' : 'Credentials'}</h2>
+        <dl class="spec" style="margin-block-start:1.5rem">
+          {
+            person.education.map((item) => (
+              <div>
+                <dt>{item.degree[lang]}</dt>
+                <dd>{item.org[lang] || '—'}</dd>
+              </div>
+            ))
+          }
+          {
+            person.memberships.map((item) => (
+              <div>
+                <dt>{lang === 'ar' ? 'عضوية' : 'Membership'}</dt>
+                <dd>{item[lang]}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+      <div>
+        <h2>{lang === 'ar' ? 'الخبرة الصناعية' : 'Industry experience'}</h2>
+        <p class="lede" style="margin-block-start:0.75rem">
+          {person.industryExperience.years} {lang === 'ar' ? 'عامًا في قيادة التسويق' : 'years of marketing leadership'}
+        </p>
+        <dl class="spec" style="margin-block-start:1rem">
+          {
+            person.industryExperience.sectors.map((sector) => (
+              <div>
+                <dt>{sector[lang]}</dt>
+                <dd>{sector.orgs.length ? sector.orgs.join(' · ') : '—'}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <LogoWall lang={lang} />
+
+  {/* ── Media kit ───────────────────────────────────────────────────────── */}
+  <section class="section" aria-labelledby="media-kit-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="media-kit-heading">{c.mediaKitHeading}</h2>
+        <p class="lede">{c.mediaKitNote}</p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <h3>{lang === 'ar' ? 'نبذة قصيرة (50 كلمة)' : 'Short bio (50 words)'}</h3>
+          <p>{person.bios[lang].short}</p>
+        </article>
+        <article class="card">
+          <h3>{lang === 'ar' ? 'نبذة متوسطة (100 كلمة)' : 'Medium bio (100 words)'}</h3>
+          <p>{person.bios[lang].medium}</p>
+        </article>
+        <article class="card">
+          <h3>{lang === 'ar' ? 'الألقاب المعتمدة' : 'Approved titles'}</h3>
+          <ul>
+            {person.approvedTitles[lang].map((title) => <li>{title}</li>)}
+          </ul>
+        </article>
+      </div>
+
+      <div class="btn-row" style="margin-block-start:1.5rem">
+        <a class="btn btn--secondary" href={asset('downloads/ahmed-amrousy-profile.pdf')} download>
+          {t('cta.download')}
+        </a>
+        <a class="btn btn--ghost" href={path('speaking', lang)}>{t('nav.speaking')}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="other-heading">
+    <div class="container grid grid--2">
+      <article>
+        <h2 id="other-heading">{person.otherWork.podcast.name}</h2>
+        <p style="margin-block-start:0.75rem">{person.otherWork.podcast.description[lang]}</p>
+        <p style="margin-block-start:1rem">
+          <a class="btn btn--ghost" href={path('podcast', lang)}>{t('nav.podcast')}</a>
+        </p>
+      </article>
+      <article>
+        <h2>{lang === 'ar' ? 'خارج العمل' : 'Outside work'}</h2>
+        <p style="margin-block-start:0.75rem">{person.otherWork.sport[lang]}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="about-faq">
+    <div class="container container--narrow">
+      <h2 id="about-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

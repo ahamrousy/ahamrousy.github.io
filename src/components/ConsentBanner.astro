@@ -1,0 +1,161 @@
+---
+import type { Locale } from '~/site.config';
+import { analytics } from '~/site.config';
+
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+
+/**
+ * Analytics consent gate.
+ *
+ * GA4 is *not* embedded in the page. Nothing is requested from Google until
+ * the visitor accepts, and the choice is remembered in localStorage. If
+ * `ga4MeasurementId` is empty — which it is until Ahmed pastes his ID into
+ * src/site.config.ts — this component renders absolutely nothing: no banner,
+ * no script, no third-party request. That keeps the Lighthouse run honest.
+ */
+const enabled = Boolean(analytics.ga4MeasurementId);
+
+const copy = {
+  en: {
+    text: 'We use Google Analytics to understand which pages are useful. No advertising cookies.',
+    accept: 'Accept',
+    decline: 'Decline',
+    label: 'Cookie consent',
+  },
+  ar: {
+    text: 'نستخدم Google Analytics لمعرفة الصفحات المفيدة. لا نستخدم أي ملفات تعريف للإعلانات.',
+    accept: 'موافق',
+    decline: 'رفض',
+    label: 'الموافقة على ملفات تعريف الارتباط',
+  },
+}[lang];
+---
+
+{
+  enabled && (
+    <div class="consent" id="consent" role="region" aria-label={copy.label} hidden>
+      <p>{copy.text}</p>
+      <div class="consent__actions">
+        <button type="button" id="consent-decline" class="consent__btn">
+          {copy.decline}
+        </button>
+        <button type="button" id="consent-accept" class="consent__btn consent__btn--primary">
+          {copy.accept}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+{
+  enabled && (
+    <script is:inline define:vars={{ measurementId: analytics.ga4MeasurementId }}>
+      (function () {
+        var KEY = 'menova-consent';
+        var banner = document.getElementById('consent');
+
+        function loadAnalytics() {
+          if (window.__menovaGaLoaded) return;
+          window.__menovaGaLoaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            window.dataLayer.push(arguments);
+          }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', measurementId, { anonymize_ip: true });
+        }
+
+        var stored = null;
+        try {
+          stored = localStorage.getItem(KEY);
+        } catch (e) {
+          /* storage blocked — treat as no decision and never nag */
+        }
+
+        if (stored === 'granted') {
+          loadAnalytics();
+        } else if (stored !== 'denied' && banner) {
+          banner.hidden = false;
+        }
+
+        function decide(value) {
+          try {
+            localStorage.setItem(KEY, value);
+          } catch (e) {
+            /* ignore */
+          }
+          if (banner) banner.hidden = true;
+          if (value === 'granted') loadAnalytics();
+        }
+
+        var accept = document.getElementById('consent-accept');
+        var decline = document.getElementById('consent-decline');
+        if (accept) accept.addEventListener('click', function () { decide('granted'); });
+        if (decline) decline.addEventListener('click', function () { decide('denied'); });
+      })();
+    </script>
+  )
+}
+
+<style>
+  .consent {
+    position: fixed;
+    inset-block-end: 1rem;
+    inset-inline-start: 1rem;
+    z-index: 160;
+    max-width: 24rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-l);
+    padding: 1rem;
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+  .consent[hidden] {
+    display: none;
+  }
+  .consent__actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-block-start: 0.75rem;
+    justify-content: flex-end;
+  }
+  .consent__btn {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: var(--radius-m);
+    padding: 0.35rem 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .consent__btn:hover {
+    border-color: var(--ink);
+  }
+  .consent__btn--primary {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .consent__btn--primary:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+  }
+  /* Keep clear of the chat launcher on narrow screens. */
+  @media (max-width: 560px) {
+    .consent {
+      inset-inline: 1rem;
+      max-width: none;
+      inset-block-end: 5rem;
+    }
+  }
+</style>

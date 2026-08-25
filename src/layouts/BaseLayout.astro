@@ -1,0 +1,127 @@
+---
+import '@fontsource-variable/ibm-plex-sans/wght.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-400.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-600.css';
+import '@fontsource/ibm-plex-sans-arabic/arabic-700.css';
+import '~/styles/global.css';
+
+// Hashed URLs for the two faces that render the largest text on each side of
+// the site. Preloading them removes the font round-trip from the LCP path —
+// worth ~0.4s on the Arabic pages, where the heading font is a separate file.
+// Latin is the variable face loaded by wght.css above; Arabic is the static
+// 700 weight. Each page preloads only the one its own headings will use.
+import latinFont from '@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url';
+import arabicFont from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-700-normal.woff2?url';
+
+import { analytics, brand, type Locale } from '~/site.config';
+import { alternates, asset, canonical, dir, htmlLang, absolute } from '~/i18n/routing';
+import { ogImagePath } from '~/lib/og';
+import { useTranslations } from '~/i18n/ui';
+import SiteHeader from '~/components/SiteHeader.astro';
+import SiteFooter from '~/components/SiteFooter.astro';
+import Chatbot from '~/components/Chatbot.astro';
+import ConsentBanner from '~/components/ConsentBanner.astro';
+
+interface Props {
+  lang: Locale;
+  /** Language-neutral route key — '' for home, 'courses/ai-for-business', etc. */
+  routeKey: string;
+  /** ≤ 60 chars. Rendered verbatim as <title>. */
+  title: string;
+  /** ≤ 155 chars. */
+  description: string;
+  /** Serialized JSON-LD @graph from src/lib/schema.ts. */
+  jsonLd?: string;
+  noindex?: boolean;
+  /** Article pages set this so OG type is correct. */
+  ogType?: 'website' | 'article' | 'profile';
+}
+
+const { lang, routeKey, title, description, jsonLd, noindex = false, ogType = 'website' } = Astro.props;
+
+const t = useTranslations(lang);
+const canonicalUrl = canonical(routeKey, lang);
+const hreflangs = alternates(routeKey);
+const ogImage = absolute(asset(ogImagePath(routeKey, lang)));
+const direction = dir(lang);
+---
+
+<!doctype html>
+<html lang={htmlLang(lang)} dir={direction}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={lang === 'ar' ? arabicFont : latinFont}
+      crossorigin="anonymous"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {
+      /* hreflang: every locale plus x-default, on every page, pointing at the
+         same route key. Reciprocal by construction — see i18n/routing.ts. */
+      hreflangs.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)
+    }
+
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={brand.name} />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_EG' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'ar' ? 'en_US' : 'ar_EG'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="author" content="Ahmed Amrousy" />
+    <meta name="theme-color" content={brand.colors.crimson} />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Search engine ownership verification. Empty values render nothing. -->
+    {analytics.googleSiteVerification && (
+      <meta name="google-site-verification" content={analytics.googleSiteVerification} />
+    )}
+    {analytics.bingSiteVerification && (
+      <meta name="msvalidate.01" content={analytics.bingSiteVerification} />
+    )}
+
+    <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={asset('images/apple-touch-icon.png')} />
+    <link rel="sitemap" type="application/xml" href={asset('sitemap.xml')} />
+    <link rel="alternate" type="text/plain" href={asset('llms.txt')} title="llms.txt" />
+
+    {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">{t('skip.content')}</a>
+    <SiteHeader lang={lang} routeKey={routeKey} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter lang={lang} />
+    <Chatbot lang={lang} />
+    <ConsentBanner lang={lang} />
+  </body>
+</html>

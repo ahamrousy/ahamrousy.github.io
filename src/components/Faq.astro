@@ -1,0 +1,46 @@
+---
+import type { Locale } from '~/site.config';
+import { useTranslations } from '~/i18n/ui';
+
+interface Props {
+  lang: Locale;
+  faqs: Array<{ q: string; a: string }>;
+  heading?: string;
+  /** Set false on pages that already render an <h2> above the block. */
+  showHeading?: boolean;
+}
+const { lang, faqs, heading, showHeading = true } = Astro.props;
+const t = useTranslations(lang);
+
+/**
+ * Answers are rendered as real HTML inside <details>, not injected by script.
+ * That is deliberate: the FAQPage JSON-LD emitted alongside must describe text
+ * a crawler can actually see on the page, and generative engines quote the
+ * visible answer. The <details> element gives progressive disclosure for free,
+ * with no JavaScript and correct keyboard semantics.
+ */
+---
+
+{
+  faqs.length > 0 && (
+    <div class="faq-block">
+      {showHeading && <h2 class="faq-block__heading">{heading ?? t('heading.faq')}</h2>}
+      <div class="faq">
+        {faqs.map((faq) => (
+          <details class="faq__item">
+            <summary>{faq.q}</summary>
+            <div class="faq__answer">
+              <p>{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .faq-block__heading {
+    margin-block-end: var(--space-m);
+  }
+</style>

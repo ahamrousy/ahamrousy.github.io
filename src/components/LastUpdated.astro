@@ -1,0 +1,36 @@
+---
+import type { Locale } from '~/site.config';
+import { useTranslations } from '~/i18n/ui';
+
+interface Props {
+  lang: Locale;
+  date: Date;
+}
+const { lang, date } = Astro.props;
+const t = useTranslations(lang);
+
+/**
+ * A visible freshness signal on every page.
+ *
+ * Generative engines weight recency when deciding what to cite, and a machine
+ * readable <time datetime> gives them an unambiguous date rather than one
+ * parsed out of prose. The Arabic side uses the Gregorian calendar with
+ * Arabic month names — `ar-EG` with `latn` numerals keeps the digits legible
+ * to both audiences.
+ */
+const formatted = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-EG-u-nu-latn' : 'en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+
+<p class="last-updated muted">
+  {t('label.lastUpdated')}: <time datetime={date.toISOString().slice(0, 10)}>{formatted}</time>
+</p>
+
+<style>
+  .last-updated {
+    margin-block-start: var(--space-s);
+  }
+</style>

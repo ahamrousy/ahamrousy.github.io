@@ -1,0 +1,13 @@
+---
+import { pathsFor } from '~/i18n/content';
+import CourseDetail from '~/components/pages/CourseDetail.astro';
+
+export async function getStaticPaths() {
+  return pathsFor('courses', 'ar');
+}
+
+const { entry, lang } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<CourseDetail lang={lang} entry={entry} slug={slug!} />

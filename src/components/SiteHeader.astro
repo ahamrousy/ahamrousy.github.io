@@ -1,0 +1,85 @@
+---
+import type { Locale } from '~/site.config';
+import { mailtoUrl } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { primaryNav, mobileNav } from '~/data/nav';
+import BrandMark from '~/components/BrandMark.astro';
+
+interface Props {
+  lang: Locale;
+  routeKey: string;
+}
+
+const { lang, routeKey } = Astro.props;
+const t = useTranslations(lang);
+
+/** The mirror of the current page — the language switch never dumps you home. */
+const otherLang: Locale = lang === 'en' ? 'ar' : 'en';
+const isCurrent = (key: string) => key === routeKey;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href={path('', lang)} aria-label={t('a11y.logoHome')}>
+      <BrandMark class="brand__mark" />
+      <span>Menova</span>
+    </a>
+
+    <nav class="nav" aria-label={t('nav.primary')}>
+      <ul>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a href={path(item.key, lang)} aria-current={isCurrent(item.key) ? 'page' : undefined}>
+                {t(item.label)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="lang-switch"
+        href={path(routeKey, otherLang)}
+        hreflang={otherLang}
+        lang={otherLang === 'ar' ? 'ar' : 'en'}
+        aria-label={t('lang.switchLabel')}
+      >
+        {t('lang.switch')}
+      </a>
+
+      <div class="header-cta">
+        <a class="btn btn--primary" href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>
+          {t('cta.primary')}
+        </a>
+      </div>
+
+      <!-- Mobile menu is a native <details> disclosure: keyboard accessible,
+           screen-reader friendly, and it ships zero JavaScript. -->
+      <details class="mobile-nav">
+        <summary aria-label={t('nav.menu')}>
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M2 4.5h14M2 9h14M2 13.5h14" />
+          </svg>
+          {t('nav.menu')}
+        </summary>
+        <div class="mobile-nav__panel">
+          <ul>
+            {
+              mobileNav.map((item) => (
+                <li>
+                  <a href={path(item.key, lang)} aria-current={isCurrent(item.key) ? 'page' : undefined}>
+                    {t(item.label)}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,191 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '~/site.config';
+import { render } from 'astro:content';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entryFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+  courseSchema,
+} from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import TodoNote from '~/components/TodoNote.astro';
+
+interface Props {
+  lang: Locale;
+  entry: CollectionEntry<'courses'>;
+  slug: string;
+}
+const { lang, entry, slug } = Astro.props;
+const t = useTranslations(lang);
+const d = entry.data;
+const { Content } = await render(entry);
+
+/**
+ * Internal linking contract (see SEO-KEYWORD-MAP.md): every course page links
+ * to the method page, one case study and one geo page. That is what turns
+ * six isolated course pages into a topic cluster.
+ */
+const relatedCase = d.relatedCase ? await entryFor('caseStudies', lang, d.relatedCase) : undefined;
+const relatedGeo = d.relatedGeo ? await entryFor('geo', lang, d.relatedGeo) : undefined;
+
+const crumbs = [
+  { name: t('nav.home'), key: '' },
+  { name: copy('courses', lang).title, key: 'courses' },
+];
+
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: d.title, key: `courses/${slug}` }], lang),
+  courseSchema(
+    {
+      title: d.title,
+      description: d.summary,
+      slug,
+      durationISO: d.durationISO,
+      duration: d.duration,
+      delivery: d.delivery,
+      teachingLanguage: d.teachingLanguage,
+      level: d.level,
+      audience: d.audience,
+    },
+    lang,
+  ),
+  faqSchema(d.faqs),
+]);
+---
+
+<BaseLayout lang={lang} routeKey={`courses/${slug}`} title={d.seoTitle} description={d.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={d.title} />
+  <PageHeader
+    lang={lang}
+    eyebrow={d.flagship ? t('heading.courses') : t('nav.courses')}
+    title={d.title}
+    summary={d.summary}
+    updated={d.updated}
+  />
+
+  <section class="section section--tight">
+    <div class="container grid grid--sidebar">
+      <div>
+        <p class="lede" style="font-weight:600;color:var(--ink)">{d.tagline}</p>
+
+        <div class="prose" style="margin-block-start:2rem">
+          <Content />
+        </div>
+
+        <h2 style="margin-block-start:3rem">{t('label.outcomes')}</h2>
+        <ul style="margin-block-start:1rem;max-width:var(--measure)">
+          {d.outcomes.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h2 style="margin-block-start:3rem">{t('label.modules')}</h2>
+        <div class="stack" style="--flow:1rem;margin-block-start:1rem">
+          {
+            d.modules.map((module, index) => (
+              <article class="card">
+                <p class="eyebrow" style="margin:0">{String(index + 1).padStart(2, '0')}</p>
+                <h3>{module.title}</h3>
+                <ul>
+                  {module.points.map((point) => <li>{point}</li>)}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+
+        <h2 style="margin-block-start:3rem">{t('label.who')}</h2>
+        <ul style="margin-block-start:1rem;max-width:var(--measure)">
+          {d.who.map((item) => <li>{item}</li>)}
+        </ul>
+
+        {
+          d.todos.length > 0 && (
+            <div style="margin-block-start:2.5rem">
+              <TodoNote lang={lang} items={d.todos} />
+            </div>
+          )
+        }
+      </div>
+
+      <aside class="stack" style="--flow:1.5rem">
+        <div class="card">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'تفاصيل البرنامج' : 'Programme details'}</h2>
+          <dl class="spec">
+            <div><dt>{t('label.duration')}</dt><dd>{d.duration}</dd></div>
+            <div><dt>{t('label.format')}</dt><dd>{d.format}</dd></div>
+            <div><dt>{t('label.audience')}</dt><dd>{d.audience}</dd></div>
+            <div><dt>{t('label.level')}</dt><dd>{d.level}</dd></div>
+            <div><dt>{t('label.language')}</dt><dd>{d.teachingLanguage}</dd></div>
+            <div><dt>{t('label.delivery')}</dt><dd>{d.delivery}</dd></div>
+          </dl>
+        </div>
+
+        {
+          d.frameworksTaught.length > 0 && (
+            <div>
+              <h2 style="font-size:var(--step-1)">{t('label.frameworks')}</h2>
+              <div class="tag-row" style="margin-block-start:0.75rem">
+                {d.frameworksTaught.map((item) => <span class="pill">{item}</span>)}
+              </div>
+              <p style="margin-block-start:1rem">
+                <a class="btn btn--ghost" href={path('method', lang)}>{t('cta.method')}</a>
+              </p>
+            </div>
+          )
+        }
+
+        {
+          d.toolsCovered.length > 0 && (
+            <div>
+              <h2 style="font-size:var(--step-1)">{t('label.tools')}</h2>
+              <div class="tag-row" style="margin-block-start:0.75rem">
+                {d.toolsCovered.map((item) => <span class="pill pill--neutral">{item}</span>)}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          relatedCase && (
+            <div class="card card--flag-green">
+              <p class="eyebrow" style="margin:0">{t('nav.cases')}</p>
+              <h3><a href={path(`case-studies/${d.relatedCase}`, lang)}>{relatedCase.data.title}</a></h3>
+              <p class="muted">{relatedCase.data.client}</p>
+            </div>
+          )
+        }
+
+        {
+          relatedGeo && (
+            <div class="card">
+              <p class="eyebrow" style="margin:0">{t('footer.regions')}</p>
+              <h3><a href={path(d.relatedGeo!, lang)}>{relatedGeo.data.title}</a></h3>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="course-faq">
+    <div class="container container--narrow">
+      <h2 id="course-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={d.faqs} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} subject={d.title} />
+</BaseLayout>

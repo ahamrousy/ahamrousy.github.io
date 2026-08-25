@@ -1,0 +1,122 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '~/site.config';
+import { render } from 'astro:content';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entryFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { person } from '~/data/person';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+  articleSchema,
+} from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import LastUpdated from '~/components/LastUpdated.astro';
+
+interface Props {
+  lang: Locale;
+  entry: CollectionEntry<'insights'>;
+  slug: string;
+}
+const { lang, entry, slug } = Astro.props;
+const t = useTranslations(lang);
+const d = entry.data;
+const { Content } = await render(entry);
+
+const relatedCourse = d.relatedCourse ? await entryFor('courses', lang, d.relatedCourse) : undefined;
+
+const crumbs = [
+  { name: t('nav.home'), key: '' },
+  { name: copy('insights', lang).title, key: 'insights' },
+];
+
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: d.title, key: `insights/${slug}` }], lang),
+  articleSchema({ title: d.title, description: d.summary, slug, published: d.published, updated: d.updated }, lang),
+  faqSchema(d.faqs),
+]);
+
+const dateFormat = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-EG-u-nu-latn' : 'en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  lang={lang}
+  routeKey={`insights/${slug}`}
+  title={d.seoTitle}
+  description={d.metaDescription}
+  jsonLd={jsonLd}
+  ogType="article"
+>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={d.title} />
+
+  <article>
+    <header class="page-header">
+      <div class="container container--narrow">
+        <p class="eyebrow">{copy('insights', lang).eyebrow}</p>
+        <h1>{d.title}</h1>
+        <p class="card__meta muted" style="margin-block-start:1rem">
+          <span>{t('label.author')} {person.name}</span>
+          <span>
+            <time datetime={d.published.toISOString().slice(0, 10)}>{dateFormat.format(d.published)}</time>
+          </span>
+          <span>{d.readingTime} {t('label.readingTime')}</span>
+        </p>
+        {/* Self-contained summary first — this is the paragraph an AI engine
+            is most likely to lift, so it has to stand alone. */}
+        <p class="lede" style="margin-block-start:1.25rem">{d.summary}</p>
+        <LastUpdated lang={lang} date={d.updated} />
+      </div>
+    </header>
+
+    <div class="section section--tight">
+      <div class="container container--narrow">
+        <div class="prose table-scroll">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {
+    d.faqs.length > 0 && (
+      <section class="section section--tinted" aria-labelledby="article-faq">
+        <div class="container container--narrow">
+          <h2 id="article-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+          <Faq lang={lang} faqs={d.faqs} showHeading={false} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    relatedCourse && (
+      <section class="section section--tight">
+        <div class="container container--narrow">
+          <h2>{t('heading.related')}</h2>
+          <article class="card card--flag" style="margin-block-start:1rem">
+            <p class="eyebrow" style="margin:0">{t('nav.courses')}</p>
+            <h3><a href={path(`courses/${d.relatedCourse}`, lang)}>{relatedCourse.data.title}</a></h3>
+            <p>{relatedCourse.data.tagline}</p>
+          </article>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand lang={lang} />
+</BaseLayout>

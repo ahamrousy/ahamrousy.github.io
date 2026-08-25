@@ -1,0 +1,72 @@
+---
+import type { Locale } from '~/site.config';
+
+interface Props {
+  lang: Locale;
+  items: string[];
+}
+const { lang, items } = Astro.props;
+
+/**
+ * Visible placeholder register.
+ *
+ * Anything Menova has not confirmed — a duration, a headcount, a date, a
+ * testimonial — is listed here in the open rather than being quietly invented.
+ * Ahmed asked for clearly marked TODOs; putting them on the page (not in a
+ * code comment) means they get noticed and cleared.
+ *
+ * To find every one before launch:  grep -r "todos:" src/content
+ */
+const copy = {
+  en: { heading: 'To confirm before launch', note: 'Placeholder content — remove this block once filled in.' },
+  ar: { heading: 'يُستكمل قبل الإطلاق', note: 'محتوى مؤقت — احذف هذا القسم بعد استكماله.' },
+}[lang];
+---
+
+{
+  items.length > 0 && (
+    <aside class="todo-note" aria-label={copy.heading}>
+      <p class="todo-note__heading">
+        <span class="todo">TODO</span> {copy.heading}
+      </p>
+      <ul>
+        {items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <p class="todo-note__foot">{copy.note}</p>
+    </aside>
+  )
+}
+
+<style>
+  .todo-note {
+    border: 1px dashed #d4a017;
+    background: #fffdf5;
+    border-radius: var(--radius-l);
+    padding: var(--space-m);
+    max-width: var(--measure);
+    font-size: var(--step--1);
+  }
+  .todo-note__heading {
+    font-weight: 650;
+    margin-block-end: var(--space-2xs);
+  }
+  .todo-note ul {
+    margin: 0;
+    padding-inline-start: 1.2em;
+    color: var(--ink-2);
+  }
+  .todo-note li + li {
+    margin-block-start: 0.25rem;
+  }
+  .todo-note__foot {
+    margin-block-start: var(--space-2xs);
+    color: var(--ink-3);
+  }
+  @media print {
+    .todo-note {
+      display: none;
+    }
+  }
+</style>

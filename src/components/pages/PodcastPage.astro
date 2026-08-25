@@ -1,0 +1,129 @@
+---
+import type { Locale } from '~/site.config';
+import { contact } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+import { person } from '~/data/person';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+  podcastSchema,
+} from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import TodoNote from '~/components/TodoNote.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('podcast', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'podcast' }], lang),
+  podcastSchema(lang),
+  faqSchema(c.faqs ?? []),
+]);
+
+const hasLinks = Boolean(contact.youtube || contact.spotify);
+---
+
+<BaseLayout lang={lang} routeKey="podcast" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container grid grid--2">
+      <div>
+        <h2>{lang === 'ar' ? 'عن البودكاست' : 'About the show'}</h2>
+        <p class="lede" style="margin-block-start:0.75rem">{person.otherWork.podcast.description[lang]}</p>
+        <p style="margin-block-start:1rem;max-width:var(--measure)">
+          {
+            lang === 'ar'
+              ? 'الاسم اللاتيني للبحث: 3aash Ya Wa7sh. ويتصل موضوع البودكاست ببحث أحمد للدكتوراه بجامعة عين شمس عن تطبيق إطار المُثير–الكائن–الاستجابة على رعاية الأحداث الرياضية في مصر.'
+              : 'Latin transliteration for search: 3aash Ya Wa7sh. The subject connects directly to Ahmed’s doctoral research at Ain Shams University, which applies the Stimulus–Organism–Response framework to sports-event sponsorship in Egypt.'
+          }
+        </p>
+        {
+          hasLinks && (
+            <div class="btn-row" style="margin-block-start:1.5rem">
+              {contact.youtube && (
+                <a class="btn btn--primary" href={contact.youtube} rel="noopener" target="_blank">
+                  YouTube
+                </a>
+              )}
+              {contact.spotify && (
+                <a class="btn btn--secondary" href={contact.spotify} rel="noopener" target="_blank">
+                  Spotify
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+      <div>
+        <div class="card card--flag-green">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'الحالة' : 'Status'}</h2>
+          <dl class="spec">
+            <div>
+              <dt>{lang === 'ar' ? 'المواسم' : 'Seasons'}</dt>
+              <dd>{lang === 'ar' ? 'موسم أول مكتمل' : 'One completed season'}</dd>
+            </div>
+            <div>
+              <dt>{lang === 'ar' ? 'اللغة' : 'Language'}</dt>
+              <dd>{lang === 'ar' ? 'العربية' : 'Arabic'}</dd>
+            </div>
+            <div>
+              <dt>{lang === 'ar' ? 'المُقدِّم' : 'Host'}</dt>
+              <dd><a href={path('about', lang)}>{person.name}</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted">
+    <div class="container container--narrow">
+      <TodoNote
+        lang={lang}
+        items={
+          lang === 'ar'
+            ? [
+                'أضف روابط يوتيوب وسبوتيفاي في src/site.config.ts — تظهر الأزرار تلقائيًا.',
+                'أضف قائمة الحلقات بعناوينها وضيوفها وتواريخها.',
+                'أضف صور جلسات التسجيل إلى public/images/gallery/.',
+                'أضف رابطًا عكسيًا من ملاحظات حلقات البودكاست إلى هذه الصفحة — انظر LAUNCH-CHECKLIST.md.',
+              ]
+            : [
+                'Add the YouTube and Spotify URLs in src/site.config.ts — the buttons appear automatically.',
+                'Add the episode list with titles, guests and dates.',
+                'Add podcast shoot photographs to public/images/gallery/.',
+                'Add a back-link from the podcast show notes to this page — see LAUNCH-CHECKLIST.md.',
+              ]
+        }
+      />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="podcast-faq">
+    <div class="container container--narrow">
+      <h2 id="podcast-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

@@ -1,0 +1,190 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+import { frameworks, promptingTechniques, tools, person } from '~/data/person';
+import { entriesFor } from '~/i18n/content';
+import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('method', lang);
+const courses = await entriesFor('courses', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'method' }], lang),
+  faqSchema(c.faqs ?? []),
+  // Defining the frameworks as named things gives an engine something concrete
+  // to attribute to Ahmed when asked "what is POCAB?".
+  {
+    '@type': 'DefinedTermSet',
+    name: lang === 'ar' ? 'أُطر مِنوفا للتوجيه' : 'Menova prompting frameworks',
+    hasDefinedTerm: [
+      {
+        '@type': 'DefinedTerm',
+        name: frameworks.pocab.acronym,
+        description: `${frameworks.pocab.expansion} — ${frameworks.pocab.use[lang]}`,
+        inDefinedTermSet: lang === 'ar' ? 'أُطر مِنوفا للتوجيه' : 'Menova prompting frameworks',
+      },
+      {
+        '@type': 'DefinedTerm',
+        name: frameworks.gcsef.acronym,
+        description: `${frameworks.gcsef.expansion} — ${frameworks.gcsef.use[lang]}`,
+        inDefinedTermSet: lang === 'ar' ? 'أُطر مِنوفا للتوجيه' : 'Menova prompting frameworks',
+      },
+    ],
+  },
+]);
+
+const frameworkList = [frameworks.pocab, frameworks.gcsef];
+---
+
+<BaseLayout lang={lang} routeKey="method" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--4">
+        <div class="stat">
+          <span class="stat__value">70/30</span>
+          <span class="stat__label">{lang === 'ar' ? 'تطبيق عملي مقابل نظرية' : 'hands-on to theory'}</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">90</span>
+          <span class="stat__label">{lang === 'ar' ? 'دقيقة بين كل عرض حي وآخر' : 'minutes between live demonstrations'}</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">2</span>
+          <span class="stat__label">{lang === 'ar' ? 'إطاران للتوجيه من تصميم أحمد' : 'prompting frameworks, both Ahmed’s own'}</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">AR/EN</span>
+          <span class="stat__label">{lang === 'ar' ? 'شرح عربي وشرائح إنجليزية' : 'Arabic delivery, English slides'}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── The two frameworks ──────────────────────────────────────────────── */}
+  <section class="section section--tinted" aria-labelledby="frameworks-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="frameworks-heading">{t('label.frameworks')}</h2>
+        <p class="lede">
+          {
+            lang === 'ar'
+              ? 'إطاران مستقلان عن الأدوات. الأول يبني الأمر الواحد، والثاني يبني العمل على المستندات والبيانات.'
+              : 'Two tool-independent frameworks. The first structures a single prompt; the second structures work over documents and data.'
+          }
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        {
+          frameworkList.map((framework) => (
+            <article class="card card--flag">
+              <h3 style="font-size:var(--step-2)">{framework.acronym}</h3>
+              <p class="muted">{lang === 'ar' ? framework.expansionAr : framework.expansion}</p>
+              <p>{framework.use[lang]}</p>
+              <dl class="spec" style="margin-block-start:1rem">
+                {framework.parts.map((part) => (
+                  <div>
+                    <dt>
+                      <strong style="color:var(--crimson)">{part.letter}</strong> — {part.term[lang]}
+                    </dt>
+                    <dd>{part.q[lang]}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="techniques-heading">
+    <div class="container grid grid--2">
+      <div>
+        <h2 id="techniques-heading">{lang === 'ar' ? 'تقنيات التوجيه المتقدمة' : 'Advanced prompting techniques'}</h2>
+        <p style="margin-block-start:0.75rem">
+          {
+            lang === 'ar'
+              ? 'تُدرَّس في برامج القيادات والاستراتيجية، حيث تكون كلفة الخطأ أعلى.'
+              : 'Taught in the executive and strategy programmes, where the cost of a wrong answer is higher.'
+          }
+        </p>
+        <div class="tag-row" style="margin-block-start:1rem">
+          {promptingTechniques.map((technique) => <span class="pill">{technique[lang]}</span>)}
+        </div>
+      </div>
+      <div>
+        <h2>{t('label.tools')}</h2>
+        <p style="margin-block-start:0.75rem">
+          {
+            lang === 'ar'
+              ? 'تُعرَض حية على بيانات حقيقية، لا في شرائح. وتعدُّد الأدوات مقصود — ليختار الفريق ما يناسب بيئته.'
+              : 'Demonstrated live on real data rather than in slides. Multiple tools on purpose, so a team can choose what fits its stack.'
+          }
+        </p>
+        <dl class="spec" style="margin-block-start:1rem">
+          {tools.map((tool) => <div><dt>{tool.name}</dt><dd>{tool.detail[lang]}</dd></div>)}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="philosophy-heading">
+    <div class="container container--narrow">
+      <h2 id="philosophy-heading">{lang === 'ar' ? 'لماذا «التفكير بالذكاء الاصطناعي»' : 'Why “think with AI”'}</h2>
+      <p class="lede" style="color:rgb(255 255 255 / 0.8);margin-block-start:1rem">“{person.tagline[lang]}”</p>
+      <p style="color:rgb(255 255 255 / 0.75);margin-block-start:1.5rem;max-width:var(--measure)">
+        {
+          lang === 'ar'
+            ? 'تدريب الأدوات عمره الافتراضي ربع سنة. فالواجهات تتغيّر والخصائص تنتقل. أما القدرة على صياغة تكليف للنموذج، وإسناده إلى مصدر حقيقي، وتمييز المخرَج الخاطئ — فتلك تبقى. ولهذا تُدرَّس الأُطر أولًا والأدوات ثانيًا.'
+            : 'Tool training has a shelf life of about a quarter — interfaces change and features move. The ability to brief a model properly, ground it in a real source, and tell when the output is wrong does not expire. That is why the frameworks come first and the tools second.'
+        }
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="method-courses">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="method-courses">{lang === 'ar' ? 'أين يُطبَّق هذا المنهج' : 'Where this method is applied'}</h2>
+      </div>
+      <div class="tag-row">
+        {
+          courses.map((course) => (
+            <a class="pill pill--neutral" href={path(`courses/${course.slug}`, lang)} style="text-decoration:none">
+              {course.data.shortTitle ?? course.data.title}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="method-faq">
+    <div class="container container--narrow">
+      <h2 id="method-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

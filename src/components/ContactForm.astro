@@ -1,0 +1,207 @@
+---
+import type { Locale } from '~/site.config';
+import { contact, mailtoUrl } from '~/site.config';
+import { useTranslations } from '~/i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+/**
+ * Contact form with no backend.
+ *
+ * GitHub Pages serves static files only, so there is nothing to POST to. This
+ * form therefore has two modes:
+ *
+ *   1. **Formspree configured** — set `contact.formspreeId` in site.config.ts
+ *      and the form POSTs there normally. Nothing else to change.
+ *   2. **Not configured (the default)** — a small script composes a `mailto:`
+ *      from the entered values and hands it to the visitor's mail client. No
+ *      third party, no data leaving the browser until they press send.
+ *
+ * Either way the form degrades to plain HTML: with JavaScript disabled and no
+ * Formspree ID, the visible email and WhatsApp links below still work. That is
+ * why they are always rendered rather than hidden behind the form.
+ */
+const formspreeAction = contact.formspreeId ? `https://formspree.io/f/${contact.formspreeId}` : '';
+
+const l = {
+  en: {
+    name: 'Your name',
+    email: 'Work email',
+    org: 'Organisation',
+    size: 'Team size and seniority',
+    city: 'City and preferred dates',
+    goal: 'What should the team be able to do afterwards?',
+    language: 'Preferred delivery language',
+    langArabic: 'Arabic delivery, English slides',
+    langEnglish: 'Full English',
+    langEither: 'Either is fine',
+    submit: 'Send enquiry',
+    required: 'required',
+    fallbackNote:
+      'This opens your email client with the details filled in — nothing is sent to any third party.',
+    or: 'Prefer not to use the form?',
+  },
+  ar: {
+    name: 'الاسم',
+    email: 'بريد العمل',
+    org: 'الجهة',
+    size: 'عدد المشاركين ومستواهم الوظيفي',
+    city: 'المدينة والتواريخ المفضلة',
+    goal: 'ما الذي تريد أن يصبح الفريق قادرًا عليه بعد التدريب؟',
+    language: 'لغة التقديم المفضلة',
+    langArabic: 'شرح بالعربية وشرائح إنجليزية',
+    langEnglish: 'إنجليزية بالكامل',
+    langEither: 'كلاهما مناسب',
+    submit: 'أرسل الاستفسار',
+    required: 'مطلوب',
+    fallbackNote: 'يفتح هذا برنامج البريد لديك بالبيانات مُعبَّأة — ولا يُرسَل أي شيء لأي طرف ثالث.',
+    or: 'تفضّل عدم استخدام النموذج؟',
+  },
+}[lang];
+---
+
+<form
+  class="contact-form"
+  id="contact-form"
+  method="POST"
+  action={formspreeAction}
+  data-mode={formspreeAction ? 'formspree' : 'mailto'}
+  data-email={contact.email}
+>
+  <div class="field">
+    <label for="cf-name">{l.name}</label>
+    <input id="cf-name" name="name" type="text" autocomplete="name" required />
+  </div>
+
+  <div class="field">
+    <label for="cf-email">{l.email}</label>
+    <input id="cf-email" name="email" type="email" autocomplete="email" required />
+  </div>
+
+  <div class="field">
+    <label for="cf-org">{l.org}</label>
+    <input id="cf-org" name="organisation" type="text" autocomplete="organization" required />
+  </div>
+
+  <div class="field">
+    <label for="cf-size">{l.size}</label>
+    <input id="cf-size" name="team" type="text" />
+  </div>
+
+  <div class="field">
+    <label for="cf-language">{l.language}</label>
+    <select id="cf-language" name="language">
+      <option value={l.langArabic}>{l.langArabic}</option>
+      <option value={l.langEnglish}>{l.langEnglish}</option>
+      <option value={l.langEither}>{l.langEither}</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="cf-city">{l.city}</label>
+    <input id="cf-city" name="city" type="text" />
+  </div>
+
+  <div class="field">
+    <label for="cf-goal">{l.goal}</label>
+    <textarea id="cf-goal" name="objective" rows="4"></textarea>
+  </div>
+
+  {/* Honeypot — bots fill it, people never see it. Formspree also honours _gotcha. */}
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
+  <input type="hidden" name="_subject" value="Menova — training enquiry" />
+
+  <button type="submit" class="btn btn--primary">{l.submit}</button>
+  {!formspreeAction && <p class="muted form-note">{l.fallbackNote}</p>}
+</form>
+
+<p class="muted form-alt">
+  {l.or}
+  <a href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>{contact.email}</a>
+</p>
+
+<script>
+  /**
+   * Mailto fallback. Only runs when no Formspree ID is configured — with one
+   * present, the form posts normally and this listener does nothing.
+   */
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form && form.dataset.mode === 'mailto') {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      if (data.get('_gotcha')) return; // bot
+
+      const lines: string[] = [];
+      for (const [key, value] of data.entries()) {
+        if (key.startsWith('_') || typeof value !== 'string' || !value.trim()) continue;
+        const label = form.querySelector(`label[for="cf-${key === 'organisation' ? 'org' : key}"]`);
+        lines.push(`${label?.textContent?.trim() ?? key}: ${value}`);
+      }
+
+      const subject = 'Menova — training enquiry';
+      const body = lines.join('\n');
+      const to = form.dataset.email ?? '';
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+</script>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: var(--space-s);
+    max-width: 34rem;
+    margin-block-start: var(--space-m);
+  }
+  .field {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .field label {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .field :is(input, select, textarea) {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: 0.55rem 0.7rem;
+    background: var(--paper);
+    font-size: var(--step-0);
+  }
+  .field :is(input, select, textarea):focus-visible {
+    outline: 2px solid var(--crimson);
+    outline-offset: 0;
+    border-color: var(--crimson);
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 5rem;
+  }
+  .honeypot {
+    position: absolute !important;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .contact-form .btn {
+    justify-self: start;
+  }
+  .form-note {
+    margin-block-start: -0.25rem;
+  }
+  .form-alt {
+    margin-block-start: var(--space-s);
+  }
+  .form-alt a {
+    color: var(--crimson);
+    font-weight: 600;
+  }
+</style>

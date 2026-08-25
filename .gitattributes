@@ -1,0 +1,17 @@
+# Normalise line endings to LF inside the repository.
+# The site is authored on Windows but built on Ubuntu in GitHub Actions;
+# without this, CRLF endings get committed and shell scripts and YAML can
+# behave differently in CI than they do locally.
+* text=auto eol=lf
+
+# Binary assets — never touch these.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary

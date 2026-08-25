@@ -1,0 +1,116 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '~/site.config';
+import { render } from 'astro:content';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entryFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { graph, personSchema, organizationSchema, breadcrumbSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import TodoNote from '~/components/TodoNote.astro';
+
+interface Props {
+  lang: Locale;
+  entry: CollectionEntry<'caseStudies'>;
+  slug: string;
+}
+const { lang, entry, slug } = Astro.props;
+const t = useTranslations(lang);
+const d = entry.data;
+const { Content } = await render(entry);
+
+const relatedCourse = d.relatedCourse ? await entryFor('courses', lang, d.relatedCourse) : undefined;
+
+const crumbs = [
+  { name: t('nav.home'), key: '' },
+  { name: copy('caseStudies', lang).title, key: 'case-studies' },
+];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: d.title, key: `case-studies/${slug}` }], lang),
+]);
+---
+
+<BaseLayout
+  lang={lang}
+  routeKey={`case-studies/${slug}`}
+  title={d.seoTitle}
+  description={d.metaDescription}
+  jsonLd={jsonLd}
+  ogType="article"
+>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={d.client} />
+  <PageHeader lang={lang} eyebrow={d.client} title={d.title} summary={d.summary} updated={d.updated} />
+
+  <section class="section section--tight">
+    <div class="container grid grid--sidebar">
+      <div>
+        <h2>{t('label.challenge')}</h2>
+        <p class="lede" style="margin-block-start:0.75rem">{d.challenge}</p>
+
+        <h2 style="margin-block-start:3rem">{t('label.approach')}</h2>
+        <ul style="margin-block-start:1rem;max-width:var(--measure)">
+          {d.approach.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h2 style="margin-block-start:3rem">{t('label.result')}</h2>
+        <ul style="margin-block-start:1rem;max-width:var(--measure)">
+          {d.result.map((item) => <li>{item}</li>)}
+        </ul>
+
+        {
+          d.testimonial && (
+            <blockquote class="quote" style="margin-block-start:3rem">
+              <p>“{d.testimonial.quote}”</p>
+              <cite>{d.testimonial.attribution}</cite>
+            </blockquote>
+          )
+        }
+
+        <div class="prose" style="margin-block-start:3rem">
+          <Content />
+        </div>
+
+        {
+          d.todos.length > 0 && (
+            <div style="margin-block-start:2.5rem">
+              <TodoNote lang={lang} items={d.todos} />
+            </div>
+          )
+        }
+      </div>
+
+      <aside class="stack" style="--flow:1.5rem">
+        <div class="card">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'ملخص المشروع' : 'At a glance'}</h2>
+          <dl class="spec">
+            <div><dt>{t('label.client')}</dt><dd>{d.client}</dd></div>
+            <div><dt>{t('label.sector')}</dt><dd>{d.sector}</dd></div>
+            {d.participants && <div><dt>{t('label.participants')}</dt><dd>{d.participants}</dd></div>}
+            {d.rating && <div><dt>{t('label.rating')}</dt><dd>{d.rating}</dd></div>}
+            <div><dt>{lang === 'ar' ? 'البرنامج' : 'Programme'}</dt><dd>{d.programme}</dd></div>
+            {d.period && <div><dt>{lang === 'ar' ? 'الفترة' : 'Period'}</dt><dd><span class="todo">{d.period}</span></dd></div>}
+          </dl>
+        </div>
+
+        {
+          relatedCourse && (
+            <div class="card card--flag">
+              <p class="eyebrow" style="margin:0">{t('nav.courses')}</p>
+              <h3><a href={path(`courses/${d.relatedCourse}`, lang)}>{relatedCourse.data.title}</a></h3>
+              <p class="muted">{relatedCourse.data.duration}</p>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} subject={d.programme} />
+</BaseLayout>

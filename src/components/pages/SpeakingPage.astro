@@ -1,0 +1,152 @@
+---
+import type { Locale } from '~/site.config';
+import { mailtoUrl } from '~/site.config';
+import { path, asset } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { copy } from '~/data/pages';
+import { person } from '~/data/person';
+import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+import TodoNote from '~/components/TodoNote.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('speaking', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'speaking' }], lang),
+  faqSchema(c.faqs ?? []),
+]);
+
+const topics =
+  lang === 'ar'
+    ? [
+        { title: 'تبنّي الذكاء الاصطناعي في المؤسسات الكبيرة', body: 'لماذا تتوقف معظم برامج التبنّي عند الأسبوع الثاني، وما الذي يجعلها تستمر.' },
+        { title: 'استراتيجية الذكاء الاصطناعي لفرق القيادة', body: 'SOSTAC وPlaying to Win مطبَّقان على قرار حقيقي أمام الجمهور.' },
+        { title: 'أُطر التوجيه للمديرين', body: 'POCAB وGCSE-F بعرض حي — لا شرائح.' },
+        { title: 'مستقبل العمل الإداري', body: 'ما الذي يتغيّر فعلًا في وظيفة المدير، وما الذي لا يتغيّر.' },
+        { title: 'الذكاء الاصطناعي في التعليم العالي', body: 'التقييم والنزاهة الأكاديمية بعد وصول هذه الأدوات.' },
+      ]
+    : [
+        { title: 'AI adoption in large organisations', body: 'Why most adoption programmes stall in week two, and what makes them stick.' },
+        { title: 'AI strategy for leadership teams', body: 'SOSTAC and Playing to Win applied live to a real decision in front of the room.' },
+        { title: 'Prompting frameworks for managers', body: 'POCAB and GCSE-F, demonstrated rather than described.' },
+        { title: 'The future of managerial work', body: 'What actually changes in a manager’s job, and what does not.' },
+        { title: 'AI in higher education', body: 'Assessment and academic integrity now that these tools have arrived.' },
+      ];
+
+const formats =
+  lang === 'ar'
+    ? ['كلمة رئيسية في مؤتمر (30–60 دقيقة)', 'محاضرة ضيف بجامعة', 'مشاركة في جلسة حوارية', 'ورشة نصف يوم أو يوم كامل']
+    : ['Conference keynote (30–60 minutes)', 'University guest lecture', 'Panel participation', 'Half-day or full-day workshop'];
+---
+
+<BaseLayout lang={lang} routeKey="speaking" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h2>{lang === 'ar' ? 'الموضوعات' : 'Topics'}</h2>
+      </div>
+      <div class="grid grid--3">
+        {
+          topics.map((topic) => (
+            <article class="card card--flag">
+              <h3>{topic.title}</h3>
+              <p>{topic.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted">
+    <div class="container grid grid--2">
+      <div>
+        <h2>{lang === 'ar' ? 'الصيغ المتاحة' : 'Formats'}</h2>
+        <ul style="margin-block-start:1rem">
+          {formats.map((format) => <li>{format}</li>)}
+        </ul>
+        <div class="btn-row" style="margin-block-start:1.5rem">
+          <a
+            class="btn btn--primary"
+            href={mailtoUrl(
+              lang === 'ar' ? 'مِنوفا — دعوة للتحدث' : 'Menova — speaking invitation',
+              lang === 'ar'
+                ? 'أهلًا أحمد،\n\nنود دعوتك للتحدث.\n\nالفعالية:\nالتاريخ:\nالمكان:\nالجمهور وعدده:\nالصيغة (كلمة / ورشة / جلسة حوارية):\nلغة التقديم:\n\nشكرًا لك.'
+                : 'Hello Ahmed,\n\nWe would like to invite you to speak.\n\nEvent:\nDate:\nLocation:\nAudience and size:\nFormat (keynote / workshop / panel):\nDelivery language:\n\nThank you.',
+            )}
+          >
+            {lang === 'ar' ? 'أرسل دعوة' : 'Send an invitation'}
+          </a>
+          <a class="btn btn--secondary" href={asset('downloads/ahmed-amrousy-profile.pdf')} download>
+            {t('cta.download')}
+          </a>
+        </div>
+      </div>
+      <div>
+        <h2>{lang === 'ar' ? 'للمنظّمين' : 'For organisers'}</h2>
+        <p style="margin-block-start:0.75rem">{c.summary}</p>
+        <dl class="spec" style="margin-block-start:1rem">
+          <div>
+            <dt>{lang === 'ar' ? 'اللقب المعتمد' : 'Approved title'}</dt>
+            <dd>{person.approvedTitles[lang][0]}</dd>
+          </div>
+          <div>
+            <dt>{lang === 'ar' ? 'نبذة قصيرة' : 'Short bio'}</dt>
+            <dd>{person.bios[lang].short}</dd>
+          </div>
+        </dl>
+        <p style="margin-block-start:1rem">
+          <a class="btn btn--ghost" href={path('about', lang)}>
+            {lang === 'ar' ? 'الملف الصحفي الكامل' : 'Full media kit'}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <TodoNote
+        lang={lang}
+        items={
+          lang === 'ar'
+            ? [
+                'أضف قائمة الفعاليات والمؤتمرات السابقة بأسمائها وتواريخها.',
+                'أضف صور المحاضرات إلى public/images/gallery/ — انظر ملف images/README.md.',
+                'أضف رابط فيديو أو مقطعًا من محاضرة سابقة إن وُجد.',
+              ]
+            : [
+                'Add a list of past events and conferences with names and dates.',
+                'Add speaking photographs to public/images/gallery/ — see images/README.md.',
+                'Add a showreel or clip from a previous talk, if one exists.',
+              ]
+        }
+      />
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="speaking-faq">
+    <div class="container container--narrow">
+      <h2 id="speaking-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} subject={lang === 'ar' ? 'دعوة للتحدث' : 'a speaking invitation'} />
+</BaseLayout>

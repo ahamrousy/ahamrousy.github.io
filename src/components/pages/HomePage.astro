@@ -1,0 +1,188 @@
+---
+import type { Locale } from '~/site.config';
+import { mailtoUrl, whatsappUrl } from '~/site.config';
+import { asset, path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entriesFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { person } from '~/data/person';
+import { geoKeys } from '~/data/nav';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  websiteSchema,
+  faqSchema,
+} from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CourseCard from '~/components/CourseCard.astro';
+import LogoWall from '~/components/LogoWall.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('home', lang);
+
+const courses = await entriesFor('courses', lang);
+const cases = await entriesFor('caseStudies', lang);
+const geoPages = await entriesFor('geo', lang);
+const geoByKey = new Map(geoPages.map((entry) => [entry.slug, entry]));
+
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  websiteSchema(lang),
+  faqSchema(c.faqs ?? []),
+]);
+---
+
+<BaseLayout
+  lang={lang}
+  routeKey=""
+  title={c.seoTitle}
+  description={c.metaDescription}
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h1>{c.title}</h1>
+        {/* The GEO payload: a self-contained entity definition, first prose on
+            the page, quotable without any surrounding context. */}
+        <p class="lede">{c.summary}</p>
+        <div class="btn-row" style="margin-block-start:1.75rem">
+          <a class="btn btn--primary" href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>
+            {t('cta.primary')}
+          </a>
+          <a
+            class="btn btn--whatsapp"
+            href={whatsappUrl(lang === 'ar' ? 'أهلًا أحمد، عندي استفسار عن تدريب مِنوفا.' : 'Hello Ahmed — a question about Menova training.')}
+            rel="noopener"
+            target="_blank"
+          >
+            {t('cta.whatsapp')}
+          </a>
+          <a class="btn btn--secondary" href={path('courses', lang)}>{t('cta.allCourses')}</a>
+        </div>
+      </div>
+      <div>
+        {/* TODO: replace with the real headshot — see public/images/README.md */}
+        <img
+          class="hero__portrait"
+          src={asset('images/ahmed-amrousy-headshot.jpg')}
+          alt={`${person.name} — ${person.jobTitle[lang]}`}
+          width="640"
+          height="800"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="stats-heading">
+    <div class="container">
+      <h2 id="stats-heading" class="visually-hidden">{c.proofHeading}</h2>
+      <div class="grid grid--4">
+        {
+          person.stats.map((stat) => (
+            <div class="stat">
+              <span class="stat__value">{stat.value}</span>
+              <span class="stat__label">{stat.label[lang]}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="courses-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="courses-heading">{t('heading.courses')}</h2>
+        <p class="lede">{c.coursesIntro}</p>
+      </div>
+      <div class="grid grid--3">
+        {
+          courses.map((course) => (
+            <CourseCard
+              lang={lang}
+              slug={course.slug}
+              title={course.data.title}
+              tagline={course.data.tagline}
+              duration={course.data.duration}
+              audience={course.data.level}
+              flagship={course.data.flagship}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="proof-heading">{t('heading.proof')}</h2>
+      </div>
+      <div class="grid grid--3">
+        {
+          cases.slice(0, 3).map((entry) => (
+            <article class="card card--flag-green">
+              <p class="card__meta">
+                <span>{entry.data.client}</span>
+                <span>{entry.data.sector}</span>
+              </p>
+              <h3>
+                <a href={path(`case-studies/${entry.slug}`, lang)}>{entry.data.title}</a>
+              </h3>
+              <p>{entry.data.challenge.slice(0, 180)}…</p>
+            </article>
+          ))
+        }
+      </div>
+      <p style="margin-block-start:1.5rem">
+        <a class="btn btn--ghost" href={path('case-studies', lang)}>{t('nav.cases')}</a>
+      </p>
+    </div>
+  </section>
+
+  <LogoWall lang={lang} />
+
+  <section class="section" aria-labelledby="regions-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="regions-heading">{t('footer.regions')}</h2>
+      </div>
+      <div class="grid grid--3">
+        {
+          geoKeys.map((key) => {
+            const entry = geoByKey.get(key);
+            if (!entry) return null;
+            return (
+              <article class="card">
+                <h3><a href={path(key, lang)}>{entry.data.region}</a></h3>
+                <p>{entry.data.proofPoints[0]}</p>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="faq-heading">
+    <div class="container container--narrow">
+      <h2 id="faq-heading" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import { pathsFor } from '~/i18n/content';
+import InsightDetail from '~/components/pages/InsightDetail.astro';
+
+export async function getStaticPaths() {
+  return pathsFor('insights', 'en');
+}
+
+const { entry, lang } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<InsightDetail lang={lang} entry={entry} slug={slug!} />

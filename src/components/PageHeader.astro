@@ -1,0 +1,29 @@
+---
+import type { Locale } from '~/site.config';
+
+import LastUpdated from '~/components/LastUpdated.astro';
+
+interface Props {
+  lang: Locale;
+  eyebrow?: string;
+  title: string;
+  /**
+   * The GEO payload — 2–3 self-contained sentences that define the subject
+   * without the rest of the page. Rendered first so it is the first prose a
+   * crawler or an AI engine encounters.
+   */
+  summary: string;
+  updated?: Date;
+}
+const { lang, eyebrow, title, summary, updated } = Astro.props;
+
+---
+
+<header class="page-header">
+  <div class="container">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <p class="lede" style="margin-block-start:1rem">{summary}</p>
+    {updated && <LastUpdated lang={lang} date={updated} />}
+  </div>
+</header>

@@ -1,0 +1,67 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entriesFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { graph, personSchema, organizationSchema, breadcrumbSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import LogoWall from '~/components/LogoWall.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('caseStudies', lang);
+const cases = await entriesFor('caseStudies', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'case-studies' }], lang),
+]);
+---
+
+<BaseLayout lang={lang} routeKey="case-studies" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        {
+          cases.map((entry) => (
+            <article class="card card--flag-green">
+              <p class="card__meta">
+                <span>{entry.data.client}</span>
+                <span>{entry.data.sector}</span>
+              </p>
+              <h2 style="font-size:var(--step-2)">
+                <a href={path(`case-studies/${entry.slug}`, lang)}>{entry.data.title}</a>
+              </h2>
+              <p>{entry.data.summary}</p>
+              <div class="tag-row" style="margin-block-start:0.5rem">
+                {entry.data.participants && <span class="pill pill--green">{entry.data.participants}</span>}
+                {entry.data.rating && <span class="pill">{entry.data.rating}</span>}
+              </div>
+              <p style="margin-block-start:auto;padding-block-start:0.75rem">
+                <a class="btn btn--ghost" href={path(`case-studies/${entry.slug}`, lang)}>
+                  {t('cta.readCase')}
+                </a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <LogoWall lang={lang} />
+  <CtaBand lang={lang} />
+</BaseLayout>

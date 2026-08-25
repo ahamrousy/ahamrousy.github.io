@@ -1,0 +1,15 @@
+/* TEAM */
+  Founder & Instructor: Eng. Ahmed Amrousy
+  Site: https://www.linkedin.com/in/ahmed-amrousy/
+  Contact: ahmedamrousy [at] aucegypt.edu
+  Location: Cairo, Egypt
+
+/* SITE */
+  Standards: HTML5, CSS3 (logical properties), JSON-LD
+  Components: Astro (static output), zero client framework
+  Fonts: IBM Plex Sans, IBM Plex Sans Arabic (self-hosted)
+  Hosting: GitHub Pages
+  Languages: English, العربية
+
+/* THANKS */
+  To every participant who asked the awkward question in the room.

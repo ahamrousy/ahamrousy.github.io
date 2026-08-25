@@ -1,0 +1,78 @@
+---
+import type { Locale } from '~/site.config';
+import { useTranslations } from '~/i18n/ui';
+import { entriesFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { graph, organizationSchema, breadcrumbSchema, faqSchema, personSchema } from '~/lib/schema';
+import { path } from '~/i18n/routing';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import CourseCard from '~/components/CourseCard.astro';
+import Faq from '~/components/Faq.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('courses', lang);
+const courses = await entriesFor('courses', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'courses' }], lang),
+  faqSchema(c.faqs ?? []),
+  // An ItemList of the catalogue helps engines enumerate the six programmes
+  // as a set rather than treating each page as unrelated.
+  {
+    '@type': 'ItemList',
+    name: c.title,
+    itemListElement: courses.map((course, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: course.data.title,
+      url: new URL(path(`courses/${course.slug}`, lang), Astro.site).href,
+    })),
+  },
+]);
+---
+
+<BaseLayout lang={lang} routeKey="courses" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--3">
+        {
+          courses.map((course) => (
+            <CourseCard
+              lang={lang}
+              slug={course.slug}
+              title={course.data.title}
+              tagline={course.data.tagline}
+              duration={course.data.duration}
+              audience={course.data.level}
+              flagship={course.data.flagship}
+            />
+          ))
+        }
+      </div>
+      <p class="muted" style="margin-block-start:1.5rem;max-width:var(--measure)">{t('note.pricing')}</p>
+    </div>
+  </section>
+
+  <section class="section section--tinted" aria-labelledby="courses-faq">
+    <div class="container container--narrow">
+      <h2 id="courses-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
+      <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

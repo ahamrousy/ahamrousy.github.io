@@ -1,0 +1,78 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { entriesFor } from '~/i18n/content';
+import { copy } from '~/data/pages';
+import { graph, personSchema, organizationSchema, breadcrumbSchema } from '~/lib/schema';
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import CtaBand from '~/components/CtaBand.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = copy('insights', lang);
+const articles = await entriesFor('insights', lang);
+
+const crumbs = [{ name: t('nav.home'), key: '' }];
+const jsonLd = graph([
+  personSchema(lang),
+  organizationSchema(lang),
+  breadcrumbSchema([...crumbs, { name: c.title, key: 'insights' }], lang),
+  {
+    '@type': 'Blog',
+    name: c.title,
+    description: c.summary,
+    inLanguage: lang,
+    author: { '@id': `${Astro.site?.origin ?? ''}/#ahmed-amrousy` },
+  },
+]);
+
+const dateFormat = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-EG-u-nu-latn' : 'en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout lang={lang} routeKey="insights" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
+  <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        {
+          articles.map((article) => (
+            <article class="card card--flag">
+              <p class="card__meta">
+                <span>
+                  <time datetime={article.data.published.toISOString().slice(0, 10)}>
+                    {dateFormat.format(article.data.published)}
+                  </time>
+                </span>
+                <span>{article.data.readingTime} {t('label.readingTime')}</span>
+              </p>
+              <h2 style="font-size:var(--step-2)">
+                <a href={path(`insights/${article.slug}`, lang)}>{article.data.title}</a>
+              </h2>
+              <p>{article.data.summary}</p>
+              <p style="margin-block-start:auto;padding-block-start:0.75rem">
+                <a class="btn btn--ghost" href={path(`insights/${article.slug}`, lang)}>
+                  {t('cta.readArticle')}
+                </a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

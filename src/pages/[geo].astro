@@ -1,0 +1,16 @@
+---
+// Root-level dynamic route. getStaticPaths emits only the three geo slugs, and
+// Astro gives static routes (/about/, /contact/, …) precedence over this one,
+// so it can never shadow a real page.
+import { pathsFor } from '~/i18n/content';
+import GeoPage from '~/components/pages/GeoPage.astro';
+
+export async function getStaticPaths() {
+  return pathsFor('geo', 'en', 'geo');
+}
+
+const { entry, lang } = Astro.props;
+const { geo } = Astro.params;
+---
+
+<GeoPage lang={lang} entry={entry} slug={geo!} />

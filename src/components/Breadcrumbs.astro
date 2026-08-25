@@ -1,0 +1,22 @@
+---
+import type { Locale } from '~/site.config';
+import { path } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import type { Crumb } from '~/lib/schema';
+
+interface Props {
+  lang: Locale;
+  /** Excludes the current page — it is appended here as plain text. */
+  crumbs: Crumb[];
+  current: string;
+}
+const { lang, crumbs, current } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<nav class="breadcrumbs container" aria-label={t('nav.breadcrumb')}>
+  <ol>
+    {crumbs.map((crumb) => <li><a href={path(crumb.key, lang)}>{crumb.name}</a></li>)}
+    <li aria-current="page">{current}</li>
+  </ol>
+</nav>

@@ -1,0 +1,48 @@
+---
+import type { Locale } from '~/site.config';
+import { asset } from '~/i18n/routing';
+import { useTranslations } from '~/i18n/ui';
+import { logoWall } from '~/data/person';
+
+interface Props {
+  lang: Locale;
+  heading?: string;
+}
+const { lang, heading } = Astro.props;
+const t = useTranslations(lang);
+
+/**
+ * "As taught at" credibility strip.
+ *
+ * Every file below ships as a neutral placeholder SVG carrying the
+ * organisation's name as text — so the wall is never broken, never fabricates
+ * a logo, and is legible to screen readers from day one. Replacing a file with
+ * the real mark at the same path is the whole update procedure.
+ * See public/images/README.md.
+ */
+---
+
+<section class="section section--tight section--tinted" aria-labelledby="logos-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="logos-heading">{heading ?? t('heading.logos')}</h2>
+      <p class="muted">{t('note.logos')}</p>
+    </div>
+    <div class="logo-wall">
+      {
+        logoWall.map((logo) => (
+          <div class="logo-wall__item">
+            <img
+              src={asset(logo.file)}
+              alt={logo.name}
+              width="160"
+              height="48"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
