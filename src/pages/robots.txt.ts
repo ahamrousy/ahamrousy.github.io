@@ -47,7 +47,7 @@ export const GET: APIRoute = async () => {
   ];
 
   const body = [
-    '# Menova — ahmedamrousy.github.io',
+    '# Menova — ahamrousy.github.io',
     '# Search and AI crawlers are both welcome. See /llms.txt for a plain-text',
     '# summary written specifically for language models.',
     '',

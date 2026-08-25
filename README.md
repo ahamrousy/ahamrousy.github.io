@@ -16,7 +16,7 @@ in English and Arabic.
 Open [`src/site.config.ts`](src/site.config.ts) and set two values:
 
 ```ts
-export const SITE_URL = 'https://ahmedamrousy.github.io';  // ← your live origin, no trailing slash
+export const SITE_URL = 'https://ahamrousy.github.io';  // ← your live origin, no trailing slash
 export const BASE = '/';                                    // ← '/' for a root repo
 ```
 

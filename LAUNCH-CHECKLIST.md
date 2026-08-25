@@ -8,7 +8,7 @@ the "Ahmed Amrousy" ranking come before the cosmetic ones.
 ## 0 · Before the first push — blocking
 
 - [ ] **Set `SITE_URL` in `src/site.config.ts`** to your real origin.
-      Currently `https://ahmedamrousy.github.io`. If your GitHub username differs, every canonical
+      Currently `https://ahamrousy.github.io`. If your GitHub username differs, every canonical
       URL, hreflang tag, sitemap entry, OG image URL and JSON-LD `@id` will point at a domain you
       do not own. **This is the one mistake that is expensive to undo** — Google will have indexed
       the wrong canonicals before you notice.

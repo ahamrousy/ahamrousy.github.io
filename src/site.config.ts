@@ -12,7 +12,7 @@
  * derives from these. astro.config.ts imports them, so they never drift.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-export const SITE_URL = 'https://ahmedamrousy.github.io';
+export const SITE_URL = 'https://ahamrousy.github.io';
 export const BASE = '/';
 
 /** Contact + social. Used in the UI, the chatbot, and Person/Organization JSON-LD. */
