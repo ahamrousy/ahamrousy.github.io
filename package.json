@@ -12,7 +12,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "placeholders": "node scripts/generate-placeholders.mjs",
-    "audit": "node scripts/lighthouse.mjs"
+    "audit": "node scripts/lighthouse.mjs",
+    "headshot": "node scripts/add-headshot.mjs",
+    "seo": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",
@@ -27,6 +29,7 @@
     "lighthouse": "^12.2.1",
     "pdfkit": "^0.15.2",
     "satori": "^0.12.1",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
   }
 }
