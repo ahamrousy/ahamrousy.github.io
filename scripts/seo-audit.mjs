@@ -21,7 +21,22 @@ const notes = [];
 const fail = (url, msg) => errors.push(`${url} — ${msg}`);
 const warn = (url, msg) => warnings.push(`${url} — ${msg}`);
 
-const text = (html, re) => (html.match(re)?.[1] ?? '').trim();
+/**
+ * Decodes the HTML entities Astro emits when escaping attribute values.
+ * Without this, a description containing a quote measures 8 characters longer
+ * than the text a search engine actually sees ('"' → '&#34;'), which produced
+ * false "over 155" warnings.
+ */
+const decodeEntities = (value) =>
+  value
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+
+const text = (html, re) => decodeEntities((html.match(re)?.[1] ?? '').trim());
 const all = (html, re) => [...html.matchAll(re)].map((m) => m[1]);
 
 async function get(url) {
