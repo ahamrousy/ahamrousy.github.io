@@ -565,16 +565,27 @@ a.card,
   padding: var(--space-m) var(--space-s);
   min-height: 6.5rem;
 }
+/* Full colour, not greyscale. The AUC mark is a white-on-navy lockup whose
+   background cannot be removed without destroying the wordmark, so a
+   desaturated wall would read as one dark box among ten pale ones. Colour
+   also suits the brighter brand. Sizes are capped near the artwork's native
+   resolution — the supplied files are 74–298 px wide, so displaying them
+   larger would only blur them. */
 .logo-wall__item img {
-  max-height: 2.6rem;
+  max-height: 2.35rem;
+  max-width: 100%;
   width: auto;
-  filter: grayscale(1);
-  opacity: 0.72;
-  transition: filter 0.2s ease, opacity 0.2s ease;
+  opacity: 0.92;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .logo-wall__item:hover img {
-  filter: grayscale(0);
   opacity: 1;
+  transform: scale(1.04);
+}
+/* Portrait marks (Cairo University) would otherwise shrink to a sliver when
+   capped by height alone. */
+.logo-wall__item img[data-portrait] {
+  max-height: 3.6rem;
 }
 
 /* --- Header / nav ------------------------------------------------------- */

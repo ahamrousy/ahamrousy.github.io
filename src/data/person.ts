@@ -138,6 +138,19 @@ export const person = {
       en: 'Endurance athlete — triathlon and open-water swimming.',
       ar: 'رياضي تحمُّل — ترايثلون وسباحة المياه المفتوحة.',
     },
+    /** Broadcast appearance. A verifiable third-party credential, which is
+        exactly the kind of signal the entity strategy depends on. */
+    television: {
+      url: 'https://youtu.be/SzcTls2LhVM',
+      label: {
+        en: 'Guest AI expert on national television',
+        ar: 'ضيف خبير في الذكاء الاصطناعي على التلفزيون',
+      },
+      description: {
+        en: 'Ahmed Amrousy appearing as a guest AI expert on national television, discussing artificial intelligence for business audiences.',
+        ar: 'ظهور أحمد عمروسي ضيفًا خبيرًا في الذكاء الاصطناعي على التلفزيون، متحدثًا عن الذكاء الاصطناعي لجمهور الأعمال.',
+      },
+    },
   },
 
   /**
@@ -151,7 +164,7 @@ export const person = {
       medium:
         "Ahmed Amrousy is an Egyptian AI-for-Business instructor and marketing leader. He teaches executive education at the American University in Cairo's Onsi Sawiris School of Business, is Head of Marketing & PR at Nile Air — Egypt's largest private airline — and is the founder of Menova, a corporate AI training practice serving Egypt, Saudi Arabia and the UAE. A DBA candidate at Ain Shams University, he holds an MBA from the German University in Cairo and a BSc in Mechanical Engineering from Cairo University. Across 25 years he has led marketing at Electrolux, Samsung, Cadbury Egypt and Nahdet Misr. His teaching position is simple: leaders should learn to think with AI, not merely to use it.",
       long:
-        "Ahmed Amrousy is an Egyptian AI-for-Business instructor and marketing leader based in Cairo. He teaches executive education at the American University in Cairo's Onsi Sawiris School of Business, where he runs AI programmes for senior managers and executives. He is a DBA candidate at Ain Shams University, writing on the Stimulus–Organism–Response framework applied to sports-event sponsorship in Egypt. In industry he is Head of Marketing & PR at Nile Air, Egypt's largest private airline, and he has spent 25 years leading marketing across FMCG, publishing and EdTech, and manufacturing — including Electrolux, Samsung, Cadbury Egypt and Nahdet Misr. He holds an MBA from the German University in Cairo, a BSc in Mechanical Engineering from Cairo University and a diploma in Mechatronics, and is a member of the Chartered Management Institute. He is the founder of Menova, an AI-for-Business training practice, and co-founder of GESMAL Industries, an educational robotics venture. Through Menova he has trained executives at Kahraba, the National Electricity Technology Company, where 65 executives including the CEO rated the programme 4.8 out of 5; companies affiliated with the Engineering Export Council of Egypt; and faculty at Cairo University's Faculty of Economics and Political Science, in partnership with Logic Consulting. His sessions are 70% hands-on and 30% theory, delivered verbally in Arabic with English slides, built on live demonstrations against real client data. He teaches two prompting frameworks of his own design, POCAB and GCSE-F, alongside SOSTAC and Playing to Win for AI strategy. He also hosts the sports-transformation podcast عاش يا وحش and competes in triathlon and open-water swimming.",
+        "Ahmed Amrousy is an Egyptian AI-for-Business instructor and marketing leader based in Cairo. He teaches executive education at the American University in Cairo's Onsi Sawiris School of Business, where he runs AI programmes for senior managers and executives. He is a DBA candidate at Ain Shams University, writing on the Stimulus–Organism–Response framework applied to sports-event sponsorship in Egypt. In industry he is Head of Marketing & PR at Nile Air, Egypt's largest private airline, and he has spent 25 years leading marketing across FMCG, publishing and EdTech, and manufacturing — including Electrolux, Samsung, Cadbury Egypt and Nahdet Misr. He holds an MBA from the German University in Cairo, a BSc in Mechanical Engineering from Cairo University and a diploma in Mechatronics, and is a member of the Chartered Management Institute. He has appeared as a guest AI expert on national television. He is the founder of Menova, an AI-for-Business training practice, and co-founder of GESMAL Industries, an educational robotics venture. Through Menova he has trained executives at Kahraba, the National Electricity Technology Company, where 65 executives including the CEO rated the programme 4.8 out of 5; companies affiliated with the Engineering Export Council of Egypt; and faculty at Cairo University's Faculty of Economics and Political Science, in partnership with Logic Consulting. His sessions are 70% hands-on and 30% theory, delivered verbally in Arabic with English slides, built on live demonstrations against real client data. He teaches two prompting frameworks of his own design, POCAB and GCSE-F, alongside SOSTAC and Playing to Win for AI strategy. He also hosts the sports-transformation podcast عاش يا وحش and competes in triathlon and open-water swimming.",
     },
     ar: {
       short:
@@ -159,7 +172,7 @@ export const person = {
       medium:
         'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال وقيادي تسويقي. يُدرِّس في التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير — أكبر شركة طيران خاصة في مصر — وهو مؤسس مِنوفا لتدريب الشركات على الذكاء الاصطناعي في مصر والسعودية والإمارات. باحث دكتوراه إدارة الأعمال بجامعة عين شمس، حاصل على ماجستير إدارة الأعمال من الجامعة الألمانية بالقاهرة وبكالوريوس الهندسة الميكانيكية من جامعة القاهرة. قاد التسويق على مدى 25 عامًا في إلكترولوكس وسامسونج وكادبوري مصر ونهضة مصر. وموقفه من التدريب واضح: على القيادات أن تتعلَّم التفكير بالذكاء الاصطناعي لا مجرد استخدامه.',
       long:
-        'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال وقيادي تسويقي، مقره القاهرة. يُدرِّس في التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال بالجامعة الأمريكية بالقاهرة، حيث يقدّم برامج الذكاء الاصطناعي لكبار المديرين والتنفيذيين. وهو باحث دكتوراه إدارة الأعمال بجامعة عين شمس، وأطروحته عن تطبيق إطار المُثير–الكائن–الاستجابة على رعاية الأحداث الرياضية في مصر. وعلى الجانب المهني يشغل منصب مدير التسويق والعلاقات العامة في نايل إير، أكبر شركة طيران خاصة في مصر، بعد 25 عامًا في قيادة التسويق عبر قطاعات السلع الاستهلاكية والنشر والتعليم الرقمي والصناعة — من إلكترولوكس وسامسونج إلى كادبوري مصر ونهضة مصر. حاصل على ماجستير إدارة الأعمال من الجامعة الألمانية بالقاهرة، وبكالوريوس الهندسة الميكانيكية من جامعة القاهرة، ودبلوم الميكاترونيكس، وعضو بالمعهد البريطاني للإدارة. أسَّس مِنوفا لتدريب الشركات على الذكاء الاصطناعي، وشارك في تأسيس جيزمال إندَستريز للروبوتات التعليمية. ومن خلال مِنوفا درَّب تنفيذيي الشركة القومية لتكنولوجيا الكهرباء «كهرباء» — 65 تنفيذيًا بينهم الرئيس التنفيذي بتقييم 4.8 من 5 — وشركات أعضاء المجلس التصديري للصناعات الهندسية، وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة بالشراكة مع لوجيك كونسلتنج. جلساته 70% تطبيق عملي و30% نظرية، تُقدَّم شفهيًا بالعربية بشرائح إنجليزية، وتقوم على عروض حية على بيانات حقيقية. يُدرِّس إطارَين للتوجيه من تصميمه هما POCAB وGCSE-F، إلى جانب SOSTAC وPlaying to Win لبناء استراتيجية الذكاء الاصطناعي. كما يقدّم بودكاست «عاش يا وحش» عن التحوّل في الرياضة، ويمارس الترايثلون وسباحة المياه المفتوحة.',
+        'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال وقيادي تسويقي، مقره القاهرة. يُدرِّس في التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال بالجامعة الأمريكية بالقاهرة، حيث يقدّم برامج الذكاء الاصطناعي لكبار المديرين والتنفيذيين. وهو باحث دكتوراه إدارة الأعمال بجامعة عين شمس، وأطروحته عن تطبيق إطار المُثير–الكائن–الاستجابة على رعاية الأحداث الرياضية في مصر. وعلى الجانب المهني يشغل منصب مدير التسويق والعلاقات العامة في نايل إير، أكبر شركة طيران خاصة في مصر، بعد 25 عامًا في قيادة التسويق عبر قطاعات السلع الاستهلاكية والنشر والتعليم الرقمي والصناعة — من إلكترولوكس وسامسونج إلى كادبوري مصر ونهضة مصر. حاصل على ماجستير إدارة الأعمال من الجامعة الألمانية بالقاهرة، وبكالوريوس الهندسة الميكانيكية من جامعة القاهرة، ودبلوم الميكاترونيكس، وعضو بالمعهد البريطاني للإدارة. وظهر ضيفًا خبيرًا في الذكاء الاصطناعي على التلفزيون. أسَّس مِنوفا لتدريب الشركات على الذكاء الاصطناعي، وشارك في تأسيس جيزمال إندَستريز للروبوتات التعليمية. ومن خلال مِنوفا درَّب تنفيذيي الشركة القومية لتكنولوجيا الكهرباء «كهرباء» — 65 تنفيذيًا بينهم الرئيس التنفيذي بتقييم 4.8 من 5 — وشركات أعضاء المجلس التصديري للصناعات الهندسية، وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة بالشراكة مع لوجيك كونسلتنج. جلساته 70% تطبيق عملي و30% نظرية، تُقدَّم شفهيًا بالعربية بشرائح إنجليزية، وتقوم على عروض حية على بيانات حقيقية. يُدرِّس إطارَين للتوجيه من تصميمه هما POCAB وGCSE-F، إلى جانب SOSTAC وPlaying to Win لبناء استراتيجية الذكاء الاصطناعي. كما يقدّم بودكاست «عاش يا وحش» عن التحوّل في الرياضة، ويمارس الترايثلون وسباحة المياه المفتوحة.',
     },
   },
 
@@ -214,16 +227,16 @@ export const badges = [
  */
 export const logoWall = [
   { name: 'Vodafone', file: 'images/logos/vodafone.svg' },
-  { name: 'USAID programmes', file: 'images/logos/usaid.svg' },
-  { name: 'Kahraba', file: 'images/logos/kahraba.svg' },
-  { name: 'Engineering Export Council of Egypt', file: 'images/logos/eece.svg' },
-  { name: 'British University in Egypt', file: 'images/logos/bue.svg' },
-  { name: 'Nile University', file: 'images/logos/nile-university.svg' },
-  { name: 'The American University in Cairo', file: 'images/logos/auc.svg' },
-  { name: 'Cairo University', file: 'images/logos/cairo-university.svg' },
-  { name: 'Ain Shams University', file: 'images/logos/ain-shams.svg' },
-  { name: 'Nile Air', file: 'images/logos/nile-air.svg' },
-  { name: 'Logic Consulting', file: 'images/logos/logic-consulting.svg' },
+  { name: 'Kahraba', file: 'images/logos/kahraba.png' },
+  { name: 'USAID', file: 'images/logos/usaid.png' },
+  { name: 'The American University in Cairo — School of Business', file: 'images/logos/auc.png' },
+  { name: 'Cairo University', file: 'images/logos/cairo-university.png' },
+  { name: 'Engineering Export Council of Egypt', file: 'images/logos/eece.png' },
+  { name: 'British University in Egypt', file: 'images/logos/bue.png' },
+  { name: 'Nile University', file: 'images/logos/nile-university.png' },
+  { name: 'Arab Academy for Science, Technology & Maritime Transport', file: 'images/logos/arab-academy.png' },
+  { name: 'Logic Consulting', file: 'images/logos/logic-consulting.png' },
+  { name: 'TRAIN', file: 'images/logos/train.png' },
 ] as const;
 
 /** Frameworks Ahmed teaches. Referenced by /method/ and by course pages. */

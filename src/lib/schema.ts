@@ -42,6 +42,9 @@ function clean<T extends Json>(node: T): T {
 function sameAs(): string[] {
   return [
     contact.linkedin,
+    // Broadcast appearance — a third-party page that independently evidences
+    // the entity, which is exactly what sameAs is for.
+    person.otherWork.television.url,
     contact.googleScholar,
     contact.youtube,
     contact.spotify,

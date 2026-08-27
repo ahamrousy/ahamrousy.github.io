@@ -225,7 +225,7 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
   </section>
 
   <section class="section section--tinted" aria-labelledby="other-heading">
-    <div class="container grid grid--2">
+    <div class="container grid grid--3">
       <article>
         <h2 id="other-heading">{person.otherWork.podcast.name}</h2>
         <p style="margin-block-start:0.75rem">{person.otherWork.podcast.description[lang]}</p>
@@ -233,6 +233,16 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
           <a class="btn btn--ghost" href={path('podcast', lang)}>{t('nav.podcast')}</a>
         </p>
       </article>
+      <article>
+        <h2>{person.otherWork.television.label[lang]}</h2>
+        <p style="margin-block-start:0.75rem">{person.otherWork.television.description[lang]}</p>
+        <p style="margin-block-start:1rem">
+          <a class="btn btn--secondary" href={person.otherWork.television.url} rel="noopener" target="_blank">
+            {lang === 'ar' ? 'شاهد المقابلة' : 'Watch the interview'}
+          </a>
+        </p>
+      </article>
+
       <article class="athlete">
         <img
           class="athlete__photo"

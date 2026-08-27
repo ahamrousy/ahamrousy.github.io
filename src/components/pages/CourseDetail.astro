@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '~/site.config';
 import { render } from 'astro:content';
-import { path } from '~/i18n/routing';
+import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { entryFor } from '~/i18n/content';
 import { copy } from '~/data/pages';
@@ -81,6 +81,26 @@ const jsonLd = graph([
     <div class="container grid grid--sidebar">
       <div>
         <p class="lede" style="font-weight:600;color:var(--ink)">{d.tagline}</p>
+
+        {
+          d.photos.length > 0 && (
+            <div class="course-photos">
+              {d.photos.map((photo) => (
+                <figure class="course-photo">
+                  <img
+                    src={asset(photo.src)}
+                    alt={photo.caption ?? d.title}
+                    width={photo.width}
+                    height={photo.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {photo.caption && <figcaption>{photo.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          )
+        }
 
         <div class="prose" style="margin-block-start:2rem">
           <Content />
@@ -189,3 +209,33 @@ const jsonLd = graph([
 
   <CtaBand lang={lang} subject={d.title} />
 </BaseLayout>
+
+<style>
+  .course-photos {
+    display: grid;
+    gap: var(--space-m);
+    margin-block-start: var(--space-l);
+  }
+  @media (min-width: 720px) {
+    .course-photos:has(figure + figure) {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+  .course-photo {
+    margin: 0;
+  }
+  .course-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+  }
+  .course-photo figcaption {
+    margin-block-start: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--ink-3);
+    line-height: 1.45;
+  }
+</style>

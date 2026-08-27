@@ -68,6 +68,18 @@ const courses = defineCollection({
     /** Slugs used for internal linking. Every course links to one of each. */
     relatedCase: z.string().optional(),
     relatedGeo: z.string().optional(),
+    /** Photographs from a real delivery of this course. Same contract as the
+        case-study photos: intrinsic dimensions so CLS stays at zero. */
+    photos: z
+      .array(
+        z.object({
+          src: z.string(),
+          width: z.number(),
+          height: z.number(),
+          caption: z.string().optional(),
+        }),
+      )
+      .default([]),
     order: z.number().default(99),
     flagship: z.boolean().default(false),
   }),
@@ -108,6 +120,11 @@ const caseStudies = defineCollection({
         }),
       )
       .default([]),
+    /**
+     * Shown in place of the photo strip when no photograph exists for an
+     * engagement — the client's mark instead of a stand-in image.
+     */
+    logo: z.object({ src: z.string(), alt: z.string() }).optional(),
     relatedCourse: z.string().optional(),
     order: z.number().default(99),
   }),

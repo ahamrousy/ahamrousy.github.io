@@ -64,6 +64,15 @@ frameworksTaught:
   - POCAB
   - GCSE-F
 relatedGeo: corporate-ai-training-egypt
+photos:
+  - src: images/courses/vodafone-spark-1.jpg
+    width: 1000
+    height: 1500
+    caption: أحمد عمروسي أثناء تقديم Spark Entrepreneurship Bootcamp مع مؤسسة فودافون مصر للتنمية المجتمعية
+  - src: images/courses/vodafone-spark-2.jpg
+    width: 1000
+    height: 1347
+    caption: العمل على مخرجات التعلّم مع المؤسسين داخل القاعة
 todos:
   - تأكيد المحتوى التفصيلي لكل جلسة قبل أول تنفيذ عام.
 faqs:

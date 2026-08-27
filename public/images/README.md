@@ -29,54 +29,51 @@ homepage, so its file size directly sets the homepage performance score.
 
 ---
 
-## Priority 2 — gallery
+## Priority 2 — the `gallery/` folder is not used
 
-Landscape, **1200 × 800** (3:2), under 200 kB each.
-
-| Path | What it should show |
-| --- | --- |
-| `gallery/training-01.jpg` | A session in progress — room, participants, laptops open |
-| `gallery/training-02.jpg` | Ahmed teaching, mid-gesture, screen or whiteboard visible |
-| `gallery/event-01.jpg` | Keynote or conference stage |
-| `gallery/podcast-01.jpg` | عاش يا وحش recording setup |
-
-Candid beats posed. A photograph of people actually working on laptops in a real session is worth
-more than a staged group shot, because it evidences the "70% hands-on" claim the copy makes.
-
-**Faces of participants:** get permission, or choose frames where individuals are not identifiable.
-For corporate clients in energy, finance or government this is not optional.
-
-To add more slots, extend the `jobs` array in `scripts/generate-placeholders.mjs`, or just add the
-files and reference them from the relevant page.
+Four placeholder files sit in `gallery/`, left over from the initial build.
+**No page renders them.** Real photography now lives with the case study or
+course it belongs to (see below), which is a better home for it — a photo next
+to the engagement it documents carries more weight than one in an anonymous
+grid. The folder can be deleted, or kept if you later want a standalone
+gallery page built.
 
 ---
 
 ## Priority 3 — client logos
 
-`logos/` — **160 × 48** display size, SVG strongly preferred (sharp at any size, a few kB).
-If only PNG is available, supply it at 320 × 96 for retina.
+`logos/` — the eleven supplied marks, processed by:
 
-Current placeholder files, each carrying the organisation's name as text:
-
-```
-vodafone.svg          usaid.svg            kahraba.svg
-eece.svg              bue.svg              nile-university.svg
-auc.svg               cairo-university.svg ain-shams.svg
-nile-air.svg          logic-consulting.svg
+```bash
+npm run logos
 ```
 
-The wall renders logos in greyscale at 72% opacity, coming to full colour on hover. That means:
+That script trims each mark, fits it inside a common box and **never enlarges
+it**. It deliberately does *not* strip white backgrounds: several marks are
+opaque on white and some contain white inside the artwork (the USAID seal, the
+AUC lockup), so a blanket cut-out would punch holes through them. The wall
+tiles are white, so an opaque white background is already invisible.
 
-- **Transparent background** — a white box will show as a grey rectangle.
-- **Single-colour or high-contrast marks work best.** Very light logos disappear in greyscale.
-- Trim whitespace to the mark's bounding box; the grid supplies its own padding.
+The wall renders **full colour** on white tiles. It is not greyscale, because
+the AUC mark is white-on-navy and cannot be desaturated without reading as one
+dark box among ten pale ones.
 
-> **Only add a logo for an organisation Ahmed has genuinely worked with, and only where you have
-> the right to display the mark.** Some organisations — universities and government-linked
-> entities especially — require written permission. The placeholder is a perfectly respectable
-> thing to leave in place; a logo used without permission is not.
+```
+vodafone.svg          kahraba.png           usaid.png
+auc.png               cairo-university.png  eece.png
+bue.png               nile-university.png   arab-academy.png
+logic-consulting.png  train.png
+```
+
+> **Resolution.** The supplied files are 74–298 px wide; a retina 160 px slot
+> wants 320 px. They are displayed small enough to stay crisp, but **vector
+> (SVG) or higher-resolution originals would look noticeably sharper** — that
+> is a source-file limit, not a layout one. Vodafone is already vector and
+> shows the difference.
 
 To change which organisations appear, edit `logoWall` in `src/data/person.ts`.
+**Only include organisations Ahmed has genuinely worked with, and only where
+you have the right to display the mark.**
 
 ---
 
@@ -92,21 +89,29 @@ To change which organisations appear, edit `logoWall` in `src/data/person.ts`.
 | `apple-touch-icon.png` | iOS home screen | Generated from the mark |
 | `../favicon.png` | Browser tab | In `public/`, not `public/images/` |
 
-### Case-study photos — the four slots to fill
-
-One real photograph per documented engagement, 1200 × 800 (3:2), under 200 kB:
+### Engagement photographs — all real, already in place
 
 ```
-case-studies/kahraba.jpg               Copilot training at Kahraba
-case-studies/kahraba-cowork-fable.jpg  Cowork & Fable 5 session, Kahraba leadership
-case-studies/eece.jpg                  AI for Business Strategy, EECE
-case-studies/feps-logic.jpg            AI for Educators, FEPS with Logic Consulting
+case-studies/kahraba-1.jpg    Copilot cohort at Kahraba
+case-studies/kahraba-2.jpg    The same session, working on real documents
+case-studies/eece.jpg         AI for Business Strategy, EECE
+case-studies/feps-logic.jpg   AI for Educators, FEPS with Logic Consulting
+courses/vodafone-spark-1.jpg  Spark Entrepreneurship Bootcamp with Vodafone
+courses/vodafone-spark-2.jpg  The same bootcamp, learning outcomes on screen
 ```
 
-Each currently holds a branded placeholder. Drop the real photo at the same
-path and it appears on the case-study page, the case-studies hub and the
-About page's "Trainings in action" strip. Get participant permission, or pick
-frames where individuals are not identifiable.
+Add or replace them by editing the `photos:` array in the relevant Markdown
+file — each entry needs `src`, `width` and `height`, and takes an optional
+`caption`. Run `npm run case-photos` to resize and compress new originals
+from `Sources for Website/Photos/`; it prints the dimensions to paste in.
+
+The **Cowork & Fable** case study has no photograph, so it shows the Kahraba
+logo instead — set by its `logo:` frontmatter. That is the pattern to follow
+whenever an engagement was not photographed: the client's mark, never a
+stand-in image pretending to be a photo.
+
+**Faces:** these photographs show identifiable participants. Make sure you have
+permission to publish them, particularly for corporate and government clients.
 
 The mark and logo come from the master file in `Sources for Website/Menova Logo.pdf.png`.
 To rebrand, replace `menova-logo.png` and `menova-mark.png` (and regenerate
@@ -128,8 +133,9 @@ and update the `src` in the component that references them (grep for the filenam
 which is precisely what makes it awkward for a repo shipped with placeholders. Once your real
 photography is in place, switching to `astro:assets` is a reasonable next step.
 
-Every image on the site already has `loading="lazy"` and `decoding="async"`, except the hero
-headshot, which is `fetchpriority="high"` because it is the LCP element.
+Every image on the site carries `loading="lazy"` and `decoding="async"`, and every one has
+explicit `width`/`height` (or a fixed aspect-ratio tile), which is why Cumulative Layout Shift
+measures 0 on every audited page.
 
 ---
 

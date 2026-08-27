@@ -52,6 +52,13 @@ const jsonLd = graph([
     <div class="container grid grid--sidebar">
       <div>
         {
+          d.photos.length === 0 && d.logo && (
+            <div class="case-logo">
+              <img src={asset(d.logo.src)} alt={d.logo.alt} loading="lazy" decoding="async" />
+            </div>
+          )
+        }
+        {
           d.photos.length > 0 && (
             <div class="case-photos">
               {d.photos.map((photo, index) => (
@@ -158,6 +165,19 @@ const jsonLd = graph([
     width: 100%;
     height: auto;
     display: block;
+  }
+  .case-logo {
+    display: grid;
+    place-items: center;
+    padding: var(--space-xl) var(--space-m);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--paper-3);
+    margin-block-end: var(--space-l);
+  }
+  .case-logo img {
+    max-height: 4rem;
+    width: auto;
   }
   .case-photo figcaption {
     margin-block-start: var(--space-2xs);

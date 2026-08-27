@@ -32,11 +32,12 @@ const t = useTranslations(lang);
       {
         logoWall.map((logo) => (
           <div class="logo-wall__item">
+            {/* The marks have very different proportions, so intrinsic
+                dimensions are not hard-coded; the tile reserves the space. */}
             <img
               src={asset(logo.file)}
               alt={logo.name}
-              width="160"
-              height="48"
+              data-portrait={logo.file.includes('cairo-university') ? '' : undefined}
               loading="lazy"
               decoding="async"
             />
