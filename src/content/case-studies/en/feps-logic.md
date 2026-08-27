@@ -3,8 +3,8 @@ title: AI for Educators — FEPS, Cairo University with Logic Consulting
 client: Faculty of Economics and Political Science, Cairo University
 sector: Higher education
 participants: FEPS faculty members
-programme: Mastering AI for Smarter Teaching — delivered with Logic Consulting
-period: TODO — confirm delivery date and duration
+programme: Mastering AI for Smarter Teaching — 3-hour session, delivered with Logic Consulting
+period: July 2026
 seoTitle: AI for Educators at FEPS, Cairo University | Menova
 metaDescription: Menova and Logic Consulting brought "Mastering AI for Smarter Teaching" to Cairo University FEPS faculty — verified prompting, Cowork and NotebookLM.
 primaryKeyword: AI workshop Cairo University
@@ -14,15 +14,20 @@ secondaryKeywords:
   - NotebookLM for teaching
   - AI in higher education Egypt
 summary: >-
-  In partnership with Logic Consulting, Menova delivered "Mastering AI for Smarter Teaching" to
-  faculty at Cairo University's Faculty of Economics and Political Science. The workshop taught
+  In partnership with Logic Consulting, Menova delivered "Mastering AI for Smarter Teaching" — a
+  three-hour session in July 2026 — to faculty at Cairo University's Faculty of Economics and
+  Political Science. The workshop taught
   verification-first prompting that exposes hallucinations before they reach academic work,
   applied POCAB to course design and GCSE-F to research synthesis, redesigned assignments for a
   world where students have AI, delegated course preparation to Claude Cowork, and grounded
   teaching content in the faculty's own sources with NotebookLM.
 updated: 2026-08-27
 order: 4
-photo: images/case-studies/feps-logic.jpg
+photos:
+  - src: images/case-studies/feps-logic.jpg
+    width: 1539
+    height: 645
+    caption: FEPS faculty at the "Mastering AI for Smarter Teaching" session
 challenge: >-
   FEPS faculty face the question every serious faculty now faces: students already have generative
   AI, detection is unreliable, and course preparation still consumes hours that could go to
@@ -42,7 +47,6 @@ result:
   - A repeatable Cowork workflow for the heaviest course-preparation tasks, including draft feedback on anonymised scripts — with the academic owning every judgement.
 relatedCourse: ai-for-educators
 todos:
-  - Confirm the delivery date and the exact duration.
   - Confirm the number of participating faculty members.
   - Add a quotable testimonial with name and title, if FEPS or Logic Consulting approves one.
 ---

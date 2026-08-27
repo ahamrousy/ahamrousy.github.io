@@ -97,7 +97,7 @@ from Egyptian companies, the delivery is in Egyptian Arabic, the case material r
 decisions actually get made in an Egyptian organisation, and there is no travel cost to add for
 programmes in Greater Cairo.
 
-Ahmed Amrousy has spent twenty years inside Egyptian industry — currently at Nile Air, and before
+Ahmed Amrousy has spent 25 years inside Egyptian industry — currently at Nile Air, and before
 that at Electrolux, Samsung, Cadbury Egypt and Nahdet Misr. He teaches at the American University in
 Cairo and is completing a DBA at Ain Shams University.
 

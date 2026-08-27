@@ -1,9 +1,9 @@
 ---
 title: AI for Marketing & Sales
 shortTitle: AI for Marketing & Sales
-tagline: From campaign brief to pipeline — AI applied by someone who has run the function for twenty years.
+tagline: From campaign brief to pipeline — AI applied by someone who has run the function for 25 years.
 seoTitle: AI for Marketing Course | Menova, Ahmed Amrousy
-metaDescription: An AI course for marketing and sales teams in Egypt and the GCC, taught by Ahmed Amrousy — a marketing leader of 20+ years. Hands-on, bilingual.
+metaDescription: An AI course for marketing and sales teams in Egypt and the GCC, taught by Ahmed Amrousy — a marketing leader of 25 years. Hands-on, bilingual.
 primaryKeyword: AI for marketing course
 secondaryKeywords:
   - AI for sales teams training
@@ -12,7 +12,7 @@ secondaryKeywords:
   - AI go-to-market training
 summary: >-
   AI for Marketing & Sales is a two-day programme from Menova for commercial teams, taught by Ahmed
-  Amrousy — Head of Marketing & PR at Nile Air and a marketing leader with more than twenty years at
+  Amrousy — Head of Marketing & PR at Nile Air and a marketing leader with 25 years at
   Electrolux, Samsung, Cadbury Egypt and Nahdet Misr. It applies generative AI across the full
   commercial cycle, from segmentation and campaign development to sales enablement, on the team's
   own brand and data. It runs on-site in Egypt, Saudi Arabia and the UAE, or live online.
@@ -80,7 +80,7 @@ faqs:
     a: >-
       Ahmed Amrousy, Head of Marketing & PR at Nile Air and Executive Education Instructor at the
       American University in Cairo. He has led marketing at Electrolux, Samsung, Cadbury Egypt and
-      Nahdet Misr across more than twenty years, so the examples come from having run the function
+      Nahdet Misr across 25 years, so the examples come from having run the function
       rather than from having read about it.
   - q: Does the course cover Arabic content production?
     a: >-

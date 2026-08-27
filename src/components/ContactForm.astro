@@ -10,22 +10,24 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 /**
- * Contact form with no backend.
+ * Proposal-request form with no backend.
  *
- * GitHub Pages serves static files only, so there is nothing to POST to. This
- * form therefore has two modes:
+ * GitHub Pages serves static files only, so there is nothing to POST to. Two
+ * modes, decided by `contact.formspreeId`:
  *
- *   1. **Formspree configured** — set `contact.formspreeId` in site.config.ts
- *      and the form POSTs there normally. Nothing else to change.
- *   2. **Not configured (the default)** — a small script composes a `mailto:`
- *      from the entered values and hands it to the visitor's mail client. No
- *      third party, no data leaving the browser until they press send.
+ *   1. **Formspree configured** — the form POSTs there and the submission
+ *      arrives as an email. Nothing else to change.
+ *   2. **Not configured (the default)** — the entered values are composed into
+ *      a structured WhatsApp message and sent to Ahmed.
  *
- * Either way the form degrades to plain HTML: with JavaScript disabled and no
- * Formspree ID, the visible email and WhatsApp links below still work. That is
- * why they are always rendered rather than hidden behind the form.
+ * The fallback used to compose a `mailto:` instead. That was replaced because
+ * a mailto only works when the visitor has a desktop mail client configured —
+ * on a phone, or in a browser without one, the link silently does nothing and
+ * the enquiry is lost. WhatsApp is the channel Ahmed actually monitors and it
+ * works on every device, so the default path now goes there.
  */
 const formspreeAction = contact.formspreeId ? `https://formspree.io/f/${contact.formspreeId}` : '';
+const waNumber = contact.whatsappNumber;
 
 const l = {
   en: {
@@ -39,11 +41,11 @@ const l = {
     langArabic: 'Arabic delivery, English slides',
     langEnglish: 'Full English',
     langEither: 'Either is fine',
-    submit: 'Send enquiry',
+    submit: 'Send on WhatsApp',
     required: 'required',
     fallbackNote:
-      'This opens your email client with the details filled in — nothing is sent to any third party.',
-    or: 'Prefer not to use the form?',
+      'Opens WhatsApp with your details filled in — review it, then press send.',
+    or: 'Prefer email?',
   },
   ar: {
     name: 'الاسم',
@@ -56,10 +58,10 @@ const l = {
     langArabic: 'شرح بالعربية وشرائح إنجليزية',
     langEnglish: 'إنجليزية بالكامل',
     langEither: 'كلاهما مناسب',
-    submit: 'أرسل الاستفسار',
+    submit: 'أرسل على واتساب',
     required: 'مطلوب',
-    fallbackNote: 'يفتح هذا برنامج البريد لديك بالبيانات مُعبَّأة — ولا يُرسَل أي شيء لأي طرف ثالث.',
-    or: 'تفضّل عدم استخدام النموذج؟',
+    fallbackNote: 'يفتح واتساب ببياناتك مُعبَّأة — راجعها ثم اضغط إرسال.',
+    or: 'تفضّل البريد الإلكتروني؟',
   },
 }[lang];
 ---
@@ -69,8 +71,11 @@ const l = {
   id="contact-form"
   method="POST"
   action={formspreeAction}
-  data-mode={formspreeAction ? 'formspree' : 'mailto'}
-  data-email={contact.email}
+  data-mode={formspreeAction ? 'formspree' : 'whatsapp'}
+  data-wa={waNumber}
+  data-intro={lang === 'ar'
+    ? 'أهلًا أحمد — أود طلب عرض تدريبي.'
+    : 'Hello Ahmed — I would like to request a training proposal.'}
 >
   <div class="field">
     <label for="cf-name">{l.name}</label>
@@ -115,38 +120,39 @@ const l = {
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
   <input type="hidden" name="_subject" value="Menova — training enquiry" />
 
-  <button type="submit" class="btn btn--primary">{l.submit}</button>
+  <button type="submit" class={formspreeAction ? 'btn btn--primary' : 'btn btn--whatsapp'}>{l.submit}</button>
   {!formspreeAction && <p class="muted form-note">{l.fallbackNote}</p>}
 </form>
 
 <p class="muted form-alt">
   {l.or}
-  <a href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>{contact.email}</a>
+  <a href={mailtoUrl(`Menova — ${t('cta.proposal')}`, t('note.proposalBody'))}>{contact.email}</a>
 </p>
 
 <script>
   /**
-   * Mailto fallback. Only runs when no Formspree ID is configured — with one
-   * present, the form posts normally and this listener does nothing.
+   * WhatsApp fallback. Only runs when no Formspree ID is configured — with one
+   * present, the form POSTs normally and this listener does nothing.
+   *
+   * Field labels are read out of the DOM, so the message reaches Ahmed in
+   * whichever language the visitor was reading.
    */
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  if (form && form.dataset.mode === 'mailto') {
+  if (form && form.dataset.mode === 'whatsapp') {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(form);
       if (data.get('_gotcha')) return; // bot
 
-      const lines: string[] = [];
+      const lines: string[] = [form.dataset.intro ?? '', ''];
       for (const [key, value] of data.entries()) {
         if (key.startsWith('_') || typeof value !== 'string' || !value.trim()) continue;
         const label = form.querySelector(`label[for="cf-${key === 'organisation' ? 'org' : key}"]`);
         lines.push(`${label?.textContent?.trim() ?? key}: ${value}`);
       }
 
-      const subject = 'Menova — training enquiry';
-      const body = lines.join('\n');
-      const to = form.dataset.email ?? '';
-      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const url = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
     });
   }
 </script>
@@ -176,9 +182,9 @@ const l = {
     font-size: var(--step-0);
   }
   .field :is(input, select, textarea):focus-visible {
-    outline: 2px solid var(--crimson);
+    outline: 2px solid var(--green);
     outline-offset: 0;
-    border-color: var(--crimson);
+    border-color: var(--green);
   }
   .field textarea {
     resize: vertical;
@@ -201,7 +207,7 @@ const l = {
     margin-block-start: var(--space-s);
   }
   .form-alt a {
-    color: var(--crimson);
+    color: var(--green-dark);
     font-weight: 600;
   }
 </style>

@@ -21,7 +21,6 @@ summary: >-
   skills and scheduled tasks — ending with a live bid/no-bid tender analysis with cited clauses.
 updated: 2026-08-27
 order: 2
-photo: images/case-studies/kahraba-cowork-fable.jpg
 challenge: >-
   The leadership team had mastered assisted work — Copilot inside documents they were editing
   themselves. The next step was delegation: handing a defined piece of work to an AI agent and

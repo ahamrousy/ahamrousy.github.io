@@ -52,16 +52,22 @@ const jsonLd = graph([
     <div class="container grid grid--sidebar">
       <div>
         {
-          d.photo && (
-            <img
-              class="case-photo"
-              src={asset(d.photo)}
-              alt={d.title}
-              width="1200"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
+          d.photos.length > 0 && (
+            <div class="case-photos">
+              {d.photos.map((photo, index) => (
+                <figure class="case-photo">
+                  <img
+                    src={asset(photo.src)}
+                    alt={photo.caption ?? d.title}
+                    width={photo.width}
+                    height={photo.height}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                  {photo.caption && <figcaption>{photo.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
           )
         }
         <h2>{t('label.challenge')}</h2>
@@ -129,11 +135,34 @@ const jsonLd = graph([
 </BaseLayout>
 
 <style>
+  .case-photos {
+    display: grid;
+    gap: var(--space-m);
+    margin-block-end: var(--space-l);
+  }
+  /* Two-up once there is more than one photo and the column is wide enough —
+     the images keep their own aspect ratios, so the row heights differ and
+     that is fine. */
+  @media (min-width: 720px) {
+    .case-photos:has(figure + figure) {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
   .case-photo {
+    margin: 0;
+  }
+  .case-photo img {
     border-radius: var(--radius-l);
     border: 1px solid var(--line);
-    margin-block-end: var(--space-l);
     width: 100%;
     height: auto;
+    display: block;
+  }
+  .case-photo figcaption {
+    margin-block-start: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--ink-3);
+    line-height: 1.45;
   }
 </style>

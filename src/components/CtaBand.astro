@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '~/site.config';
-import { contact, mailtoUrl, whatsappUrl } from '~/site.config';
+import { contact, whatsappUrl } from '~/site.config';
+import { path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 
 interface Props {
@@ -13,7 +14,6 @@ interface Props {
 const { lang, heading, text, subject } = Astro.props;
 const t = useTranslations(lang);
 
-const mailSubject = subject ? `Menova — ${subject}` : `Menova — ${t('cta.primary')}`;
 const waText =
   lang === 'ar'
     ? `أهلًا أحمد، أود الاستفسار عن${subject ? ` ${subject}` : ' برامج مِنوفا'}.`
@@ -26,7 +26,7 @@ const waText =
       <h2 id="cta-heading">{heading ?? t('heading.contact')}</h2>
       <p>{text ?? t('note.pricing')}</p>
       <div class="btn-row">
-        <a class="btn btn--primary" href={mailtoUrl(mailSubject, t('note.proposalBody'))}>
+        <a class="btn btn--primary" href={path('contact', lang)}>
           {t('cta.primary')}
         </a>
         <a class="btn btn--whatsapp" href={whatsappUrl(waText)} rel="noopener" target="_blank">

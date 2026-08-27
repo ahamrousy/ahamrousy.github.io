@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '~/site.config';
-import { mailtoUrl } from '~/site.config';
+
 import { path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { primaryNav, mobileNav } from '~/data/nav';
@@ -52,7 +52,7 @@ const isCurrent = (key: string) => key === routeKey;
       </a>
 
       <div class="header-cta">
-        <a class="btn btn--primary" href={mailtoUrl(`Menova — ${t('cta.primary')}`, t('note.proposalBody'))}>
+        <a class="btn btn--primary" href={path('contact', lang)}>
           {t('cta.primary')}
         </a>
       </div>

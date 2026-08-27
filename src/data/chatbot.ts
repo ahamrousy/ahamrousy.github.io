@@ -43,8 +43,8 @@ export const intents: Intent[] = [
       ar: ['مين', 'من هو', 'عمروسي', 'خبرة', 'سيرة', 'مؤهل', 'نبذة'],
     },
     answer: {
-      en: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor. He teaches executive education at the American University in Cairo, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova. He has 20+ years of marketing leadership across aviation, FMCG, EdTech and manufacturing.',
-      ar: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال. يُدرِّس في التعليم التنفيذي بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وباحث دكتوراه بجامعة عين شمس، ومؤسس مِنوفا. له أكثر من 20 عامًا في قيادة التسويق عبر الطيران والسلع الاستهلاكية والتعليم الرقمي والصناعة.',
+      en: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor. He teaches executive education at the American University in Cairo, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova. He has 25 years of marketing leadership across aviation, FMCG, EdTech and manufacturing.',
+      ar: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال. يُدرِّس في التعليم التنفيذي بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وباحث دكتوراه بجامعة عين شمس، ومؤسس مِنوفا. له 25 عامًا في قيادة التسويق عبر الطيران والسلع الاستهلاكية والتعليم الرقمي والصناعة.',
     },
     links: [{ key: 'about', label: { en: 'Full profile', ar: 'الملف الكامل' } }],
   },

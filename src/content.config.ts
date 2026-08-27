@@ -90,11 +90,24 @@ const caseStudies = defineCollection({
     result: z.array(z.string()),
     testimonial: z.object({ quote: z.string(), attribution: z.string() }).optional(),
     /**
-     * Photo from the engagement, e.g. "images/case-studies/kahraba.jpg".
-     * Ships as a branded placeholder — drop a real 1200×800 photo at the same
-     * path and it appears on the case study page, the hub and the About strip.
+     * Real photographs from the engagement. The first is the lead image —
+     * used for the hub card and the About page's "Trainings in action" strip,
+     * where CSS crops it to a fixed tile; the detail page shows every photo
+     * uncropped. width/height are required so the browser reserves space and
+     * CLS stays at zero, and they let each photo keep its own aspect ratio
+     * (the FEPS shot is a 2.4:1 panorama). Omit the field entirely when there
+     * is no real photograph — nothing is invented to fill the slot.
      */
-    photo: z.string().optional(),
+    photos: z
+      .array(
+        z.object({
+          src: z.string(),
+          width: z.number(),
+          height: z.number(),
+          caption: z.string().optional(),
+        }),
+      )
+      .default([]),
     relatedCourse: z.string().optional(),
     order: z.number().default(99),
   }),

@@ -42,7 +42,7 @@ programmes are hands-on first, run on the participants' own material.
 - **Roles**: Executive Education Instructor, The American University in Cairo (Onsi Sawiris School of Business); Head of Marketing & PR, Nile Air; Founder, Menova; DBA candidate, Ain Shams University; Co-founder, GESMAL Industries
 - **Education**: MBA, German University in Cairo; BSc Mechanical Engineering, Cairo University; Diploma in Mechatronics; DBA candidate, Ain Shams University
 - **Member of**: Chartered Management Institute (CMI)
-- **Experience**: 20+ years of marketing leadership — Nile Air, Electrolux, Samsung, Cadbury Egypt, Nahdet Misr
+- **Experience**: 25 years of marketing leadership — Nile Air, Electrolux, Samsung, Cadbury Egypt, Nahdet Misr
 - **Positioning**: "${person.tagline.en}"
 - **Teaching format**: 70% hands-on / 30% theory; verbal delivery in Arabic with English slides, or full English; live demonstrations on real client datasets
 - **Frameworks taught**: POCAB (Persona, Objective, Context, Audience, Boundaries); GCSE-F (Goal, Context, Source, Expectations, Format); SOSTAC and Playing to Win for AI strategy

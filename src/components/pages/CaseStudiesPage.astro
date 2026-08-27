@@ -38,14 +38,14 @@ const jsonLd = graph([
         {
           cases.map((entry) => (
             <article class="card card--flag-green case-card">
-              {entry.data.photo && (
+              {entry.data.photos[0] && (
                 <a href={path(`case-studies/${entry.slug}`, lang)} tabindex="-1" aria-hidden="true">
                   <img
                     class="case-card__photo"
-                    src={asset(entry.data.photo)}
+                    src={asset(entry.data.photos[0].src)}
                     alt=""
-                    width="1200"
-                    height="800"
+                    width={entry.data.photos[0].width}
+                    height={entry.data.photos[0].height}
                     loading="lazy"
                     decoding="async"
                   />
@@ -88,5 +88,11 @@ const jsonLd = graph([
     margin: calc(-1 * var(--space-m)) calc(-1 * var(--space-m)) var(--space-2xs);
     max-width: none;
     display: block;
+    /* Photos arrive in three different aspect ratios (4:3, 3:4 portrait and a
+       2.4:1 panorama). A fixed tile keeps the card grid even; cropping is
+       acceptable at thumbnail size, and the detail page shows the full frame. */
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    height: auto;
   }
 </style>

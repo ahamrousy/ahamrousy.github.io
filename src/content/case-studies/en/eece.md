@@ -22,7 +22,11 @@ summary: >-
   roadmap with RACI, and a balanced scorecard, closing with an AI-assisted executive strategy deck.
 updated: 2026-08-27
 order: 3
-photo: images/case-studies/eece.jpg
+photos:
+  - src: images/case-studies/eece.jpg
+    width: 1280
+    height: 720
+    caption: Engineering Export Council of Egypt member-company executives at the strategy workshop
 challenge: >-
   EECE member companies compete in export markets against larger, better-resourced rivals, in a
   macro environment of currency volatility and shifting Gulf demand. Their executives did not need

@@ -30,7 +30,10 @@ export const ui = {
     'lang.switchLabel': 'Switch to Arabic',
     'lang.current': 'English',
 
-    'cta.primary': 'Request a proposal',
+    /** Primary CTA site-wide. Points at the scheduler, never at mailto:
+        — a mailto that opens nothing is a dead conversion path. */
+    'cta.primary': 'Schedule a meeting',
+    'cta.proposal': 'Request a proposal',
     'cta.book': 'Book a call',
     'cta.whatsapp': 'WhatsApp',
     'cta.email': 'Email Ahmed',
@@ -76,7 +79,7 @@ export const ui = {
     'note.logos':
       'Organisations where Ahmed Amrousy has delivered training, taught, or held a leadership role.',
     'note.pricing':
-      'Every Menova programme is scoped to the client. Send the team size, seniority and objective and you get a written proposal — agenda, duration and price — within two working days.',
+      'Every Menova programme is scoped to the client. Book a short call — or send the team size, seniority and objective — and you get a written proposal with agenda, duration and price within two working days.',
     'note.proposalBody':
       'Hello Ahmed,\n\nWe are considering an AI training programme.\n\nOrganisation:\nTeam size and seniority:\nPreferred language (Arabic / English):\nCity and preferred dates:\nWhat we want people to be able to do afterwards:\n\nThank you.',
 
@@ -125,7 +128,8 @@ export const ui = {
     'lang.switchLabel': 'التحويل إلى الإنجليزية',
     'lang.current': 'العربية',
 
-    'cta.primary': 'اطلب عرضًا تدريبيًا',
+    'cta.primary': 'احجز اجتماعًا',
+    'cta.proposal': 'اطلب عرضًا تدريبيًا',
     'cta.book': 'احجز مكالمة',
     'cta.whatsapp': 'واتساب',
     'cta.email': 'راسل أحمد',
@@ -170,7 +174,7 @@ export const ui = {
 
     'note.logos': 'جهات درَّب فيها أحمد عمروسي أو دَرَّس بها أو تولَّى فيها موقعًا قياديًا.',
     'note.pricing':
-      'كل برنامج في مِنوفا يُفصَّل على مقاس الجهة. أرسل عدد المشاركين ومستواهم الوظيفي والهدف من التدريب، ويصلك عرض مكتوب — أجندة ومدة وسعر — خلال يومَي عمل.',
+      'كل برنامج في مِنوفا يُفصَّل على مقاس الجهة. احجز مكالمة قصيرة — أو أرسل عدد المشاركين ومستواهم والهدف — ويصلك عرض مكتوب بالأجندة والمدة والسعر خلال يومَي عمل.',
     'note.proposalBody':
       'أهلًا أحمد،\n\nنفكر في برنامج تدريبي عن الذكاء الاصطناعي.\n\nالجهة:\nعدد المشاركين ومستواهم:\nلغة التقديم المفضلة (عربي / إنجليزي):\nالمدينة والتواريخ المقترحة:\nما نريد أن يصبح الفريق قادرًا عليه بعد التدريب:\n\nشكرًا لك.',
 

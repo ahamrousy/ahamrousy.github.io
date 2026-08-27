@@ -41,7 +41,7 @@ const updated = new Date('2026-08-27');
 // strip. Each ships as a branded placeholder until Ahmed drops the real
 // photograph at the same path (see public/images/README.md).
 const cases = await entriesFor('caseStudies', lang);
-const casePhotos = cases.filter((entry) => entry.data.photo);
+const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
 ---
 
 <BaseLayout
@@ -173,10 +173,10 @@ const casePhotos = cases.filter((entry) => entry.data.photo);
                   carries the same text, and duplicating it fails WCAG 1.1.1
                   (redundant alt). */}
               <img
-                src={asset(entry.data.photo!)}
+                src={asset(entry.data.photos[0]!.src)}
                 alt=""
-                width="1200"
-                height="800"
+                width={entry.data.photos[0]!.width}
+                height={entry.data.photos[0]!.height}
                 loading="lazy"
                 decoding="async"
               />
@@ -284,6 +284,9 @@ const casePhotos = cases.filter((entry) => entry.data.photo);
   }
   .action-photo img {
     width: 100%;
+    /* Fixed tile so the strip stays a tidy grid across mixed aspect ratios. */
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
     height: auto;
     display: block;
     transition: transform 0.25s ease;

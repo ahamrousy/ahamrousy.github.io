@@ -22,7 +22,15 @@ summary: >-
   tenders, budgets and documents. Participants, including the CEO, rated the programme 4.8 out of 5.
 updated: 2026-08-27
 order: 1
-photo: images/case-studies/kahraba.jpg
+photos:
+  - src: images/case-studies/kahraba-1.jpg
+    width: 1280
+    height: 960
+    caption: The Kahraba cohort at the close of the Copilot workshop
+  - src: images/case-studies/kahraba-2.jpg
+    width: 1000
+    height: 1333
+    caption: Working through the Copilot use cases on real Kahraba documents
 challenge: >-
   Kahraba is critical national infrastructure. Its executives handle tender documents, budget
   variance reviews, compliance matrices and board reporting every week — document-heavy work where

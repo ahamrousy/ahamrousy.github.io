@@ -22,7 +22,15 @@ summary: >-
   المشاركون، وبينهم الرئيس التنفيذي، البرنامج بـ4.8 من 5.
 updated: 2026-08-27
 order: 1
-photo: images/case-studies/kahraba.jpg
+photos:
+  - src: images/case-studies/kahraba-1.jpg
+    width: 1280
+    height: 960
+    caption: مجموعة كهرباء في ختام ورشة كوبايلوت
+  - src: images/case-studies/kahraba-2.jpg
+    width: 1000
+    height: 1333
+    caption: العمل على حالات استخدام كوبايلوت على مستندات كهرباء الحقيقية
 challenge: >-
   «كهرباء» بنية تحتية قومية حرجة. يتعامل تنفيذيوها أسبوعيًا مع كراسات الشروط ومراجعات انحراف
   الموازنة ومصفوفات الامتثال وتقارير مجلس الإدارة — عمل كثيف المستندات لا مكان فيه لإجابة ذكاء
