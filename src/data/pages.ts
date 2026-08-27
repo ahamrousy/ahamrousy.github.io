@@ -41,10 +41,10 @@ export const pages: Record<string, Localised<PageCopy>> = {
       summary:
         'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, Executive Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air. It delivers executive AI programmes to companies in Egypt, Saudi Arabia and the UAE, in Arabic or English, built on a 70% hands-on structure and taught on the client’s own data.',
       intro:
-        'Six programmes, delivered on-site or live online, for organisations that have bought the licences and not yet changed the output.',
+        'Seven programmes, delivered on-site or live online — for organisations and entrepreneurs who want output, not licences.',
       proofHeading: 'What that looks like in practice',
       coursesIntro:
-        'Six programmes. Every one is 70% hands-on, delivered verbally in Arabic with English slides, and run on the client’s own material.',
+        'Seven programmes. Every one is hands-on first, delivered verbally in Arabic with English slides, and run on the participants’ own material.',
       faqs: [
         {
           q: 'Who is Ahmed Amrousy?',
@@ -52,11 +52,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'What is Menova?',
-          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It delivers six corporate AI programmes to companies, universities and government-related organisations in Egypt, Saudi Arabia and the UAE, in Arabic or English.',
+          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It delivers seven AI programmes to companies, universities, entrepreneurs and government-related organisations in Egypt, Saudi Arabia and the UAE, in Arabic or English.',
         },
         {
           q: 'What AI courses does Menova offer?',
-          a: 'Six: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, and the flagship 16-hour AI for Business Strategy workshop built on SOSTAC, Playing to Win and the Strategy Cockpit Canvas.',
+          a: 'Seven: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop built on SOSTAC, Playing to Win and the Strategy Cockpit Canvas.',
         },
         {
           q: 'Does Menova train in Arabic?',
@@ -64,7 +64,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Where does Menova deliver training?',
-          a: 'On-site in Egypt, Saudi Arabia and the UAE, and live online anywhere. Menova is based in Cairo, and has delivered in the UAE for Hisense via Formatech.',
+          a: 'On-site in Egypt, Saudi Arabia and the UAE, and live online anywhere. Menova is based in Cairo.',
         },
         {
           q: 'How much does Menova training cost?',
@@ -76,7 +76,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Who has Menova trained?',
-          a: 'Recent clients include Kahraba, the National Electricity Technology Company, where 65 executives including the CEO rated the programme 4.8 out of 5; companies affiliated with the Engineering Export Council of Egypt; faculty at Cairo University’s Faculty of Economics and Political Science; Hisense UAE via Formatech; and Logic Consulting.',
+          a: 'Recent clients include Kahraba, the National Electricity Technology Company, where 65 executives including the CEO rated the programme 4.8 out of 5 and the leadership returned for an advanced Cowork & Fable 5 session; companies affiliated with the Engineering Export Council of Egypt; and faculty at Cairo University’s Faculty of Economics and Political Science, with Logic Consulting.',
         },
       ],
     },
@@ -89,10 +89,10 @@ export const pages: Record<string, Localised<PageCopy>> = {
       summary:
         'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي، محاضر التعليم التنفيذي بالجامعة الأمريكية بالقاهرة ومدير التسويق والعلاقات العامة في نايل إير. تقدّم برامج تنفيذية للشركات في مصر والسعودية والإمارات، بالعربية أو الإنجليزية، مبنية على 70% تطبيق عملي وتُنفَّذ على بيانات الجهة نفسها.',
       intro:
-        'ستة برامج، تُنفَّذ حضوريًا أو أونلاين مباشر، لمؤسسات اشترت التراخيص ولم يتغيّر مخرَجها بعد.',
+        'سبعة برامج، تُنفَّذ حضوريًا أو أونلاين مباشر، للمؤسسات وروّاد الأعمال على السواء.',
       proofHeading: 'كيف يبدو ذلك عمليًا',
       coursesIntro:
-        'ستة برامج. كلٌّ منها 70% تطبيق عملي، يُقدَّم شفهيًا بالعربية بشرائح إنجليزية، ويُنفَّذ على مواد الجهة نفسها.',
+        'سبعة برامج. كلٌّ منها تطبيق عملي في المقام الأول، يُقدَّم شفهيًا بالعربية بشرائح إنجليزية، ويُنفَّذ على مواد المشاركين أنفسهم.',
       faqs: [
         {
           q: 'مَن هو أحمد عمروسي؟',
@@ -100,11 +100,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'ما هي مِنوفا؟',
-          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تقدّم ستة برامج للشركات والجامعات والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية.',
+          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تقدّم سبعة برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية.',
         },
         {
           q: 'ما البرامج التي تقدّمها مِنوفا؟',
-          a: 'ستة: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة، المبنية على SOSTAC وPlaying to Win ولوحة قيادة الاستراتيجية.',
+          a: 'سبعة: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة، المبنية على SOSTAC وPlaying to Win ولوحة قيادة الاستراتيجية.',
         },
         {
           q: 'هل تُقدِّم مِنوفا التدريب بالعربية؟',
@@ -112,7 +112,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'أين تُنفِّذ مِنوفا التدريب؟',
-          a: 'حضوريًا في مصر والسعودية والإمارات، وأونلاين مباشر في أي مكان. ومقر مِنوفا القاهرة، وقد نفَّذت في الإمارات لهايسنس عبر فورماتك.',
+          a: 'حضوريًا في مصر والسعودية والإمارات، وأونلاين مباشر في أي مكان. ومقر مِنوفا القاهرة.',
         },
         {
           q: 'كم تكلفة التدريب؟',
@@ -124,7 +124,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'مَن دَرَّبت مِنوفا؟',
-          a: 'من العملاء الأخيرين: كهرباء، الشركة القومية لتكنولوجيا الكهرباء، حيث قيّم 65 تنفيذيًا بينهم الرئيس التنفيذي البرنامج بـ4.8 من 5؛ وشركات أعضاء المجلس التصديري للصناعات الهندسية؛ وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة؛ وهايسنس الإمارات عبر فورماتك؛ ولوجيك كونسلتنج.',
+          a: 'من العملاء الأخيرين: كهرباء، الشركة القومية لتكنولوجيا الكهرباء، حيث قيّم 65 تنفيذيًا بينهم الرئيس التنفيذي البرنامج بـ4.8 من 5 وعادت قيادتها لجلسة متقدمة عن Cowork وFable 5؛ وشركات أعضاء المجلس التصديري للصناعات الهندسية؛ وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
         },
       ],
     },
@@ -427,14 +427,18 @@ export const pages: Record<string, Localised<PageCopy>> = {
   // ──────────────────────────────────────────────────────────── Contact ────
   contact: {
     en: {
-      seoTitle: 'Contact Ahmed Amrousy | Menova AI Training',
+      seoTitle: 'Schedule a Call with Ahmed Amrousy | Menova',
       metaDescription:
-        'Request a proposal for corporate AI training in Egypt, Saudi Arabia or the UAE. Email or WhatsApp — written proposal within two working days.',
-      eyebrow: 'Contact',
-      title: 'Talk to Ahmed',
+        'Pick a date and time for a phone or online call with Ahmed Amrousy, or request a written AI training proposal by email or WhatsApp.',
+      eyebrow: 'Schedule a call',
+      title: 'Schedule a call',
       summary:
-        'To book AI training with Menova, email ahmedamrousy@aucegypt.edu or send a WhatsApp message. Include the organisation, team size and seniority, preferred language, city and dates, and what you want people to be able to do afterwards — a written proposal with agenda, duration and price follows within two working days.',
+        'Pick a date and time below and the request goes straight to Ahmed on WhatsApp — he confirms in the chat, usually the same day. Calls run by phone or online (Zoom, Teams or Meet), in Arabic or English. For a written training proposal instead, use the form or email ahmedamrousy@aucegypt.edu.',
       faqs: [
+        {
+          q: 'How do I schedule a call with Ahmed Amrousy?',
+          a: 'Pick a date and time on this page and choose phone or online — the request is sent to Ahmed on WhatsApp and he confirms in the chat, usually the same day. Calls are available in Arabic or English.',
+        },
         {
           q: 'How do I request a proposal?',
           a: 'Email ahmedamrousy@aucegypt.edu or message on WhatsApp with your organisation, team size and seniority, preferred language, city and dates, and your objective. A written proposal with agenda, duration and price follows within two working days.',
@@ -458,14 +462,18 @@ export const pages: Record<string, Localised<PageCopy>> = {
       ],
     },
     ar: {
-      seoTitle: 'تواصل مع أحمد عمروسي | مِنوفا',
+      seoTitle: 'احجز مكالمة مع أحمد عمروسي | مِنوفا',
       metaDescription:
-        'اطلب عرضًا لتدريب الذكاء الاصطناعي في مصر أو السعودية أو الإمارات. راسل ahmedamrousy@aucegypt.edu أو على واتساب — عرض مكتوب خلال يومَي عمل.',
-      eyebrow: 'تواصل',
-      title: 'تواصل مع أحمد',
+        'اختر تاريخًا ووقتًا لمكالمة هاتفية أو أونلاين مع أحمد عمروسي، أو اطلب عرضًا مكتوبًا لتدريب الذكاء الاصطناعي عبر البريد أو واتساب.',
+      eyebrow: 'احجز مكالمة',
+      title: 'احجز مكالمة',
       summary:
-        'لحجز تدريب مع مِنوفا، راسل ahmedamrousy@aucegypt.edu أو أرسل رسالة على واتساب. اذكر الجهة وعدد المشاركين ومستواهم ولغة التقديم المفضلة والمدينة والتواريخ، وما تريد أن يصبح فريقك قادرًا عليه بعد التدريب — ويصلك عرض مكتوب بالأجندة والمدة والسعر خلال يومَي عمل.',
+        'اختر التاريخ والوقت أدناه ويصل الطلب مباشرةً إلى أحمد على واتساب — ويؤكده في المحادثة، عادةً في نفس اليوم. تُجرى المكالمات هاتفيًا أو أونلاين (زووم أو تيمز أو ميت)، بالعربية أو الإنجليزية. ولطلب عرض تدريبي مكتوب، استخدم النموذج أو راسل ahmedamrousy@aucegypt.edu.',
       faqs: [
+        {
+          q: 'كيف أحجز مكالمة مع أحمد عمروسي؟',
+          a: 'اختر التاريخ والوقت في هذه الصفحة وحدِّد هاتفية أم أونلاين — يُرسَل الطلب إلى أحمد على واتساب ويؤكده في المحادثة، عادةً في نفس اليوم. والمكالمات متاحة بالعربية أو الإنجليزية.',
+        },
         {
           q: 'كيف أطلب عرضًا؟',
           a: 'راسل ahmedamrousy@aucegypt.edu أو أرسل على واتساب مع ذكر الجهة وعدد المشاركين ومستواهم ولغة التقديم المفضلة والمدينة والتواريخ وهدفك. ويصلك عرض مكتوب بالأجندة والمدة والسعر خلال يومَي عمل.',
@@ -495,11 +503,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
     en: {
       seoTitle: 'AI Courses for Business | Menova, Egypt & GCC',
       metaDescription:
-        'Six corporate AI courses from Menova: AI for Business, Executives, Marketing & Sales, Educators, Automation, and the 16-hour Strategy workshop.',
+        'Seven AI courses from Menova: Business, Executives, Marketing & Sales, Educators, Automation, Entrepreneurs, and the 16-hour Strategy workshop.',
       eyebrow: 'Courses',
       title: 'The Menova course catalogue',
       summary:
-        'Menova offers six AI courses for organisations: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, and the flagship 16-hour AI for Business Strategy workshop. All are taught by Ahmed Amrousy, are 70% hands-on, and are delivered on-site in Egypt, Saudi Arabia and the UAE or live online, in Arabic or English.',
+        'Menova offers seven AI courses: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop. All are taught by Ahmed Amrousy, are hands-on first, and are delivered on-site in Egypt, Saudi Arabia and the UAE or live online, in Arabic or English.',
       faqs: [
         {
           q: 'Which Menova course should we start with?',
@@ -522,11 +530,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
     ar: {
       seoTitle: 'دورات الذكاء الاصطناعي للأعمال | مِنوفا',
       metaDescription:
-        'ستة برامج ذكاء اصطناعي للشركات من مِنوفا: للأعمال، وللقيادات، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، وورشة الاستراتيجية الرئيسية 16 ساعة.',
+        'سبعة برامج ذكاء اصطناعي من مِنوفا: للأعمال، وللقيادات، وللتسويق، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة الاستراتيجية 16 ساعة.',
       eyebrow: 'الدورات',
       title: 'برامج مِنوفا التدريبية',
       summary:
-        'تقدّم مِنوفا ستة برامج ذكاء اصطناعي للمؤسسات: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. ويقدّمها جميعًا أحمد عمروسي، و70% منها تطبيق عملي، وتُنفَّذ حضوريًا في مصر والسعودية والإمارات أو أونلاين مباشر، بالعربية أو الإنجليزية.',
+        'تقدّم مِنوفا سبعة برامج ذكاء اصطناعي: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. ويقدّمها جميعًا أحمد عمروسي، و70% منها تطبيق عملي، وتُنفَّذ حضوريًا في مصر والسعودية والإمارات أو أونلاين مباشر، بالعربية أو الإنجليزية.',
       faqs: [
         {
           q: 'بأي برنامج نبدأ؟',
@@ -552,20 +560,20 @@ export const pages: Record<string, Localised<PageCopy>> = {
     en: {
       seoTitle: 'AI Training Case Studies | Menova, Ahmed Amrousy',
       metaDescription:
-        'AI training case studies from Menova — Kahraba (65 executives, 4.8/5), the Engineering Export Council of Egypt, Cairo University and Hisense UAE.',
+        'AI training case studies from Menova — Kahraba (65 executives, 4.8/5, plus a Cowork & Fable 5 session), EECE and Cairo University FEPS.',
       eyebrow: 'Case studies',
       title: 'Where Ahmed has taught',
       summary:
-        'Menova case studies document real corporate AI training engagements led by Ahmed Amrousy — including 65 executives trained at Kahraba, the National Electricity Technology Company, rated 4.8 out of 5; multiple rounds for companies affiliated with the Engineering Export Council of Egypt; faculty workshops at Cairo University; and "AI for Marketing, Retail & GTM Excellence" for Hisense in the UAE.',
+        'Menova case studies document real corporate AI training engagements led by Ahmed Amrousy — 65 executives trained on Microsoft Copilot at Kahraba, rated 4.8 out of 5; an advanced Cowork & Fable 5 session for Kahraba\u2019s CEO and senior managers; a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt companies; and AI for Educators at Cairo University FEPS with Logic Consulting.',
     },
     ar: {
       seoTitle: 'دراسات حالة تدريب الذكاء الاصطناعي | مِنوفا',
       metaDescription:
-        'دراسات حالة لتدريب الذكاء الاصطناعي من مِنوفا — كهرباء (65 تنفيذيًا، 4.8/5)، والمجلس التصديري للصناعات الهندسية، وجامعة القاهرة، وهايسنس الإمارات.',
+        'دراسات حالة لتدريب الذكاء الاصطناعي من مِنوفا — كهرباء (65 تنفيذيًا، 4.8/5 وجلسة Cowork وFable 5)، والمجلس التصديري، وجامعة القاهرة.',
       eyebrow: 'دراسات الحالة',
       title: 'أين درَّب أحمد',
       summary:
-        'توثّق دراسات حالة مِنوفا مشروعات تدريب حقيقية قادها أحمد عمروسي — منها 65 تنفيذيًا دُرِّبوا في الشركة القومية لتكنولوجيا الكهرباء «كهرباء» بتقييم 4.8 من 5؛ وجولات متعددة لشركات أعضاء المجلس التصديري للصناعات الهندسية؛ وورش لأعضاء هيئة التدريس بجامعة القاهرة؛ وبرنامج «AI for Marketing, Retail & GTM Excellence» لهايسنس في الإمارات.',
+        'توثّق دراسات حالة مِنوفا مشروعات تدريب حقيقية قادها أحمد عمروسي — 65 تنفيذيًا دُرِّبوا على مايكروسوفت كوبايلوت في «كهرباء» بتقييم 4.8 من 5؛ وجلسة متقدمة عن Cowork وFable 5 لرئيسها التنفيذي وكبار مديريها؛ وورشة استراتيجية من يومين لشركات المجلس التصديري للصناعات الهندسية؛ والذكاء الاصطناعي للمعلمين بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
     },
   },
 

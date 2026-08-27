@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '~/site.config';
-import { path } from '~/i18n/routing';
+import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { entriesFor } from '~/i18n/content';
 import { copy } from '~/data/pages';
@@ -37,7 +37,20 @@ const jsonLd = graph([
       <div class="grid grid--2">
         {
           cases.map((entry) => (
-            <article class="card card--flag-green">
+            <article class="card card--flag-green case-card">
+              {entry.data.photo && (
+                <a href={path(`case-studies/${entry.slug}`, lang)} tabindex="-1" aria-hidden="true">
+                  <img
+                    class="case-card__photo"
+                    src={asset(entry.data.photo)}
+                    alt=""
+                    width="1200"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              )}
               <p class="card__meta">
                 <span>{entry.data.client}</span>
                 <span>{entry.data.sector}</span>
@@ -65,3 +78,15 @@ const jsonLd = graph([
   <LogoWall lang={lang} />
   <CtaBand lang={lang} />
 </BaseLayout>
+
+<style>
+  .case-card {
+    overflow: hidden;
+  }
+  .case-card__photo {
+    width: calc(100% + 2 * var(--space-m));
+    margin: calc(-1 * var(--space-m)) calc(-1 * var(--space-m)) var(--space-2xs);
+    max-width: none;
+    display: block;
+  }
+</style>

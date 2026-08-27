@@ -12,6 +12,7 @@ import '~/styles/global.css';
 // 700 weight. Each page preloads only the one its own headings will use.
 import latinFont from '@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url';
 import arabicFont from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-700-normal.woff2?url';
+import arabicBody from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2?url';
 
 import { analytics, brand, type Locale } from '~/site.config';
 import { alternates, asset, canonical, dir, htmlLang, absolute } from '~/i18n/routing';
@@ -59,6 +60,11 @@ const direction = dir(lang);
       href={lang === 'ar' ? arabicFont : latinFont}
       crossorigin="anonymous"
     />
+    {/* Arabic body text is weight 400 — the LCP paragraph renders in it, so it
+        preloads alongside the heading weight on Arabic pages only. */}
+    {lang === 'ar' && (
+      <link rel="preload" as="font" type="font/woff2" href={arabicBody} crossorigin="anonymous" />
+    )}
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -95,7 +101,7 @@ const direction = dir(lang);
     <meta name="twitter:image" content={ogImage} />
 
     <meta name="author" content="Ahmed Amrousy" />
-    <meta name="theme-color" content={brand.colors.crimson} />
+    <meta name="theme-color" content={brand.colors.green} />
     <meta name="format-detection" content="telephone=no" />
 
     <!-- Search engine ownership verification. Empty values render nothing. -->
@@ -106,7 +112,7 @@ const direction = dir(lang);
       <meta name="msvalidate.01" content={analytics.bingSiteVerification} />
     )}
 
-    <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={asset('favicon.png')} type="image/png" />
     <link rel="apple-touch-icon" href={asset('images/apple-touch-icon.png')} />
     <link rel="sitemap" type="application/xml" href={asset('sitemap.xml')} />
     <link rel="alternate" type="text/plain" href={asset('llms.txt')} title="llms.txt" />

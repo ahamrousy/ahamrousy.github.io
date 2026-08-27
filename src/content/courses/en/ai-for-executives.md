@@ -105,7 +105,6 @@ faqs:
   - q: Is the programme available in Saudi Arabia and the UAE?
     a: >-
       Yes. Menova delivers on-site across Egypt, Saudi Arabia and the UAE, and live online anywhere.
-      Ahmed has delivered executive AI training in the UAE for Hisense via Formatech.
   - q: What does it cost?
     a: >-
       Every programme is scoped and quoted individually against team size, seniority and city. Email

@@ -1,65 +1,85 @@
 ---
-title: Multiple rounds for Egypt's engineering exporters
-client: Engineering Export Council of Egypt — affiliated companies
-sector: Manufacturing and export
-programme: AI for Business and AI for Automation
-seoTitle: Engineering Export Council AI Training | Menova
-metaDescription: Menova delivered multiple rounds of AI training to companies affiliated with the Engineering Export Council of Egypt. Case study by Ahmed Amrousy.
+title: AI for Business Strategy with Egypt's Engineering Exporters
+client: Engineering Export Council of Egypt (EECE)
+sector: Manufacturing & export
+participants: Executives of EECE member companies
+programme: AI for Business Strategy — two-day workshop (16 hours)
+period: TODO — confirm delivery dates
+seoTitle: AI Strategy Workshop for Egyptian Exporters | Menova
+metaDescription: A two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies — SOSTAC end to end, from PESTEL to a 90-day plan.
 primaryKeyword: AI training Egyptian exporters
 secondaryKeywords:
   - Engineering Export Council of Egypt training
-  - AI training manufacturing Egypt
-  - corporate AI training rounds
+  - AI business strategy workshop Egypt
+  - SOSTAC workshop
+  - export strategy AI Egypt
 summary: >-
-  Menova delivered multiple rounds of AI training to companies affiliated with the Engineering
-  Export Council of Egypt, working with manufacturing and export businesses rather than a single
-  client. The repeat rounds are the point: the programme was re-commissioned after the first cohort,
-  which is the strongest signal a corporate training engagement can produce.
-updated: 2026-08-24
-order: 2
-relatedCourse: ai-for-automation
-period: TODO — confirm the dates and number of rounds
-todos:
-  - Confirm how many rounds were delivered and over what period.
-  - Confirm the approximate number of companies and participants across all rounds.
-  - Confirm whether the Council or the individual companies can be named, and whether a quote is available.
+  Menova delivered a two-day AI for Business Strategy workshop, eight hours a day, to executives of
+  companies affiliated with the Engineering Export Council of Egypt. Built on the SOSTAC framework,
+  day one moved from prompting mastery through a full situation analysis — PESTEL, Porter's Five
+  Forces, a weighted competitor scorecard and customer 5W+H — to a written three-year Winning
+  Aspiration; day two locked strategy, tactics with an export track including INCOTERMS, a 90-day
+  roadmap with RACI, and a balanced scorecard, closing with an AI-assisted executive strategy deck.
+updated: 2026-08-27
+order: 3
+photo: images/case-studies/eece.jpg
 challenge: >-
-  Egyptian engineering exporters compete against manufacturers in markets with far larger
-  back-office capacity. The constraint is rarely engineering capability — it is the administrative
-  and commercial load carried by small teams: tender documentation, export correspondence,
-  compliance paperwork, and market research none of them have time to do properly.
+  EECE member companies compete in export markets against larger, better-resourced rivals, in a
+  macro environment of currency volatility and shifting Gulf demand. Their executives did not need
+  another AI tools demo — they needed a written strategy, built with AI doing the analytical heavy
+  lifting and the executives making the choices.
 approach:
-  - Scoped the programme around export-specific work rather than generic office productivity
-  - Focused on document-heavy recurring tasks — tenders, specifications, compliance and correspondence
-  - Ran bilingual exercises, since export correspondence moves between Arabic and English constantly
-  - Delivered across multiple rounds so later cohorts could build on what earlier ones had learned
+  - 'Two full days structured on SOSTAC — Situation and Objectives on day one; Strategy, Tactics, Action and Control on day two.'
+  - 'Day one opened with prompting mastery — POCAB, chain-of-thought, few-shot and self-critique — plus the 4D fluency framework: Delegation, Description, Discernment, Diligence.'
+  - 'Situation analysis completed live for each company: PESTEL, Porter''s Five Forces, a weighted competitor scorecard, customer 5W+H, and the 3-Circle points-of-difference model.'
+  - 'Day one closed with each company''s three-year Winning Aspiration — one sentence, dated, financially anchored, challenged in the room.'
+  - 'Day two locked the strategy — arenas, vehicles and differentiators, stress-tested for coherence — then built the tactical mix: the 7Ps with an FX-aware pricing cascade.'
+  - 'A dedicated export track: INCOTERMS (EXW, FOB, CIF, DDP) and who carries which cost and risk, a 13-criteria agent evaluation matrix, and export KPIs — with a parallel domestic track for home-market players.'
+  - 'Action and control: a 90-day roadmap with a RACI matrix, and a balanced scorecard with a review cadence.'
+  - 'Capstone: each company assembled its executive strategy deck with AI assistance, and pitched it back to the room.'
 result:
-  - Multiple rounds commissioned, with the programme repeated after the initial cohort
-  - Participating companies left with documented workflows for their recurring export administration
-  - A shared method across companies in the same sector rather than isolated internal experiments
+  - Each participating company left with a completed situation analysis, a written Winning Aspiration, a locked strategy, a 90-day execution plan with owners, and a balanced scorecard.
+  - Real prompts for every framework — PESTEL, Porter, competitor matrix, market entry — written for Egyptian exporters, not generic examples, and reusable after the workshop.
+  - The closing pitch-back turned private plans into public commitments in front of peer companies.
+relatedCourse: ai-for-business-strategy
+todos:
+  - Confirm delivery dates and the number of participating companies.
+  - Add a quotable testimonial with name and title, if EECE approves one.
 ---
 
-## Repeat business as the real result
+## Strategy work, not a tools tour
 
-The most useful thing to report about this engagement is not a satisfaction score. It is that it
-happened more than once.
+This engagement was the AI for Business Strategy workshop in its full form: two eight-hour days
+that end with a written strategy, not a reading list. AI did the analytical heavy lifting —
+research, synthesis, scenario drafting — while the executives did the one thing AI cannot do:
+choose.
 
-Companies affiliated with the Engineering Export Council of Egypt commissioned multiple rounds of
-training. A single round can be sold on enthusiasm; a second round has to be earned by the first one
-having changed something.
+## Day one: from prompting mastery to a North Star
 
-## Why exporters are a distinctive audience
+The morning built the prompting muscle the rest of the workshop depends on — POCAB for structured
+briefs, then chain-of-thought, few-shot and self-critique for harder analytical work, framed by
+the 4D fluency model: what to delegate, how to describe it, how to discern good output from bad,
+and who owns the result.
 
-An Egyptian engineering exporter is usually competing against a manufacturer with several times the
-administrative headcount. The engineering is competitive. The paperwork is where the asymmetry
-bites — tender documentation, technical specifications, compliance files, and export correspondence
-that moves constantly between Arabic and English.
+The afternoon put it to work on each company's real situation: PESTEL forces specific to Egypt and
+the Gulf in the planning window, Porter's Five Forces on industry profit potential, a weighted
+competitor scorecard, the customer 5W+H, and the 3-Circle model separating genuine points of
+difference from points of parity. The day closed with each company drafting its three-year Winning
+Aspiration — one sentence, dated, financially anchored, in the register of "the default supplier
+for Gulf food and beverage plants by 2028, with 40% of revenue in USD" — and defending it.
 
-That is precisely the category of work where generative AI is genuinely strong, and it is where the
-programme concentrated.
+## Day two: choices, mix, and the export track
 
-## What the participating companies took away
+Strategy came first — arenas, vehicles and differentiators, stress-tested as a whole rather than
+admired one slide at a time. Then tactics: the 7Ps with a pricing cascade built to survive
+currency movement.
 
-Documented, repeatable workflows for the recurring administrative work that had been consuming
-technical staff — with the verification checks built in, because an error in a tender document or a
-compliance file is not a small error.
+Because these are exporters, the workshop carried a dedicated export track: the four INCOTERMS
+every exporter must price around — EXW, FOB, CIF, DDP — and exactly which costs and risks each one
+shifts from buyer to seller; a 13-criteria matrix for evaluating export agents; and the export
+KPIs that prove the plan is working. Companies focused on the domestic market ran a parallel
+track: FX-aware 4Ps, anchor-client framework agreements, and their first AI use case to build.
+
+The final hours converted choices into execution — a 90-day roadmap with a RACI matrix and one
+measurable result per month, a balanced scorecard with a review cadence — and the capstone: each
+company assembled its executive strategy deck with AI assistance and pitched it to the room.

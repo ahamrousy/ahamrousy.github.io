@@ -36,6 +36,13 @@ function fontFile(subset: 'latin' | 'arabic', weight: 400 | 600 | 700): Buffer {
   return fs.readFileSync(file);
 }
 
+/** The official Menova mark, embedded so satori needs no network access. */
+const markPng = fs.readFileSync(path.resolve('public/images/menova-mark.png'));
+const markUri = `data:image/png;base64,${markPng.toString('base64')}`;
+// scale the mark to 40px tall in the header, preserving its aspect
+const MARK_H = 40;
+const MARK_W = Math.round((160 / 103) * MARK_H);
+
 const fonts = [
   { name: 'Plex', data: fontFile('latin', 400), weight: 400 as const, style: 'normal' as const },
   { name: 'Plex', data: fontFile('latin', 700), weight: 700 as const, style: 'normal' as const },
@@ -155,7 +162,9 @@ export const GET: APIRoute = async ({ props }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: brand.colors.ink,
+        backgroundColor: '#ffffff',
+        backgroundImage:
+          'linear-gradient(135deg, rgba(11,215,151,0.10) 0%, rgba(255,255,255,0) 42%), linear-gradient(315deg, rgba(245,105,101,0.10) 0%, rgba(255,255,255,0) 38%)',
         padding: '64px 72px',
         fontFamily: family,
         direction: isRtl ? 'rtl' : 'ltr',
@@ -172,34 +181,13 @@ export const GET: APIRoute = async ({ props }) => {
             gap: 16,
           },
           children: [
-            el('svg', {
-              width: 44,
-              height: 44,
-              viewBox: '0 0 32 32',
-              fill: 'none',
-              children: [
-                el('path', {
-                  d: 'M5 26V7l11 12',
-                  stroke: brand.colors.crimson,
-                  strokeWidth: 4.2,
-                  strokeLinecap: 'round',
-                  strokeLinejoin: 'round',
-                }),
-                el('path', {
-                  d: 'M27 26V7L16 19',
-                  stroke: brand.colors.green,
-                  strokeWidth: 4.2,
-                  strokeLinecap: 'round',
-                  strokeLinejoin: 'round',
-                }),
-              ],
+            el('img', { src: markUri, width: MARK_W, height: MARK_H }),
+            el('div', {
+              style: { color: brand.colors.coral, fontSize: 30, fontWeight: 700, letterSpacing: '0.06em' },
+              children: 'MENOVA',
             }),
             el('div', {
-              style: { color: '#fff', fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' },
-              children: brand.name,
-            }),
-            el('div', {
-              style: { color: 'rgba(255,255,255,0.45)', fontSize: 24, marginInlineStart: 8 },
+              style: { color: 'rgba(20,21,26,0.45)', fontSize: 24, marginInlineStart: 8 },
               children: kicker,
             }),
           ],
@@ -210,7 +198,7 @@ export const GET: APIRoute = async ({ props }) => {
           style: {
             display: 'flex',
             flexDirection: 'column',
-            color: '#fff',
+            color: brand.colors.ink,
             fontSize: titleSize,
             fontWeight: 700,
             lineHeight: isRtl ? 1.4 : 1.15,
@@ -240,8 +228,9 @@ export const GET: APIRoute = async ({ props }) => {
             el('div', {
               style: { display: 'flex', height: 6, width: 220 },
               children: [
-                el('div', { style: { display: 'flex', flex: 1, backgroundColor: brand.colors.crimson } }),
                 el('div', { style: { display: 'flex', flex: 1, backgroundColor: brand.colors.green } }),
+                el('div', { style: { display: 'flex', flex: 1, backgroundColor: brand.colors.greenBright } }),
+                el('div', { style: { display: 'flex', flex: 1, backgroundColor: brand.colors.coral } }),
               ],
             }),
             el('div', {
@@ -253,11 +242,11 @@ export const GET: APIRoute = async ({ props }) => {
               },
               children: [
                 el('div', {
-                  style: { color: '#fff', fontSize: 28, fontWeight: 700 },
+                  style: { color: brand.colors.ink, fontSize: 28, fontWeight: 700 },
                   children: byline,
                 }),
                 el('div', {
-                  style: { color: 'rgba(255,255,255,0.5)', fontSize: 22 },
+                  style: { color: 'rgba(20,21,26,0.5)', fontSize: 22 },
                   children: footer,
                 }),
               ],

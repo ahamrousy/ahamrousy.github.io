@@ -28,8 +28,8 @@ cities:
   - Ain Sokhna and North Coast (offsites)
 proofPoints:
   - 65 executives trained at Kahraba, the National Electricity Technology Company, rated 4.8/5
-  - Multiple rounds delivered for companies affiliated with the Engineering Export Council of Egypt
-  - Faculty workshops at Cairo University FEPS with the Egyptian Observatory for the Digital Economy
+  - A two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies
+  - '"Mastering AI for Smarter Teaching" for Cairo University FEPS faculty, with Logic Consulting'
 logistics:
   - label: Based in
     value: Cairo — no travel cost for programmes in Greater Cairo
@@ -75,10 +75,10 @@ faqs:
   - q: Which Egyptian organisations have you trained?
     a: >-
       Recent Egyptian engagements include Kahraba, the National Electricity Technology Company,
-      where 65 executives including the CEO were trained with a 4.8/5 rating; companies affiliated
-      with the Engineering Export Council of Egypt across multiple rounds; faculty at Cairo
-      University's Faculty of Economics and Political Science with the Egyptian Observatory for the
-      Digital Economy; and Logic Consulting.
+      where 65 executives including the CEO were trained with a 4.8/5 rating; a two-day AI for Business
+      Strategy workshop for companies affiliated with the Engineering Export Council of Egypt; and
+      faculty at Cairo University's Faculty of Economics and Political Science, in partnership with
+      Logic Consulting.
   - q: How much does corporate AI training cost in Egypt?
     a: >-
       Pricing is per programme and depends on team size, seniority, duration and location. Send the

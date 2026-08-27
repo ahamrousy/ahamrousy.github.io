@@ -5,7 +5,7 @@ import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { entriesFor } from '~/i18n/content';
 import { copy } from '~/data/pages';
-import { person } from '~/data/person';
+import { person, badges } from '~/data/person';
 import { geoKeys } from '~/data/nav';
 import {
   graph,
@@ -71,17 +71,28 @@ const jsonLd = graph([
           <a class="btn btn--secondary" href={path('courses', lang)}>{t('cta.allCourses')}</a>
         </div>
       </div>
-      <div>
-        {/* TODO: replace with the real headshot — see public/images/README.md */}
+      <div class="hero__side">
         <img
           class="hero__portrait"
           src={asset('images/ahmed-amrousy-headshot.jpg')}
           alt={`${person.name} — ${person.jobTitle[lang]}`}
           width="640"
           height="800"
-          fetchpriority="high"
           decoding="async"
         />
+        {/* Official AUC Executive Education instructor badges. */}
+        <div class="hero__badges" aria-label={lang === 'ar' ? 'شارات التدريس بالجامعة الأمريكية' : 'AUC teaching badges'}>
+          {badges.map((badge) => (
+            <img
+              src={asset(badge.file)}
+              alt={badge.alt[lang]}
+              width={badge.width}
+              height={badge.height}
+              loading="lazy"
+              decoding="async"
+            />
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -186,3 +197,19 @@ const jsonLd = graph([
 
   <CtaBand lang={lang} />
 </BaseLayout>
+
+<style>
+  .hero__badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-s);
+    margin-block-start: var(--space-s);
+    flex-wrap: wrap;
+  }
+  .hero__badges img {
+    width: clamp(6rem, 34%, 8.5rem);
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgb(20 21 26 / 0.12));
+  }
+</style>

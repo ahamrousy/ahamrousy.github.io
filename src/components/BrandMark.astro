@@ -1,26 +1,25 @@
 ---
 /**
- * The Menova mark: two strokes meeting at a point to form an "M" — crimson
- * for the brand, green for the second stroke. Inline SVG so it costs no
- * request and inherits crisp rendering at any size.
- *
- * The same geometry is redrawn in public/images/menova-logo.svg (for JSON-LD
- * and OG) and in public/favicon.svg. Change one, change all three.
+ * The official Menova mark — green shield with the coral dot, cropped from
+ * the master logo file. The same artwork feeds the favicon, the touch icon,
+ * the PDF masthead and the OG cards, so the brand renders identically
+ * everywhere. Replace public/images/menova-mark.png (and menova-logo.png)
+ * to rebrand; nothing else changes.
  */
+import { asset } from '~/i18n/routing';
+
 interface Props {
   class?: string;
 }
 const { class: className } = Astro.props;
 ---
 
-<svg
+<img
   class={className}
-  viewBox="0 0 32 32"
-  fill="none"
+  src={asset('images/menova-mark.png')}
+  alt=""
+  width="160"
+  height="103"
   aria-hidden="true"
-  focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path d="M5 26V7l11 12" stroke="#9B1B30" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M27 26V7L16 19" stroke="#1B7A4A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
-</svg>
+  decoding="async"
+/>

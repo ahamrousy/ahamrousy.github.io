@@ -1,0 +1,293 @@
+---
+import type { Locale } from '~/site.config';
+import { contact, mailtoUrl } from '~/site.config';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+
+/**
+ * Schedule-a-call widget for a static site with no backend.
+ *
+ * Two modes, decided by `contact.calendlyUrl` in site.config.ts:
+ *
+ *   1. **Not set (the default)** — a date picker, time-slot select and
+ *      phone/online choice compose a structured WhatsApp message with the
+ *      requested slot and send it straight to Ahmed. He confirms in the chat.
+ *      No third party, nothing leaves the browser until the visitor presses
+ *      send, and it works from the first deploy.
+ *
+ *   2. **Set** — an embedded Calendly page replaces the picker. The visitor
+ *      books directly against Ahmed's live availability, gets the invite
+ *      automatically, and Calendly handles time zones. This is the better
+ *      experience once the account exists: create a free event type at
+ *      calendly.com, paste its link into `calendlyUrl`, done.
+ *
+ * Time slots are labelled Cairo time explicitly, because a static page cannot
+ * know Ahmed's availability — the WhatsApp flow is a *request*, not a booking,
+ * and the copy says so honestly.
+ */
+// Widened to plain string: site.config is `as const`, so the default '' would
+// otherwise narrow the truthy branch below to `never`.
+const calendly: string = contact.calendlyUrl;
+
+const l = {
+  en: {
+    heading: 'Pick a date and time',
+    sub: 'Choose a slot that suits you — the request goes straight to Ahmed on WhatsApp, and he confirms in the chat. Usually within the same day.',
+    name: 'Your name',
+    org: 'Organisation (optional)',
+    date: 'Date',
+    time: 'Time (Cairo time)',
+    kind: 'Call type',
+    phone: 'Phone call',
+    online: 'Online (Zoom / Teams / Meet)',
+    topic: 'What is the call about? (optional)',
+    submit: 'Request this slot on WhatsApp',
+    note: 'This sends a WhatsApp message with your chosen slot — nothing is booked until Ahmed confirms.',
+    fallback: 'Prefer email?',
+    morning: 'Morning',
+    afternoon: 'Afternoon',
+    evening: 'Evening',
+    waIntro: 'Hello Ahmed — I would like to schedule a call.',
+    waName: 'Name',
+    waOrg: 'Organisation',
+    waDate: 'Date',
+    waTime: 'Time (Cairo)',
+    waKind: 'Type',
+    waTopic: 'Topic',
+    calendlyTitle: "Book directly in Ahmed's calendar",
+  },
+  ar: {
+    heading: 'اختر التاريخ والوقت',
+    sub: 'اختر الموعد الذي يناسبك — يصل الطلب مباشرةً إلى أحمد على واتساب ويؤكده في المحادثة، عادةً في نفس اليوم.',
+    name: 'الاسم',
+    org: 'الجهة (اختياري)',
+    date: 'التاريخ',
+    time: 'الوقت (بتوقيت القاهرة)',
+    kind: 'نوع المكالمة',
+    phone: 'مكالمة هاتفية',
+    online: 'أونلاين (زووم / تيمز / ميت)',
+    topic: 'موضوع المكالمة (اختياري)',
+    submit: 'اطلب هذا الموعد على واتساب',
+    note: 'يُرسل هذا رسالة واتساب بالموعد الذي اخترته — ولا يُعد الموعد مؤكدًا حتى يؤكده أحمد.',
+    fallback: 'تفضّل البريد الإلكتروني؟',
+    morning: 'صباحًا',
+    afternoon: 'بعد الظهر',
+    evening: 'مساءً',
+    waIntro: 'أهلًا أحمد — أود حجز مكالمة.',
+    waName: 'الاسم',
+    waOrg: 'الجهة',
+    waDate: 'التاريخ',
+    waTime: 'الوقت (القاهرة)',
+    waKind: 'النوع',
+    waTopic: 'الموضوع',
+    calendlyTitle: 'احجز مباشرةً في تقويم أحمد',
+  },
+}[lang];
+
+/** 30-minute slots, 10:00–19:30 Cairo. Grouped for a friendlier select. */
+const slotGroups = [
+  { label: l.morning, slots: ['10:00', '10:30', '11:00', '11:30'] },
+  { label: l.afternoon, slots: ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30'] },
+  { label: l.evening, slots: ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30'] },
+];
+---
+
+{
+  calendly ? (
+    <div class="scheduler">
+      <h2>{l.calendlyTitle}</h2>
+      <iframe
+        src={`${calendly}${calendly.includes('?') ? '&' : '?'}hide_gdpr_banner=1`}
+        title={l.calendlyTitle}
+        loading="lazy"
+        class="scheduler__calendly"
+      />
+    </div>
+  ) : (
+    <div class="scheduler">
+      <h2>{l.heading}</h2>
+      <p class="lede" style="margin-block-start:0.5rem">{l.sub}</p>
+
+      <form
+        class="scheduler__form"
+        id="call-scheduler"
+        data-wa={contact.whatsappNumber}
+        data-msg-intro={l.waIntro}
+        data-msg-name={l.waName}
+        data-msg-org={l.waOrg}
+        data-msg-date={l.waDate}
+        data-msg-time={l.waTime}
+        data-msg-kind={l.waKind}
+        data-msg-topic={l.waTopic}
+      >
+        <div class="field">
+          <label for="cs-name">{l.name}</label>
+          <input id="cs-name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="cs-org">{l.org}</label>
+          <input id="cs-org" name="org" type="text" autocomplete="organization" />
+        </div>
+
+        <div class="scheduler__row">
+          <div class="field">
+            <label for="cs-date">{l.date}</label>
+            <input id="cs-date" name="date" type="date" required />
+          </div>
+          <div class="field">
+            <label for="cs-time">{l.time}</label>
+            <select id="cs-time" name="time" required>
+              {slotGroups.map((group) => (
+                <optgroup label={group.label}>
+                  {group.slots.map((slot) => (
+                    <option value={slot}>{slot}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field scheduler__kind">
+          <legend>{l.kind}</legend>
+          <label class="scheduler__radio">
+            <input type="radio" name="kind" value={l.phone} checked /> {l.phone}
+          </label>
+          <label class="scheduler__radio">
+            <input type="radio" name="kind" value={l.online} /> {l.online}
+          </label>
+        </fieldset>
+
+        <div class="field">
+          <label for="cs-topic">{l.topic}</label>
+          <input id="cs-topic" name="topic" type="text" />
+        </div>
+
+        <button type="submit" class="btn btn--whatsapp">{l.submit}</button>
+        <p class="muted">{l.note}</p>
+      </form>
+
+      <p class="muted scheduler__alt">
+        {l.fallback}
+        <a href={mailtoUrl(lang === 'ar' ? 'مِنوفا — حجز مكالمة' : 'Menova — schedule a call')}>{contact.email}</a>
+      </p>
+    </div>
+  )
+}
+
+<script>
+  // Composes the WhatsApp deep link from the chosen slot. Runs only in the
+  // built-in picker mode; the Calendly branch renders no form.
+  const form = document.getElementById('call-scheduler') as HTMLFormElement | null;
+  if (form) {
+    // Earliest selectable date: tomorrow. A static page cannot see the
+    // calendar, so same-day requests over-promise.
+    const dateInput = form.querySelector<HTMLInputElement>('#cs-date');
+    if (dateInput) {
+      const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      dateInput.min = tomorrow.toISOString().slice(0, 10);
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const d = form.dataset;
+      const lines = [
+        d.msgIntro,
+        '',
+        `${d.msgName}: ${data.get('name')}`,
+        data.get('org') ? `${d.msgOrg}: ${data.get('org')}` : null,
+        `${d.msgDate}: ${data.get('date')}`,
+        `${d.msgTime}: ${data.get('time')}`,
+        `${d.msgKind}: ${data.get('kind')}`,
+        data.get('topic') ? `${d.msgTopic}: ${data.get('topic')}` : null,
+      ].filter((line): line is string => line !== null);
+
+      const url = `https://wa.me/${d.wa}?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+</script>
+
+<style>
+  .scheduler {
+    max-width: 34rem;
+  }
+  .scheduler__form {
+    display: grid;
+    gap: var(--space-s);
+    margin-block-start: var(--space-m);
+  }
+  .field {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .field label,
+  .field legend {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .field :is(input, select) {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: 0.55rem 0.7rem;
+    background: var(--paper);
+    font-size: var(--step-0);
+  }
+  .field :is(input, select):focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 0;
+    border-color: var(--green);
+  }
+  .scheduler__row {
+    display: grid;
+    gap: var(--space-s);
+  }
+  @media (min-width: 480px) {
+    .scheduler__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .scheduler__kind {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: var(--space-xs) var(--space-s) var(--space-s);
+  }
+  .scheduler__radio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--step-0);
+    font-weight: 400;
+    color: var(--ink);
+    padding-block: 0.25rem;
+  }
+  .scheduler__radio input {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--green);
+  }
+  .scheduler__form .btn {
+    justify-self: start;
+  }
+  .scheduler__alt {
+    margin-block-start: var(--space-m);
+  }
+  .scheduler__alt a {
+    color: var(--green-dark);
+    font-weight: 600;
+  }
+  .scheduler__calendly {
+    width: 100%;
+    height: 44rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    margin-block-start: var(--space-m);
+  }
+</style>

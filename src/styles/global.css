@@ -9,13 +9,25 @@
 
 /* --- Design tokens ------------------------------------------------------ */
 :root {
-  /* Brand */
-  --crimson: #9b1b30;
-  --crimson-dark: #7a1526;
-  --crimson-tint: #fdf2f4;
-  --green: #1b7a4a;
-  --green-dark: #146039;
-  --green-tint: #f0f8f4;
+  /* Brand — sampled from the official Menova logo (green shield, coral dot
+     and wordmark). The decorative hues are used for gradients and tints;
+     buttons and text sit on the -strong/-dark variants, which pass WCAG AA
+     with white text. Legacy token names (--crimson…) are kept as aliases so
+     every component picks up the rebrand without edits. */
+  --coral: #f56965;
+  --coral-strong: #c93b36;
+  --coral-dark: #b23330;
+  --coral-tint: #fef0ef;
+  --green-deco: #0d9561;
+  --green-bright: #0bd797;
+  --green: #0b7c51;
+  --green-dark: #0a6b46;
+  --green-tint: #eaf9f2;
+  --brand-gradient: linear-gradient(135deg, var(--green-deco), var(--green-bright));
+  --accent-bar: linear-gradient(90deg, var(--green-deco), var(--green-bright) 55%, var(--coral));
+  --crimson: var(--coral-strong);
+  --crimson-dark: var(--coral-dark);
+  --crimson-tint: var(--coral-tint);
 
   /* Neutrals */
   --ink: #14151a;
@@ -216,7 +228,7 @@ ol {
   background: var(--paper-3);
 }
 .section--ink {
-  background: var(--ink);
+  background: linear-gradient(150deg, #0c2b1f, #10382a);
   color: #fff;
 }
 .section--ink h2,
@@ -284,6 +296,15 @@ html[dir='rtl'] .lede {
 .section-head {
   max-width: var(--measure);
   margin-block-end: var(--space-xl);
+}
+.section-head > h2::after {
+  content: '';
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  border-radius: 999px;
+  margin-block-start: 0.6rem;
+  background: var(--accent-bar);
 }
 
 /* --- Buttons ------------------------------------------------------------ */
@@ -583,9 +604,19 @@ a.card,
   flex-shrink: 0;
 }
 .brand__mark {
-  width: 1.6rem;
-  height: 1.6rem;
+  /* The mark PNG is 256×164 — size by width only so it never distorts. */
+  width: 2.15rem;
+  height: auto;
   flex-shrink: 0;
+}
+/* On dark surfaces the mark sits on a deliberate white chip — the PNG has a
+   white background, so this turns an artefact into a design decision. */
+.site-footer .brand__mark,
+.section--ink .brand__mark {
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 5px;
+  width: 2.6rem;
 }
 .nav {
   display: none;
@@ -733,7 +764,10 @@ html[dir='rtl'] .breadcrumbs li + li::before {
 .hero {
   padding-block: clamp(2.5rem, 1.5rem + 5vw, 5rem);
   border-block-end: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--crimson-tint) 0%, var(--paper) 65%);
+  background:
+    radial-gradient(38rem 22rem at 88% -10%, rgb(245 105 101 / 0.10), transparent 60%),
+    radial-gradient(44rem 26rem at -10% 20%, rgb(11 215 151 / 0.12), transparent 55%),
+    var(--paper);
 }
 .hero__grid {
   display: grid;
@@ -856,7 +890,7 @@ html[dir='rtl'] .prose blockquote {
 
 /* --- Footer ------------------------------------------------------------- */
 .site-footer {
-  background: var(--ink);
+  background: linear-gradient(165deg, #0b271c, #123527);
   color: rgb(255 255 255 / 0.75);
   padding-block: var(--space-2xl) var(--space-l);
   margin-block-start: auto;
@@ -919,7 +953,9 @@ html[dir='rtl'] .site-footer h2 {
 
 /* --- CTA band ----------------------------------------------------------- */
 .cta-band {
-  background: var(--ink);
+  background:
+    radial-gradient(30rem 16rem at 100% 0%, rgb(245 105 101 / 0.22), transparent 55%),
+    linear-gradient(135deg, #0a6b46, #0d9561);
   color: #fff;
   border-radius: var(--radius-l);
   padding: var(--space-xl);

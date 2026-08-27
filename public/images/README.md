@@ -62,7 +62,7 @@ Current placeholder files, each carrying the organisation's name as text:
 vodafone.svg          usaid.svg            kahraba.svg
 eece.svg              bue.svg              nile-university.svg
 auc.svg               cairo-university.svg ain-shams.svg
-nile-air.svg          formatech.svg        logic-consulting.svg
+nile-air.svg          logic-consulting.svg
 ```
 
 The wall renders logos in greyscale at 72% opacity, coming to full colour on hover. That means:
@@ -84,13 +84,33 @@ To change which organisations appear, edit `logoWall` in `src/data/person.ts`.
 
 | Path | Purpose | Notes |
 | --- | --- | --- |
-| `menova-logo.svg` | JSON-LD `Organization.logo` | 200 × 48. Real mark, not a placeholder |
-| `apple-touch-icon.png` | iOS home screen | 180 × 180. Generated from the brand mark |
-| `../favicon.svg` | Browser tab | In `public/`, not `public/images/` |
+| `menova-logo.png` | JSON-LD `Organization.logo` | The official full logo (shield + wordmark) |
+| `menova-mark.png` | Header, footer, OG cards, PDF masthead | Shield-only crop of the official logo |
+| `badges/auc-instructor-*.webp` | AUC teaching badges | Official AUC files — never redraw or restyle |
+| `ahmed-amrousy-running.jpg` | About page, athlete section | Real race photograph |
+| `case-studies/<slug>.jpg` | Case-study pages + About strip | 1200 × 800 — see below |
+| `apple-touch-icon.png` | iOS home screen | Generated from the mark |
+| `../favicon.png` | Browser tab | In `public/`, not `public/images/` |
 
-The Menova mark is drawn in three places — `src/components/BrandMark.astro` (inline, used in the
-header and footer), `public/images/menova-logo.svg`, and `public/favicon.svg`. If you change the
-mark, change all three.
+### Case-study photos — the four slots to fill
+
+One real photograph per documented engagement, 1200 × 800 (3:2), under 200 kB:
+
+```
+case-studies/kahraba.jpg               Copilot training at Kahraba
+case-studies/kahraba-cowork-fable.jpg  Cowork & Fable 5 session, Kahraba leadership
+case-studies/eece.jpg                  AI for Business Strategy, EECE
+case-studies/feps-logic.jpg            AI for Educators, FEPS with Logic Consulting
+```
+
+Each currently holds a branded placeholder. Drop the real photo at the same
+path and it appears on the case-study page, the case-studies hub and the
+About page's "Trainings in action" strip. Get participant permission, or pick
+frames where individuals are not identifiable.
+
+The mark and logo come from the master file in `Sources for Website/Menova Logo.pdf.png`.
+To rebrand, replace `menova-logo.png` and `menova-mark.png` (and regenerate
+`apple-touch-icon.png` + `../favicon.png` from the mark) — every surface updates.
 
 Open Graph cards are **generated at build time** from page titles — you never supply those. They
 land in `dist/og/`, one per page per language.

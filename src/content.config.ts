@@ -89,6 +89,12 @@ const caseStudies = defineCollection({
     approach: z.array(z.string()),
     result: z.array(z.string()),
     testimonial: z.object({ quote: z.string(), attribution: z.string() }).optional(),
+    /**
+     * Photo from the engagement, e.g. "images/case-studies/kahraba.jpg".
+     * Ships as a branded placeholder — drop a real 1200×800 photo at the same
+     * path and it appears on the case study page, the hub and the About strip.
+     */
+    photo: z.string().optional(),
     relatedCourse: z.string().optional(),
     order: z.number().default(99),
   }),

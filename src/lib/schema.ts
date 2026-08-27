@@ -143,7 +143,7 @@ export function organizationSchema(lang: Locale): Json {
         ? 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال، أسَّسها أحمد عمروسي، وتقدّم برامج تنفيذية للشركات في مصر والسعودية والإمارات بالعربية والإنجليزية.'
         : 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, delivering executive programmes to companies in Egypt, Saudi Arabia and the UAE in Arabic and English.',
     url: absolute(path('', lang)),
-    logo: absolute(asset('images/menova-logo.svg')),
+    logo: absolute(asset('images/menova-logo.png')),
     image: absolute(asset('og/home.png')),
     email: `mailto:${contact.email}`,
     founder: { '@id': PERSON_ID },

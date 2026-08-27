@@ -55,8 +55,8 @@ export const intents: Intent[] = [
       ar: ['دورة', 'دورات', 'كورس', 'كورسات', 'برنامج', 'برامج', 'تدريب', 'ورشة', 'خدمات'],
     },
     answer: {
-      en: 'Menova runs six programmes: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, and the flagship 16-hour AI for Business Strategy workshop. All of them are 70% hands-on.',
-      ar: 'تقدّم مِنوفا ستة برامج: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، بالإضافة إلى ورشة استراتيجية الذكاء الاصطناعي الرئيسية ومدتها 16 ساعة. جميعها 70% تطبيق عملي.',
+      en: 'Menova runs seven programmes: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop. All corporate programmes are 70% hands-on.',
+      ar: 'تقدّم مِنوفا سبعة برامج: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. جميعها تطبيق عملي في المقام الأول.',
     },
     links: [{ key: 'courses', label: { en: 'See all six', ar: 'تصفَّح البرامج' } }],
   },
@@ -104,8 +104,8 @@ export const intents: Intent[] = [
       ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الخليج', 'مكان'],
     },
     answer: {
-      en: 'Menova delivers on-site in Egypt (Cairo and beyond), Saudi Arabia and the UAE, and live online anywhere. Ahmed has already delivered in the UAE for Hisense via Formatech.',
-      ar: 'تنفّذ مِنوفا التدريب حضوريًا في مصر (القاهرة وغيرها) والسعودية والإمارات، وأونلاين مباشر في أي مكان. وقد نفَّذ أحمد بالفعل تدريبًا في الإمارات لهايسنس عبر فورماتك.',
+      en: 'Menova delivers on-site in Egypt (Cairo and beyond), Saudi Arabia and the UAE, and live online anywhere.',
+      ar: 'تنفّذ مِنوفا التدريب حضوريًا في مصر (القاهرة وغيرها) والسعودية والإمارات، وأونلاين مباشر في أي مكان.',
     },
     links: [
       { key: 'corporate-ai-training-egypt', label: { en: 'Egypt', ar: 'مصر' } },
@@ -166,8 +166,8 @@ export const intents: Intent[] = [
       ar: ['عملاء', 'عميل', 'دراسة حالة', 'كهرباء', 'مرجع', 'نتائج', 'من درب'],
     },
     answer: {
-      en: 'Recent programmes include Kahraba (the National Electricity Technology Company) where 65 executives including the CEO rated it 4.8/5, companies affiliated with the Engineering Export Council of Egypt, Cairo University FEPS, Hisense UAE via Formatech, and Logic Consulting.',
-      ar: 'من البرامج الأخيرة: كهرباء (الشركة القومية لتكنولوجيا الكهرباء) حيث درَّب 65 تنفيذيًا بينهم الرئيس التنفيذي بتقييم 4.8/5، وشركات أعضاء المجلس التصديري للصناعات الهندسية، وكلية الاقتصاد والعلوم السياسية بجامعة القاهرة، وهايسنس الإمارات عبر فورماتك، ولوجيك كونسلتنج.',
+      en: 'Recent programmes include Kahraba (the National Electricity Technology Company) where 65 executives including the CEO rated it 4.8/5 — plus an advanced Cowork & Fable 5 session for its CEO and senior managers — a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt companies, and an AI for Educators workshop at Cairo University FEPS with Logic Consulting.',
+      ar: 'من البرامج الأخيرة: كهرباء (الشركة القومية لتكنولوجيا الكهرباء) حيث دُرِّب 65 تنفيذيًا بينهم الرئيس التنفيذي بتقييم 4.8/5 — مع جلسة متقدمة عن Cowork وFable 5 للرئيس التنفيذي وكبار المديرين — وورشة استراتيجية من يومين لشركات المجلس التصديري للصناعات الهندسية، وورشة الذكاء الاصطناعي للمعلمين بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
     },
     links: [{ key: 'case-studies', label: { en: 'Case studies', ar: 'دراسات الحالة' } }],
   },

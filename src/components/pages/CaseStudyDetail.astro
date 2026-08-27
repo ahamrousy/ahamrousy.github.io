@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '~/site.config';
 import { render } from 'astro:content';
-import { path } from '~/i18n/routing';
+import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { entryFor } from '~/i18n/content';
 import { copy } from '~/data/pages';
@@ -51,6 +51,19 @@ const jsonLd = graph([
   <section class="section section--tight">
     <div class="container grid grid--sidebar">
       <div>
+        {
+          d.photo && (
+            <img
+              class="case-photo"
+              src={asset(d.photo)}
+              alt={d.title}
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          )
+        }
         <h2>{t('label.challenge')}</h2>
         <p class="lede" style="margin-block-start:0.75rem">{d.challenge}</p>
 
@@ -114,3 +127,13 @@ const jsonLd = graph([
 
   <CtaBand lang={lang} subject={d.programme} />
 </BaseLayout>
+
+<style>
+  .case-photo {
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    margin-block-end: var(--space-l);
+    width: 100%;
+    height: auto;
+  }
+</style>

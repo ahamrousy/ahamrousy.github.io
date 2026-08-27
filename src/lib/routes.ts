@@ -58,8 +58,8 @@ export async function allRoutes(): Promise<RouteRecord[]> {
       changefreq: 'weekly',
       title: { en: 'Menova — AI for Business training', ar: 'مِنوفا — تدريب الذكاء الاصطناعي للأعمال' },
       description: {
-        en: 'Homepage. Who Ahmed Amrousy is, the six programmes, proof and contact.',
-        ar: 'الصفحة الرئيسية. مَن هو أحمد عمروسي، والبرامج الستة، والأدلة، والتواصل.',
+        en: 'Homepage. Who Ahmed Amrousy is, the seven programmes, proof and contact.',
+        ar: 'الصفحة الرئيسية. مَن هو أحمد عمروسي، والبرامج السبعة، والأدلة، والتواصل.',
       },
     },
     {
@@ -80,8 +80,8 @@ export async function allRoutes(): Promise<RouteRecord[]> {
       changefreq: 'monthly',
       title: { en: 'Course catalogue', ar: 'برامج مِنوفا التدريبية' },
       description: {
-        en: 'All six Menova AI programmes with duration, audience and format.',
-        ar: 'برامج مِنوفا الستة بالمدة والفئة المستهدفة والصيغة.',
+        en: 'All seven Menova AI programmes with duration, audience and format.',
+        ar: 'برامج مِنوفا السبعة بالمدة والفئة المستهدفة والصيغة.',
       },
     },
     {
@@ -102,8 +102,8 @@ export async function allRoutes(): Promise<RouteRecord[]> {
       changefreq: 'monthly',
       title: { en: 'Case studies', ar: 'دراسات الحالة' },
       description: {
-        en: 'Documented training engagements including Kahraba, EECE, Cairo University, Hisense UAE.',
-        ar: 'مشروعات تدريب موثَّقة تشمل كهرباء والمجلس التصديري وجامعة القاهرة وهايسنس الإمارات.',
+        en: 'Documented training engagements including Kahraba, EECE and Cairo University FEPS with Logic Consulting.',
+        ar: 'مشروعات تدريب موثَّقة تشمل كهرباء والمجلس التصديري وجامعة القاهرة مع لوجيك كونسلتنج.',
       },
     },
     {
@@ -144,10 +144,10 @@ export async function allRoutes(): Promise<RouteRecord[]> {
       lastmod: SITE_UPDATED,
       priority: 0.9,
       changefreq: 'monthly',
-      title: { en: 'Contact', ar: 'تواصل' },
+      title: { en: 'Schedule a call', ar: 'احجز مكالمة' },
       description: {
-        en: 'Request a proposal by email or WhatsApp. Written proposal within two working days.',
-        ar: 'اطلب عرضًا عبر البريد أو واتساب. عرض مكتوب خلال يومَي عمل.',
+        en: 'Pick a date and time for a phone or online call with Ahmed, or request a proposal by email or WhatsApp.',
+        ar: 'اختر تاريخًا ووقتًا لمكالمة هاتفية أو أونلاين مع أحمد، أو اطلب عرضًا عبر البريد أو واتساب.',
       },
     },
   ];

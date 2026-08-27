@@ -3,7 +3,8 @@ import type { Locale } from '~/site.config';
 import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { copy } from '~/data/pages';
-import { person } from '~/data/person';
+import { person, badges } from '~/data/person';
+import { entriesFor } from '~/i18n/content';
 import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
 
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -35,7 +36,12 @@ const jsonLd = graph([
   faqSchema(c.faqs ?? []),
 ]);
 
-const updated = new Date('2026-08-24');
+const updated = new Date('2026-08-27');
+// One photo per documented engagement — rendered as the "trainings in action"
+// strip. Each ships as a branded placeholder until Ahmed drops the real
+// photograph at the same path (see public/images/README.md).
+const cases = await entriesFor('caseStudies', lang);
+const casePhotos = cases.filter((entry) => entry.data.photo);
 ---
 
 <BaseLayout
@@ -73,6 +79,20 @@ const updated = new Date('2026-08-24');
             {t('cta.download')}
           </a>
         </p>
+
+        {/* Official AUC Executive Education instructor badges, two academic years. */}
+        <div class="badges" aria-label={lang === 'ar' ? 'شارات التدريس بالجامعة الأمريكية' : 'AUC teaching badges'}>
+          {badges.map((badge) => (
+            <img
+              src={asset(badge.file)}
+              alt={badge.alt[lang]}
+              width={badge.width}
+              height={badge.height}
+              loading="lazy"
+              decoding="async"
+            />
+          ))}
+        </div>
       </aside>
     </div>
   </section>
@@ -139,6 +159,35 @@ const updated = new Date('2026-08-24');
     </div>
   </section>
 
+  {/* ── Trainings in action ─────────────────────────────────────────────── */}
+  <section class="section" aria-labelledby="in-action-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="in-action-heading">{lang === 'ar' ? 'من داخل القاعات' : 'Trainings in action'}</h2>
+      </div>
+      <div class="grid grid--2">
+        {
+          casePhotos.map((entry) => (
+            <a class="action-photo" href={path(`case-studies/${entry.slug}`, lang)}>
+              {/* alt is empty on purpose: the visible caption right below
+                  carries the same text, and duplicating it fails WCAG 1.1.1
+                  (redundant alt). */}
+              <img
+                src={asset(entry.data.photo!)}
+                alt=""
+                width="1200"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="action-photo__caption">{entry.data.title}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <LogoWall lang={lang} />
 
   {/* ── Media kit ───────────────────────────────────────────────────────── */}
@@ -184,9 +233,20 @@ const updated = new Date('2026-08-24');
           <a class="btn btn--ghost" href={path('podcast', lang)}>{t('nav.podcast')}</a>
         </p>
       </article>
-      <article>
-        <h2>{lang === 'ar' ? 'خارج العمل' : 'Outside work'}</h2>
-        <p style="margin-block-start:0.75rem">{person.otherWork.sport[lang]}</p>
+      <article class="athlete">
+        <img
+          class="athlete__photo"
+          src={asset('images/ahmed-amrousy-running.jpg')}
+          alt={lang === 'ar' ? 'أحمد عمروسي أثناء أحد السباقات' : 'Ahmed Amrousy mid-race'}
+          width="900"
+          height="1641"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <h2>{lang === 'ar' ? 'خارج العمل' : 'Outside work'}</h2>
+          <p style="margin-block-start:0.75rem">{person.otherWork.sport[lang]}</p>
+        </div>
       </article>
     </div>
   </section>
@@ -200,3 +260,60 @@ const updated = new Date('2026-08-24');
 
   <CtaBand lang={lang} />
 </BaseLayout>
+
+<style>
+  .badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-s);
+    margin-block-start: var(--space-m);
+    flex-wrap: wrap;
+  }
+  .badges img {
+    width: clamp(7rem, 40%, 9.5rem);
+    height: auto;
+  }
+  .action-photo {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .action-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .action-photo:hover img {
+    transform: scale(1.02);
+  }
+  .action-photo__caption {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    padding: 2.25rem var(--space-m) var(--space-s);
+    background: linear-gradient(180deg, transparent, rgb(12 43 31 / 0.85));
+    color: #fff;
+    font-weight: 650;
+    font-size: var(--step-0);
+  }
+  .athlete {
+    display: grid;
+    gap: var(--space-m);
+    align-items: start;
+  }
+  @media (min-width: 640px) {
+    .athlete {
+      grid-template-columns: minmax(0, 14rem) 1fr;
+    }
+  }
+  .athlete__photo {
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-m);
+  }
+</style>

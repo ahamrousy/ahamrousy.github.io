@@ -71,7 +71,7 @@ frameworksTaught:
   - POCAB
   - GCSE-F
   - Chain-of-verification
-relatedCase: hisense-uae
+relatedCase: kahraba
 relatedGeo: corporate-ai-training-uae
 todos:
   - Confirm the standard duration for this programme — currently shown as 12 hours across two days.
@@ -129,6 +129,3 @@ a small aesthetic issue — it is the difference between copy that lands and cop
 A dedicated block of the programme deals with this: how to brief for Arabic that reads as written,
 and how to hold voice across a bilingual campaign.
 
-## Recently delivered
-
-Ahmed delivered *AI for Marketing, Retail & GTM Excellence* to Hisense in the UAE via Formatech.

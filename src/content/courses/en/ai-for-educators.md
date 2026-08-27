@@ -15,8 +15,7 @@ summary: >-
   corporate trainers, taught by Ahmed Amrousy — Executive Education Instructor at the American
   University in Cairo. It covers course and assessment design in a world where students have
   generative AI, and gives faculty a workable position on academic integrity rather than a ban that
-  cannot be enforced. It has been delivered to faculty at Cairo University's Faculty of Economics
-  and Political Science.
+  cannot be enforced. It has been delivered to faculty at Cairo University's Faculty of Economics and Political Science, with Logic Consulting.
 updated: 2026-08-24
 order: 4
 duration: 9 hours across a day and a half
@@ -72,7 +71,7 @@ frameworksTaught:
   - POCAB
   - GCSE-F
   - Self-critique prompting
-relatedCase: cairo-university-feps
+relatedCase: feps-logic
 relatedGeo: corporate-ai-training-egypt
 todos:
   - Confirm the standard duration for this programme — currently shown as 9 hours across a day and a half.
@@ -81,8 +80,7 @@ faqs:
     a: >-
       University faculty, deans and department heads, school leadership, curriculum designers and
       corporate trainers. It has been delivered to faculty at Cairo University's Faculty of
-      Economics and Political Science in collaboration with the Egyptian Observatory for the Digital
-      Economy.
+      Economics and Political Science, in partnership with Logic Consulting.
   - q: Does the course tell faculty to ban AI?
     a: >-
       No — because bans do not hold and detection tools are unreliable. The programme helps
@@ -124,8 +122,8 @@ must be redesigned, and what faculty should actually say in the first week of te
 ## Delivered to faculty, by faculty
 
 Ahmed teaches executive education at the American University in Cairo's Onsi Sawiris School of
-Business, and has delivered AI workshops to faculty at Cairo University's Faculty of Economics and
-Political Science in collaboration with the Egyptian Observatory for the Digital Economy. The
+Business, and has delivered the "Mastering AI for Smarter Teaching" workshop to faculty at Cairo
+University's Faculty of Economics and Political Science, in partnership with Logic Consulting. The
 session is run as a peer conversation, not a vendor briefing.
 
 ## The part faculty value most

@@ -29,8 +29,15 @@ export const contact = {
    * the entered values instead of POSTing. See README.md § Contact form.
    */
   formspreeId: '',
-  /** TODO: replace with the real URLs once the profiles exist. */
-  youtube: '', // TODO: عاش يا وحش podcast channel URL
+  /**
+   * Calendly (or Cal.com) scheduling link, e.g. "https://calendly.com/ahmedamrousy/30min".
+   * While empty, the Schedule-a-call page uses the built-in date/time picker
+   * that sends the chosen slot to Ahmed on WhatsApp — no third party involved.
+   * Set it and an embedded live calendar replaces the picker automatically.
+   */
+  calendlyUrl: '',
+  /** عاش يا وحش — full playlist on YouTube. */
+  youtube: 'https://youtube.com/playlist?list=PLQxF77ekFr2KoZKmR5c8YepdnyEghTzJM',
   spotify: '', // TODO: podcast on Spotify
   googleScholar: '', // TODO: Google Scholar profile (strong entity signal — see LAUNCH-CHECKLIST.md)
   github: '', // TODO: GitHub profile URL
@@ -69,9 +76,18 @@ export const brand = {
   name: 'Menova',
   legalName: 'Menova',
   foundingLocation: 'Cairo, Egypt',
+  /**
+   * Sampled from the official Menova logo (green shield + coral dot/wordmark).
+   * `coral`/`green` are the decorative brand hues; `coralStrong`/`greenStrong`
+   * are darkened variants that pass WCAG AA with white text on top — use those
+   * wherever text sits on a coloured surface.
+   */
   colors: {
-    crimson: '#9B1B30',
-    green: '#1B7A4A',
+    coral: '#F56965',
+    coralStrong: '#C93B36',
+    green: '#0D9561',
+    greenBright: '#0BD797',
+    greenStrong: '#0B7C51',
     ink: '#14151A',
   },
 } as const;

@@ -10,6 +10,7 @@ import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import PageHeader from '~/components/PageHeader.astro';
 import Faq from '~/components/Faq.astro';
 import ContactForm from '~/components/ContactForm.astro';
+import CallScheduler from '~/components/CallScheduler.astro';
 
 interface Props {
   lang: Locale;
@@ -35,24 +36,23 @@ const waText =
 
 <BaseLayout lang={lang} routeKey="contact" title={c.seoTitle} description={c.metaDescription} jsonLd={jsonLd}>
   <Breadcrumbs lang={lang} crumbs={crumbs} current={c.title} />
-  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
+  <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-27')} />
 
+  {/* ── Primary action: pick a slot ─────────────────────────────────────── */}
   <section class="section section--tight">
     <div class="container grid grid--sidebar">
       <div>
-        <h2>{lang === 'ar' ? 'اطلب عرضًا' : 'Request a proposal'}</h2>
-        <p class="lede" style="margin-block-start:0.75rem">{t('note.pricing')}</p>
-        <ContactForm lang={lang} />
+        <CallScheduler lang={lang} />
       </div>
 
       <aside class="stack" style="--flow:1.25rem">
-        <div class="card card--flag">
-          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'الطريق الأسرع' : 'The fastest route'}</h2>
+        <div class="card card--flag-green">
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'أو راسله فورًا' : 'Or message him right now'}</h2>
           <p>
             {
               lang === 'ar'
-                ? 'واتساب. يردّ أحمد بنفسه، وعادةً في نفس اليوم.'
-                : 'WhatsApp. Ahmed replies personally, usually the same day.'
+                ? 'واتساب هو الأسرع دائمًا — يردّ أحمد بنفسه، وعادةً في نفس اليوم.'
+                : 'WhatsApp is always fastest — Ahmed replies personally, usually the same day.'
             }
           </p>
           <a class="btn btn--whatsapp" href={whatsappUrl(waText)} rel="noopener" target="_blank">
@@ -79,7 +79,7 @@ const waText =
         </div>
 
         <div class="card">
-          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'ما نحتاج معرفته' : 'What to include'}</h2>
+          <h2 style="font-size:var(--step-1)">{lang === 'ar' ? 'ما يفيد ذكره' : 'Useful to mention'}</h2>
           <ul>
             {
               (lang === 'ar'
@@ -93,7 +93,18 @@ const waText =
     </div>
   </section>
 
-  <section class="section section--tinted" aria-labelledby="contact-faq">
+  {/* ── Secondary: written proposal request ─────────────────────────────── */}
+  <section class="section section--tight section--tinted">
+    <div class="container">
+      <div class="section-head">
+        <h2>{lang === 'ar' ? 'أو اطلب عرضًا مكتوبًا' : 'Or request a written proposal'}</h2>
+        <p class="lede">{t('note.pricing')}</p>
+      </div>
+      <ContactForm lang={lang} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="contact-faq">
     <div class="container container--narrow">
       <h2 id="contact-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
       <Faq lang={lang} faqs={c.faqs ?? []} showHeading={false} />

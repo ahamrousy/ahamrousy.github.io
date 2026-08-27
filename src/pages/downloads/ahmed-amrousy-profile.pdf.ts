@@ -18,8 +18,8 @@ import { person, frameworks, tools } from '~/data/person';
  * one-pager is not the place to add a font-binary dependency to the repo.
  */
 
-const CRIMSON = brand.colors.crimson;
-const GREEN = brand.colors.green;
+const CORAL = brand.colors.coralStrong;
+const GREEN = brand.colors.greenStrong;
 const INK = brand.colors.ink;
 const GREY = '#6B7280';
 
@@ -48,24 +48,23 @@ export const GET: APIRoute = async () => {
 
   const heading = (text: string) => {
     doc.moveDown(0.9);
-    doc.font('Helvetica-Bold').fontSize(8.5).fillColor(CRIMSON).text(text.toUpperCase(), { characterSpacing: 1.1 });
+    doc.font('Helvetica-Bold').fontSize(8.5).fillColor(CORAL).text(text.toUpperCase(), { characterSpacing: 1.1 });
     doc.moveDown(0.35);
   };
 
   // ── Masthead ─────────────────────────────────────────────────────────────
-  // The Menova mark, drawn as two strokes meeting at a point.
+  // The official Menova mark (green shield + coral dot), embedded from the
+  // same PNG the site header uses.
   const markX = PAGE.margin;
   const markY = PAGE.margin;
-  doc.lineWidth(3.6).lineCap('round').lineJoin('round');
-  doc.moveTo(markX + 2, markY + 22).lineTo(markX + 2, markY + 4).lineTo(markX + 11, markY + 14).strokeColor(CRIMSON).stroke();
-  doc.moveTo(markX + 20, markY + 22).lineTo(markX + 20, markY + 4).lineTo(markX + 11, markY + 14).strokeColor(GREEN).stroke();
+  doc.image('public/images/menova-mark.png', markX, markY + 2, { height: 24 });
 
-  doc.font('Helvetica-Bold').fontSize(15).fillColor(INK).text('Menova', markX + 30, markY + 5);
+  doc.font('Helvetica-Bold').fontSize(15).fillColor(INK).text('Menova', markX + 44, markY + 5);
   doc
     .font('Helvetica')
     .fontSize(9)
     .fillColor(GREY)
-    .text('AI-for-Business training', markX + 95, markY + 8.5);
+    .text('AI-for-Business training', markX + 108, markY + 8.5);
 
   doc.y = markY + 40;
   rule(doc.y);
@@ -76,7 +75,7 @@ export const GET: APIRoute = async () => {
   doc.moveDown(0.25);
   doc.font('Helvetica').fontSize(10).fillColor(GREY).text(person.jobTitle.en, { width: CONTENT_WIDTH });
   doc.moveDown(0.6);
-  doc.font('Helvetica-Oblique').fontSize(11).fillColor(CRIMSON).text(`“${person.tagline.en}”`, { width: CONTENT_WIDTH });
+  doc.font('Helvetica-Oblique').fontSize(11).fillColor(CORAL).text(`“${person.tagline.en}”`, { width: CONTENT_WIDTH });
 
   // ── Biography ────────────────────────────────────────────────────────────
   heading('Profile');
@@ -116,11 +115,10 @@ export const GET: APIRoute = async () => {
   // ── Track record ─────────────────────────────────────────────────────────
   heading('Selected training record');
   const record = [
-    'Kahraba (National Electricity Technology Company) — 65 executives including the CEO, rated 4.8/5',
-    'Engineering Export Council of Egypt — affiliated companies, multiple rounds',
-    'Cairo University, Faculty of Economics and Political Science — faculty workshops',
-    'Hisense UAE via Formatech — “AI for Marketing, Retail & GTM Excellence”',
-    'Logic Consulting — AI for a professional services practice',
+    'Kahraba (National Electricity Technology Company) — 65 executives trained on Microsoft Copilot, incl. the CEO, rated 4.8/5',
+    'Kahraba leadership — advanced Claude Cowork & Fable 5 session for the CEO and senior managers',
+    'Engineering Export Council of Egypt — two-day AI for Business Strategy workshop for member companies',
+    'Cairo University FEPS — "Mastering AI for Smarter Teaching" for faculty, with Logic Consulting',
   ];
   doc.font('Helvetica').fontSize(9).fillColor(INK);
   for (const line of record) {
@@ -159,13 +157,13 @@ export const GET: APIRoute = async () => {
   heading('Programmes');
   doc.font('Helvetica').fontSize(9).fillColor(INK).text(
     'AI for Business · AI for Executives · AI for Marketing & Sales · AI for Educators · ' +
-      'AI for Automation · AI for Business Strategy (flagship, 16 hours)',
+      'AI for Automation · AI for Entrepreneurs (24 hours) · AI for Business Strategy (flagship, 16 hours)',
     { width: CONTENT_WIDTH, lineGap: 1.4 },
   );
 
   // ── Footer ───────────────────────────────────────────────────────────────
   const footerY = PAGE.height - PAGE.margin - 34;
-  doc.moveTo(PAGE.margin, footerY).lineTo(PAGE.margin + 90, footerY).lineWidth(2.5).strokeColor(CRIMSON).stroke();
+  doc.moveTo(PAGE.margin, footerY).lineTo(PAGE.margin + 90, footerY).lineWidth(2.5).strokeColor(CORAL).stroke();
   doc.moveTo(PAGE.margin + 90, footerY).lineTo(PAGE.margin + 180, footerY).lineWidth(2.5).strokeColor(GREEN).stroke();
 
   doc.font('Helvetica-Bold').fontSize(9).fillColor(INK).text(contact.email, PAGE.margin, footerY + 9, { width: CONTENT_WIDTH });
