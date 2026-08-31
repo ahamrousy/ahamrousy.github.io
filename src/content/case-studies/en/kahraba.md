@@ -1,13 +1,13 @@
 ---
-title: Copilot Training for 65 Executives at Kahraba
-client: Kahraba — National Electricity Technology Company
+title: AI Foundation Workshop for 65 Executives at Kahraba
+client: Kahraba — Egypt's largest private-sector power company
 sector: Energy & utilities
-participants: 65 executives, including the CEO
+participants: 65 executives across three runs — 20 to 23 per run
 rating: 4.8/5
-programme: AI for Business + Microsoft Copilot Full-Stack Workshop (16 hours)
+programme: AI Foundation Workshop — 16 hours over two days, Microsoft Copilot focused, run three times
 period: TODO — confirm delivery dates
-seoTitle: Copilot Training for 65 Kahraba Executives | Menova
-metaDescription: How Menova trained 65 Kahraba executives on Microsoft Copilot across Word, Excel, Outlook, PowerPoint and Teams — on real tenders and budgets. Rated 4.8/5.
+seoTitle: AI Foundation Workshop for 65 Kahraba Executives
+metaDescription: How Menova trained 65 Kahraba executives on Microsoft Copilot across three runs of a 16-hour workshop — on real tenders and budgets. Rated 4.8/5.
 primaryKeyword: Microsoft Copilot training Egypt
 secondaryKeywords:
   - Copilot training for executives
@@ -15,11 +15,12 @@ secondaryKeywords:
   - Microsoft 365 Copilot workshop
   - corporate AI training case study
 summary: >-
-  Menova delivered a 16-hour Microsoft Copilot training programme to 65 executives at Kahraba, the
-  National Electricity Technology Company, across two full eight-hour days. Day one built the
-  prompting foundation — POCAB, GCSE-F and hallucination control; day two was a Copilot full-stack
-  workshop across Word, Excel, Outlook, PowerPoint, Teams and Power Automate, run on Kahraba's own
-  tenders, budgets and documents. Participants, including the CEO, rated the programme 4.8 out of 5.
+  Menova delivered a 16-hour AI Foundation Workshop to 65 executives at Kahraba, Egypt's largest
+  private-sector power generation and distribution company. The workshop ran three times, with 20 to
+  23 participants per run, each over two full eight-hour days — six delivery days in total. Day one
+  built the prompting foundation (POCAB, GCSE-F and hallucination control); day two was a Microsoft
+  Copilot workshop across Word, Excel, Outlook, PowerPoint, Teams and Power Automate, run on
+  Kahraba's own tenders, budgets and documents. Participants rated it 4.8 out of 5.
 updated: 2026-08-27
 order: 1
 photos:
@@ -32,7 +33,8 @@ photos:
     height: 1333
     caption: Working through the Copilot use cases on real Kahraba documents
 challenge: >-
-  Kahraba is critical national infrastructure. Its executives handle tender documents, budget
+  Kahraba is Egypt’s largest private-sector power generation and distribution company. Its
+  executives handle tender documents, budget
   variance reviews, compliance matrices and board reporting every week — document-heavy work where
   an unverified AI answer is not an option. The organisation had Microsoft 365 licences; what it
   needed was a leadership team that could put Copilot to work on that real workload, with the
@@ -44,21 +46,22 @@ approach:
   - 'Every exercise ran on real Kahraba material: converting the company profile into a management summary in Word, summarising an actual tender document (كراسة الشروط), building a budget-variance dashboard in Excel, generating an RFP compliance matrix, drafting an executive pitch deck, and summarising live Teams threads and meetings.'
   - 'Structured labs in teams: diagnose a weak prompt, pick the right framework (POCAB or GCSE-F), rewrite it, compare results.'
 result:
-  - 65 executives trained, including the CEO and senior management.
-  - Participants rated the programme 4.8 out of 5.
+  - 65 executives trained in total, across three runs of 20 to 23 participants each.
+  - Participants rated the workshop 4.8 out of 5.
   - Each participant left day one with a personal 10-prompt AI toolkit built for their own role, tested in the room.
   - Day two ended with working Copilot patterns for the documents Kahraba actually produces — tender summaries, variance dashboards, compliance matrices and board-ready decks.
 relatedCourse: ai-for-business
 todos:
-  - Confirm delivery dates.
+  - Confirm the delivery dates of the three runs.
   - Add a quotable testimonial with name and title, if Kahraba approves one.
 ---
 
 ## Why this engagement is worth reading
 
 Most Copilot training is a feature tour. This was the opposite: two days engineered around the
-documents a national electricity company actually produces — tenders, budget variances, compliance
-matrices, board packs — with the prompting discipline taught first and the tools second.
+documents a large power company actually produces — tenders, budget variances, compliance matrices,
+board packs — with the prompting discipline taught first and the tools second. It was delivered
+three times, to 20–23 executives per run.
 
 ## Day one: judgement before tools
 
@@ -86,10 +89,10 @@ Seven modules, each anchored to a live Kahraba use case:
 - **Teams** — chat and meeting summarisation with decisions and action items extracted.
 - **Power Automate** — a showcase of AI workflows for recurring processes.
 - **AI & data governance** — what may and may not enter the tools, closed with the enterprise
-  security conversation a critical-infrastructure company needs.
+  security conversation a power company handling commercially sensitive tender data needs.
 
 ## The pattern that made it stick
 
-Leadership first, real material throughout, verification built into every exercise. That sequence —
-not the tool list — is why the programme rated 4.8 out of 5 and why the same group later returned
-for an advanced session on delegated AI work.
+Real material throughout, verification built into every exercise, and a format proven enough to run
+three times. That — not the tool list — is why the workshop rated 4.8 out of 5, and why the CEO and
+nine senior managers later booked a separate advanced session on delegated AI work.

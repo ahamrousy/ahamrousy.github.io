@@ -1,6 +1,6 @@
 ---
 title: Advanced Cowork & Fable 5 for Kahraba's Leadership
-client: Kahraba — National Electricity Technology Company
+client: Kahraba — Egypt's largest private-sector power company
 sector: Energy & utilities
 participants: CEO and senior managers
 programme: Mastering Claude Cowork & Fable 5 — one-day executive session
@@ -17,13 +17,13 @@ summary: >-
   After the Copilot programme, Kahraba's CEO and senior managers returned for a one-day advanced
   session on Claude Cowork and Fable 5, delivered by Ahmed Amrousy. The day taught leaders to
   classify work as chat or delegated Cowork, route between Sonnet 5, Opus 5 and Fable 5 on
-  economics, set the data boundary for a critical-infrastructure company, and build directorate
+  economics, set the data boundary for a power company handling sensitive commercial data, and build directorate
   skills and scheduled tasks — ending with a live bid/no-bid tender analysis with cited clauses.
 updated: 2026-08-27
 order: 2
 logo:
   src: images/logos/kahraba.png
-  alt: Kahraba — National Electricity Technology Company
+  alt: Kahraba — Egypt's largest private-sector power company
 challenge: >-
   The leadership team had mastered assisted work — Copilot inside documents they were editing
   themselves. The next step was delegation: handing a defined piece of work to an AI agent and

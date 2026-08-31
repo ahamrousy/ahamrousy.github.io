@@ -149,9 +149,12 @@ leadership involvement produces pockets of enthusiasm that fade, because nobody 
 priorities or budget.
 
 When the leadership team has a shared position first, departmental training lands into an
-organisation that has already decided what it is trying to achieve. That sequence — leadership, then
-departments, with the data boundary set at the front — is what produced 65 trained executives and a
-4.8 out of 5 rating at Kahraba, the National Electricity Technology Company.
+organisation that has already decided what it is trying to achieve.
+
+The honest caveat: it can work in the other order. At Kahraba the foundation workshop ran three
+times — 65 executives, rated 4.8 out of 5 — and the CEO and senior managers booked their own
+advanced session afterwards, once the organisation had proved what it could do. What is not
+optional either way is the data boundary at the front.
 
 ---
 

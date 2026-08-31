@@ -43,8 +43,8 @@ export const intents: Intent[] = [
       ar: ['مين', 'من هو', 'عمروسي', 'خبرة', 'سيرة', 'مؤهل', 'نبذة'],
     },
     answer: {
-      en: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor. He teaches executive education at the American University in Cairo, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova. He has 25 years of marketing leadership across aviation, FMCG, EdTech and manufacturing.',
-      ar: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال. يُدرِّس في التعليم التنفيذي بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وباحث دكتوراه بجامعة عين شمس، ومؤسس مِنوفا. له 25 عامًا في قيادة التسويق عبر الطيران والسلع الاستهلاكية والتعليم الرقمي والصناعة.',
+      en: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor. He teaches Marketing Management in executive education at the American University in Cairo, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova — his AI training is delivered through Menova, not AUC. He has 25 years of marketing leadership across aviation, FMCG, EdTech and manufacturing.',
+      ar: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال. يُدرِّس إدارة التسويق في التعليم التنفيذي بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وباحث دكتوراه بجامعة عين شمس، ومؤسس مِنوفا — وتدريبه على الذكاء الاصطناعي يُقدَّم عبر مِنوفا لا عبر الجامعة. له 25 عامًا في قيادة التسويق عبر الطيران والسلع الاستهلاكية والتعليم الرقمي والصناعة.',
     },
     links: [{ key: 'about', label: { en: 'Full profile', ar: 'الملف الكامل' } }],
   },
@@ -104,8 +104,8 @@ export const intents: Intent[] = [
       ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الخليج', 'مكان'],
     },
     answer: {
-      en: 'Menova delivers on-site in Egypt (Cairo and beyond), Saudi Arabia and the UAE, and live online anywhere.',
-      ar: 'تنفّذ مِنوفا التدريب حضوريًا في مصر (القاهرة وغيرها) والسعودية والإمارات، وأونلاين مباشر في أي مكان.',
+      en: 'Menova is based in Cairo and has delivered on-site across Egypt. It is available for on-site delivery in Saudi Arabia and the UAE, and live online anywhere.',
+      ar: 'مقر مِنوفا القاهرة وقد نفَّذت حضوريًا في أنحاء مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات، وأونلاين مباشر في أي مكان.',
     },
     links: [
       { key: 'corporate-ai-training-egypt', label: { en: 'Egypt', ar: 'مصر' } },
@@ -166,8 +166,8 @@ export const intents: Intent[] = [
       ar: ['عملاء', 'عميل', 'دراسة حالة', 'كهرباء', 'مرجع', 'نتائج', 'من درب'],
     },
     answer: {
-      en: 'Recent programmes include Kahraba (the National Electricity Technology Company) where 65 executives including the CEO rated it 4.8/5 — plus an advanced Cowork & Fable 5 session for its CEO and senior managers — a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt companies, and an AI for Educators workshop at Cairo University FEPS with Logic Consulting.',
-      ar: 'من البرامج الأخيرة: كهرباء (الشركة القومية لتكنولوجيا الكهرباء) حيث دُرِّب 65 تنفيذيًا بينهم الرئيس التنفيذي بتقييم 4.8/5 — مع جلسة متقدمة عن Cowork وFable 5 للرئيس التنفيذي وكبار المديرين — وورشة استراتيجية من يومين لشركات المجلس التصديري للصناعات الهندسية، وورشة الذكاء الاصطناعي للمعلمين بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
+      en: 'Recent programmes include Kahraba, Egypt’s largest private-sector power company, where 65 executives were trained across three runs of a 16-hour AI Foundation Workshop rated 4.8/5, plus a separate eight-hour Cowork & Fable 5 session for the CEO and nine senior managers; a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt companies; and an AI for Educators workshop at Cairo University FEPS with Logic Consulting. All delivery to date has been in Egypt.',
+      ar: 'من البرامج الأخيرة: كهرباء، أكبر شركة كهرباء خاصة في مصر، حيث دُرِّب 65 تنفيذيًا عبر ثلاث دفعات من ورشة تأسيس الذكاء الاصطناعي (16 ساعة) بتقييم 4.8/5، مع جلسة منفصلة من ثماني ساعات عن Cowork وFable 5 للرئيس التنفيذي وتسعة من كبار المديرين؛ وورشة استراتيجية من يومين لشركات المجلس التصديري للصناعات الهندسية؛ وورشة الذكاء الاصطناعي للمعلمين بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج. وكل التنفيذ حتى الآن كان في مصر.',
     },
     links: [{ key: 'case-studies', label: { en: 'Case studies', ar: 'دراسات الحالة' } }],
   },

@@ -80,9 +80,10 @@ faqs:
     a: >-
       Menova's AI for Executives is designed specifically for the Egyptian and Gulf executive
       context — delivered in Arabic, built around decisions rather than tools, and taught by Ahmed
-      Amrousy, who teaches executive education at the American University in Cairo and runs
-      marketing for Nile Air. The CEO and senior management of Kahraba, the National Electricity
-      Technology Company, rated the programme 4.8 out of 5.
+      Amrousy, who teaches Marketing Management in executive education at the American University in
+      Cairo and runs marketing for Nile Air. At Kahraba, Egypt’s largest private-sector power
+      company, 65 executives rated the workshop 4.8 out of 5 across three runs, after which the CEO
+      and nine senior managers booked a separate advanced session.
   - q: How is this different from AI for Business?
     a: >-
       AI for Business teaches a team to do the work. AI for Executives teaches leaders to direct,
@@ -130,6 +131,6 @@ sequenced across ninety days.
 ## Where this has been delivered
 
 Ahmed has run executive-level AI programmes for the CEO and senior management of Kahraba, the
-National Electricity Technology Company, and for companies affiliated with the Engineering Export
+Egypt's largest private-sector power company, and for companies affiliated with the Engineering Export
 Council of Egypt. Across the Kahraba engagement 65 executives were trained, rating the programme
 4.8 out of 5.

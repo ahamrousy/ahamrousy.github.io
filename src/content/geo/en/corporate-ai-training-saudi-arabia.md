@@ -25,8 +25,8 @@ cities:
   - Dammam and Khobar
   - NEOM and the Red Sea projects
 proofPoints:
-  - Delivered in Arabic — no interpretation layer between the trainer and the room
-  - Executive-level track record, including the CEO and senior management of Kahraba
+  - Available for delivery in Saudi Arabia — in Arabic, with no interpretation layer between the trainer and the room
+  - Executive-level track record built in Egypt, including the CEO and senior management of Kahraba
   - Strategy work grounded in SOSTAC and Playing to Win, not tool demonstrations
 logistics:
   - label: Delivery model

@@ -121,8 +121,9 @@ must be redesigned, and what faculty should actually say in the first week of te
 
 ## Delivered to faculty, by faculty
 
-Ahmed teaches executive education at the American University in Cairo's Onsi Sawiris School of
-Business, and has delivered the "Mastering AI for Smarter Teaching" workshop to faculty at Cairo
+Ahmed teaches Marketing Management in executive education at the American University in Cairo's
+Onsi Sawiris School of Business, and through Menova has delivered the "Mastering AI for Smarter
+Teaching" workshop to faculty at Cairo
 University's Faculty of Economics and Political Science, in partnership with Logic Consulting. The
 session is run as a peer conversation, not a vendor briefing.
 

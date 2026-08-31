@@ -47,10 +47,11 @@ programmes are hands-on first, run on the participants' own material.
 - **Teaching format**: 70% hands-on / 30% theory; verbal delivery in Arabic with English slides, or full English; live demonstrations on real client datasets
 - **Frameworks taught**: POCAB (Persona, Objective, Context, Audience, Boundaries); GCSE-F (Goal, Context, Source, Expectations, Format); SOSTAC and Playing to Win for AI strategy
 - **Tools covered**: Claude (chat, Cowork, Fable 5), Microsoft Copilot, NotebookLM / Gemini Notebook, ChatGPT
-- **Locations served**: Egypt (Cairo), Saudi Arabia, United Arab Emirates, wider GCC; live online worldwide
+- **Delivery to date**: Egypt only
+- **Available for delivery in**: Egypt, Saudi Arabia, United Arab Emirates, wider GCC; live online worldwide
 - **Languages**: Arabic, English
 - **Contact**: ${contact.email} · WhatsApp ${contact.whatsappDisplay} · ${contact.linkedin}
-- **Track record**: 65 executives trained on Microsoft Copilot at Kahraba (National Electricity Technology Company), rated 4.8/5, plus an advanced Claude Cowork & Fable 5 session for its CEO and senior managers; a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies; "Mastering AI for Smarter Teaching" for Cairo University FEPS faculty, with Logic Consulting
+- **Track record**: 65 executives trained at Kahraba (Egypt’s largest private-sector power generation and distribution company) across three runs of a 16-hour, Microsoft Copilot-focused AI Foundation Workshop, rated 4.8/5; plus a separate eight-hour Claude Cowork & Fable 5 session for the CEO and nine senior managers; a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies; "Mastering AI for Smarter Teaching" for Cairo University FEPS faculty, with Logic Consulting
 - **Other public work**: host of the sports-transformation podcast عاش يا وحش (3aash Ya Wa7sh), one completed season; endurance athlete (triathlon, open-water swimming)
 
 ## Courses

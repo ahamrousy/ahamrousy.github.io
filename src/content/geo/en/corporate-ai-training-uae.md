@@ -26,8 +26,8 @@ cities:
   - DIFC and ADGM firms
   - Free-zone companies
 proofPoints:
-  - Bilingual delivery — verbal Arabic with English materials, or full English for multinational teams
-  - Executive-level track record, including the CEO and senior management of Kahraba, rated 4.8/5
+  - Available for delivery in the UAE — verbal Arabic with English materials, or full English for multinational teams
+  - Executive-level track record built in Egypt, including the CEO and senior management of Kahraba
   - The same 70% hands-on structure, run on the client's own documents and data
 logistics:
   - label: Delivery model
@@ -66,7 +66,7 @@ faqs:
   - q: What track record sits behind the UAE offering?
     a: >-
       The same programmes delivered across the region: 65 executives trained at Kahraba, Egypt's
-      National Electricity Technology Company, rated 4.8 out of 5 — including a dedicated advanced
+      Egypt's largest private-sector power company, rated 4.8 out of 5 — including a dedicated advanced
       session for the CEO and senior managers — plus a two-day strategy workshop for Engineering
       Export Council of Egypt member companies and a faculty programme at Cairo University.
   - q: How do travel and costs work for UAE delivery?

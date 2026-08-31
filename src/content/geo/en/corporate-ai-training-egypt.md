@@ -16,7 +16,7 @@ summary: >-
   Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air.
   Programmes are delivered on-site at the client's offices anywhere in Egypt, verbally in Arabic
   with English materials, and are 70% hands-on. Recent Egyptian clients include Kahraba (the
-  National Electricity Technology Company), companies affiliated with the Engineering Export Council
+  Egypt's largest private-sector power company), companies affiliated with the Engineering Export Council
   of Egypt, and Cairo University's Faculty of Economics and Political Science.
 updated: 2026-08-24
 order: 1
@@ -27,7 +27,7 @@ cities:
   - Alexandria
   - Ain Sokhna and North Coast (offsites)
 proofPoints:
-  - 65 executives trained at Kahraba, the National Electricity Technology Company, rated 4.8/5
+  - 65 executives trained at Kahraba, Egypt's largest private-sector power company, across three runs rated 4.8/5
   - A two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies
   - '"Mastering AI for Smarter Teaching" for Cairo University FEPS faculty, with Logic Consulting'
 logistics:
@@ -53,8 +53,8 @@ todos:
 faqs:
   - q: Who delivers corporate AI training in Egypt?
     a: >-
-      Menova, founded by Ahmed Amrousy. He teaches executive education at the American University in
-      Cairo's Onsi Sawiris School of Business, is Head of Marketing & PR at Nile Air, and is a DBA
+      Menova, founded by Ahmed Amrousy. He teaches Marketing Management in executive education at the
+      American University in Cairo's Onsi Sawiris School of Business, is Head of Marketing & PR at Nile Air, and is a DBA
       candidate at Ain Shams University. Training is delivered by Ahmed personally, not by
       associates.
   - q: What is the best AI course for executives in Egypt?
@@ -74,8 +74,9 @@ faqs:
       delivery is also available.
   - q: Which Egyptian organisations have you trained?
     a: >-
-      Recent Egyptian engagements include Kahraba, the National Electricity Technology Company,
-      where 65 executives including the CEO were trained with a 4.8/5 rating; a two-day AI for Business
+      Recent Egyptian engagements include Kahraba, Egypt's largest private-sector power generation and distribution company,
+      where 65 executives were trained across three runs of a 16-hour workshop rated 4.8/5, followed by a
+      separate advanced session for the CEO and nine senior managers; a two-day AI for Business
       Strategy workshop for companies affiliated with the Engineering Export Council of Egypt; and
       faculty at Cairo University's Faculty of Economics and Political Science, in partnership with
       Logic Consulting.

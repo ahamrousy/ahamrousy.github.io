@@ -39,7 +39,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'Menova — AI for Business',
       title: 'I teach leaders how to think with AI — not how to use it.',
       summary:
-        'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, Executive Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air. It delivers executive AI programmes to companies in Egypt, Saudi Arabia and the UAE, in Arabic or English, built on a 70% hands-on structure and taught on the client’s own data.',
+        'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, Executive Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air. It offers executive AI programmes to companies across Egypt, Saudi Arabia and the UAE, in Arabic or English, built on a 70% hands-on structure and taught on the client’s own data.',
       intro:
         'Seven programmes, delivered on-site or live online — for organisations and entrepreneurs who want output, not licences.',
       proofHeading: 'What that looks like in practice',
@@ -52,7 +52,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'What is Menova?',
-          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It delivers seven AI programmes to companies, universities, entrepreneurs and government-related organisations in Egypt, Saudi Arabia and the UAE, in Arabic or English.',
+          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It offers seven AI programmes to companies, universities, entrepreneurs and government-related organisations across Egypt, Saudi Arabia and the UAE, in Arabic or English. All delivery to date has been in Egypt.',
         },
         {
           q: 'What AI courses does Menova offer?',
@@ -64,7 +64,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Where does Menova deliver training?',
-          a: 'On-site in Egypt, Saudi Arabia and the UAE, and live online anywhere. Menova is based in Cairo.',
+          a: 'Menova is based in Cairo and all delivery to date has been in Egypt. It is available for on-site delivery in Saudi Arabia and the UAE, and live online anywhere.',
         },
         {
           q: 'How much does Menova training cost?',
@@ -76,7 +76,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Who has Menova trained?',
-          a: 'Recent clients include Kahraba, the National Electricity Technology Company, where 65 executives including the CEO rated the programme 4.8 out of 5 and the leadership returned for an advanced Cowork & Fable 5 session; companies affiliated with the Engineering Export Council of Egypt; and faculty at Cairo University’s Faculty of Economics and Political Science, with Logic Consulting.',
+          a: 'Recent clients include Kahraba, Egypt’s largest private-sector power generation and distribution company, where 65 executives were trained across three runs of a 16-hour AI Foundation Workshop rated 4.8 out of 5, after which the CEO and nine senior managers returned for a separate eight-hour Cowork & Fable 5 session; companies affiliated with the Engineering Export Council of Egypt; and faculty at Cairo University’s Faculty of Economics and Political Science, with Logic Consulting.',
         },
       ],
     },
@@ -87,7 +87,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'مِنوفا — الذكاء الاصطناعي للأعمال',
       title: 'أُعلِّم القيادات كيف تُفكِّر بالذكاء الاصطناعي — لا كيف تستخدمه.',
       summary:
-        'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي، محاضر التعليم التنفيذي بالجامعة الأمريكية بالقاهرة ومدير التسويق والعلاقات العامة في نايل إير. تقدّم برامج تنفيذية للشركات في مصر والسعودية والإمارات، بالعربية أو الإنجليزية، مبنية على 70% تطبيق عملي وتُنفَّذ على بيانات الجهة نفسها.',
+        'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي، محاضر التعليم التنفيذي بالجامعة الأمريكية بالقاهرة ومدير التسويق والعلاقات العامة في نايل إير. تُقدِّم برامج تنفيذية للشركات في مصر والسعودية والإمارات، بالعربية أو الإنجليزية، مبنية على 70% تطبيق عملي وتُنفَّذ على بيانات الجهة نفسها. وكل ما نُفِّذ حتى الآن كان في مصر.',
       intro:
         'سبعة برامج، تُنفَّذ حضوريًا أو أونلاين مباشر، للمؤسسات وروّاد الأعمال على السواء.',
       proofHeading: 'كيف يبدو ذلك عمليًا',
@@ -100,7 +100,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'ما هي مِنوفا؟',
-          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تقدّم سبعة برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية.',
+          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تُقدِّم سبعة برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية. وكل التنفيذ حتى الآن كان في مصر.',
         },
         {
           q: 'ما البرامج التي تقدّمها مِنوفا؟',
@@ -112,7 +112,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'أين تُنفِّذ مِنوفا التدريب؟',
-          a: 'حضوريًا في مصر والسعودية والإمارات، وأونلاين مباشر في أي مكان. ومقر مِنوفا القاهرة.',
+          a: 'مقر مِنوفا القاهرة، وكل التنفيذ حتى الآن كان في مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات، وأونلاين مباشر في أي مكان.',
         },
         {
           q: 'كم تكلفة التدريب؟',
@@ -124,7 +124,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'مَن دَرَّبت مِنوفا؟',
-          a: 'من العملاء الأخيرين: كهرباء، الشركة القومية لتكنولوجيا الكهرباء، حيث قيّم 65 تنفيذيًا بينهم الرئيس التنفيذي البرنامج بـ4.8 من 5 وعادت قيادتها لجلسة متقدمة عن Cowork وFable 5؛ وشركات أعضاء المجلس التصديري للصناعات الهندسية؛ وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
+          a: 'من العملاء الأخيرين: كهرباء، أكبر شركة خاصة لتوليد وتوزيع الكهرباء في مصر، حيث دُرِّب 65 تنفيذيًا عبر ثلاث دفعات من ورشة تأسيس الذكاء الاصطناعي (16 ساعة) بتقييم 4.8 من 5، ثم عاد الرئيس التنفيذي وتسعة من كبار المديرين لجلسة منفصلة من ثماني ساعات عن Cowork وFable 5؛ وشركات أعضاء المجلس التصديري للصناعات الهندسية؛ وأعضاء هيئة التدريس بكلية الاقتصاد والعلوم السياسية بجامعة القاهرة مع لوجيك كونسلتنج.',
         },
       ],
     },
@@ -146,11 +146,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
       faqs: [
         {
           q: 'Who is Ahmed Amrousy?',
-          a: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor and marketing leader based in Cairo. He teaches executive education at the American University in Cairo’s Onsi Sawiris School of Business, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova.',
+          a: 'Ahmed Amrousy is an Egyptian AI-for-Business instructor and marketing leader based in Cairo. He teaches Marketing Management in executive education at the American University in Cairo’s Onsi Sawiris School of Business, is Head of Marketing & PR at Nile Air, a DBA candidate at Ain Shams University, and the founder of Menova — the practice through which he delivers all his AI training.',
         },
         {
           q: 'What does Ahmed Amrousy do at AUC?',
-          a: 'He is an Executive Education Instructor at the American University in Cairo’s Onsi Sawiris School of Business, where he teaches AI programmes for senior managers and executives.',
+          a: 'He is an Executive Education Instructor at the American University in Cairo’s Onsi Sawiris School of Business, where he teaches Marketing Management in Executive Education. His AI training is delivered through Menova, not through AUC.',
         },
         {
           q: 'What is Ahmed Amrousy’s role at Nile Air?',
@@ -192,11 +192,11 @@ export const pages: Record<string, Localised<PageCopy>> = {
       faqs: [
         {
           q: 'مَن هو أحمد عمروسي؟',
-          a: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال وقيادي تسويقي مقره القاهرة. يُدرِّس التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وهو باحث دكتوراه بجامعة عين شمس ومؤسس مِنوفا.',
+          a: 'أحمد عمروسي محاضر مصري في الذكاء الاصطناعي للأعمال وقيادي تسويقي مقره القاهرة. يُدرِّس إدارة التسويق في التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال بالجامعة الأمريكية بالقاهرة، ويشغل منصب مدير التسويق والعلاقات العامة في نايل إير، وهو باحث دكتوراه بجامعة عين شمس ومؤسس مِنوفا — وعبرها يقدّم كل تدريبه على الذكاء الاصطناعي.',
         },
         {
           q: 'ماذا يعمل أحمد عمروسي في الجامعة الأمريكية بالقاهرة؟',
-          a: 'يشغل موقع محاضر التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال، حيث يقدّم برامج الذكاء الاصطناعي لكبار المديرين والتنفيذيين.',
+          a: 'يشغل موقع محاضر التعليم التنفيذي بكلية أنسي ساويرس لإدارة الأعمال، حيث يُدرِّس إدارة التسويق في التعليم التنفيذي. أما تدريبه على الذكاء الاصطناعي فيُقدَّم عبر مِنوفا لا عبر الجامعة.',
         },
         {
           q: 'ما منصب أحمد عمروسي في نايل إير؟',
@@ -453,7 +453,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Do you deliver outside Egypt?',
-          a: 'Yes — on-site in Saudi Arabia and the UAE, and live online anywhere. Travel and accommodation are quoted separately and charged at cost.',
+          a: 'Menova is available for on-site delivery in Saudi Arabia and the UAE, and live online anywhere — though every engagement to date has been delivered in Egypt. Travel and accommodation are quoted separately and charged at cost.',
         },
         {
           q: 'What is the minimum group size?',
@@ -488,7 +488,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'هل تنفّذون خارج مصر؟',
-          a: 'نعم — حضوريًا في السعودية والإمارات، وأونلاين مباشر في أي مكان. ويُسعَّر السفر والإقامة على حدة ويُحمَّلان بالتكلفة الفعلية.',
+          a: 'مِنوفا متاحة للتنفيذ الحضوري في السعودية والإمارات، وأونلاين مباشر في أي مكان — وإن كان كل ما نُفِّذ حتى الآن في مصر. ويُسعَّر السفر والإقامة على حدة ويُحمَّلان بالتكلفة الفعلية.',
         },
         {
           q: 'ما الحد الأدنى لعدد المشاركين؟',

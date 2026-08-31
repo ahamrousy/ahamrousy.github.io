@@ -1,19 +1,20 @@
 ---
 title: What 65 executives taught me about AI training in a power company
 seoTitle: What 65 Executives Taught Me — the Kahraba AI Case
-metaDescription: Lessons from training 65 executives at Kahraba — why leadership goes first, and why the data boundary comes before the first exercise.
+metaDescription: Lessons from training 65 executives at Kahraba across three runs — why the data boundary comes before the first exercise, not after it.
 primaryKeyword: AI training lessons power company
 secondaryKeywords:
   - Kahraba AI training
   - executive AI training lessons
   - corporate AI adoption Egypt
-  - AI training critical infrastructure
+  - AI training energy sector
 summary: >-
-  Ahmed Amrousy trained 65 executives at Kahraba, Egypt's National Electricity Technology Company,
-  beginning with the CEO. The programme was rated 4.8 out of 5. These are the five things the
-  engagement taught him about corporate AI training — including why the data boundary has to come
-  before the first exercise rather than after it, and why starting with leadership is not a courtesy
-  but a design decision.
+  Ahmed Amrousy trained 65 executives at Kahraba, Egypt's largest private-sector power generation
+  and distribution company, across three runs of the same 16-hour workshop. It was rated 4.8 out of
+  5, and the CEO and nine senior managers later booked a separate advanced session. These are the
+  five things the engagement taught him about corporate AI training — including why the data
+  boundary has to come before the first exercise rather than after it, and what running the same
+  workshop three times revealed that running it once would not have.
 published: 2026-08-02
 updated: 2026-08-24
 order: 3
@@ -26,13 +27,15 @@ answers:
 faqs:
   - q: How many executives were trained at Kahraba?
     a: >-
-      65 executives in total, beginning with the CEO and the senior management team, then extending
-      outward through the organisation. Participants rated the programme 4.8 out of 5.
-  - q: Why start AI training with the leadership team?
+      65 in total, across three runs of the same 16-hour workshop with 20 to 23 participants per
+      run — six delivery days. Participants rated it 4.8 out of 5. The CEO and nine senior managers
+      attended a separate eight-hour advanced session afterwards.
+  - q: Should AI training start with the leadership team?
     a: >-
-      Because departmental training without leadership involvement produces enthusiasm that fades.
-      The people who set priorities and allocate budget were never in the room, so nothing
-      structural changes after the training week.
+      It is the conventional advice, and at Kahraba it happened the other way round: three runs built
+      capability across the organisation first, and the CEO and senior managers went deeper
+      afterwards. That order worked because the leadership session could then be built on what the
+      organisation had already proved it could do, rather than on a promise.
   - q: How do you run AI training in a sensitive or regulated industry?
     a: >-
       Put the data boundary session first, before any exercise touches real material. Agreeing what
@@ -45,23 +48,28 @@ faqs:
       ownership or sequencing.
 ---
 
-Kahraba — the National Electricity Technology Company — is critical national infrastructure. When
-the engagement began, I expected the hard part to be the technology. It was not.
+Kahraba is Egypt's largest private-sector power generation and distribution company. When the
+engagement began, I expected the hard part to be the technology. It was not.
 
-Sixty-five executives later, rated 4.8 out of 5, these are the five things I would tell anyone
-planning corporate AI training in a serious organisation.
+Sixty-five executives later — across three runs of the same 16-hour workshop, rated 4.8 out of 5 —
+these are the five things I would tell anyone planning corporate AI training in a serious
+organisation.
 
-## 1. Start at the top, and mean it
+## 1. Run it more than once
 
-We began with the CEO and the senior management team. Not as a courtesy briefing before the real
-training — as the actual first cohort, doing the actual exercises.
+The conventional advice — mine included — is to start at the top. Kahraba happened the other way
+round, and it taught me something I did not expect.
 
-I have seen the alternative many times. A department with an enthusiastic manager runs a pilot. The
-day goes well. Six months later nothing has changed, because the people who control priorities and
-budget were never in the room and never formed a view.
+We ran the same 16-hour workshop three times, 20 to 23 executives per run. The first run is where
+you discover which exercises actually land. By the third, the weak sections had been cut and the
+strong ones extended. A format delivered once is a hypothesis; delivered three times to comparable
+groups, it is evidence.
 
-When leadership goes first, everything downstream lands into an organisation that has already
-decided what it is trying to achieve. The departmental training then has somewhere to attach.
+And the leadership session came *after* — the CEO and nine senior managers booking eight hours on
+delegated AI work once the organisation had already proved it could use the tools. That order has a
+quiet advantage: the leadership conversation was about extending something real, not authorising
+something speculative. I would still usually argue for leadership first. But a pilot that earns the
+leadership session is a legitimate second route, and this engagement is why I now say so.
 
 ## 2. The data boundary comes before the first exercise, not after it
 
@@ -121,8 +129,8 @@ Nobody rates a lecture 4.8. They rate the afternoon they got back.
 
 ## The pattern, generalised
 
-Leadership first. Boundary before exercises. Separate programmes for separate seniorities. Lead with
-the failure modes. Make people build.
+Run it more than once. Boundary before exercises. Separate programmes for separate seniorities. Lead
+with the failure modes. Make people build.
 
 None of that is specific to energy. It is what I would now recommend to any organisation of any size
 that wants AI training to survive contact with the following Monday.
