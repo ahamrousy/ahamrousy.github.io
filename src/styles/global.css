@@ -980,3 +980,170 @@ html[dir='rtl'] .site-footer h2 {
   max-width: var(--measure);
   margin-block-end: var(--space-m);
 }
+
+
+/* ══ Entrance animation ═══════════════════════════════════════════════════
+   Deliberately CSS-only: no JavaScript, no library, nothing to download. The
+   hero children fade and rise once on load, staggered by nth-child. Anything
+   below the fold is left alone — animating it would only cost paint work for
+   motion the visitor never sees.
+   ───────────────────────────────────────────────────────────────────────── */
+@keyframes menova-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes menova-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero .eyebrow,
+.hero h1,
+.hero .lede,
+.hero .btn-row,
+.page-header .eyebrow,
+.page-header h1,
+.page-header .lede {
+  animation: menova-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.hero .eyebrow,
+.page-header .eyebrow {
+  animation-delay: 0.02s;
+}
+.hero h1,
+.page-header h1 {
+  animation-delay: 0.1s;
+}
+.hero .lede,
+.page-header .lede {
+  animation-delay: 0.18s;
+}
+.hero .btn-row {
+  animation-delay: 0.26s;
+}
+.hero__portrait {
+  animation: menova-fade 0.7s ease-out 0.15s backwards;
+}
+
+/* The stat row directly under the hero is usually just in view on desktop. */
+.hero + .section .stat {
+  animation: menova-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.hero + .section .stat:nth-child(1) { animation-delay: 0.3s; }
+.hero + .section .stat:nth-child(2) { animation-delay: 0.37s; }
+.hero + .section .stat:nth-child(3) { animation-delay: 0.44s; }
+.hero + .section .stat:nth-child(4) { animation-delay: 0.51s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .eyebrow,
+  .hero h1,
+  .hero .lede,
+  .hero .btn-row,
+  .hero__portrait,
+  .hero + .section .stat,
+  .page-header .eyebrow,
+  .page-header h1,
+  .page-header .lede {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ══ More colour ══════════════════════════════════════════════════════════
+   The palette was carrying a lot of white. These bring the brand green and
+   coral into the page structure itself rather than leaving them only on
+   buttons — while keeping roughly 70% of the page as white space.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Hero: a soft two-colour wash instead of a single flat tint. */
+.hero {
+  background:
+    radial-gradient(1100px 460px at 88% -8%, rgb(11 215 151 / 0.16), transparent 62%),
+    radial-gradient(820px 420px at 6% 8%, rgb(245 105 101 / 0.14), transparent 60%),
+    linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 72%);
+}
+
+/* Section headings get a short brand rule above them. */
+.section-head > h2::before {
+  content: '';
+  display: block;
+  width: 46px;
+  height: 4px;
+  border-radius: 2px;
+  margin-block-end: 0.85rem;
+  background: linear-gradient(90deg, var(--coral) 0%, var(--green) 100%);
+}
+html[dir='rtl'] .section-head > h2::before {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+.section--ink .section-head > h2::before {
+  background: linear-gradient(90deg, var(--green-bright) 0%, var(--coral) 100%);
+}
+
+/* Alternating tinted sections pick up a hint of green rather than plain grey. */
+.section--tinted {
+  background:
+    linear-gradient(180deg, rgb(11 215 151 / 0.05) 0%, transparent 55%),
+    var(--paper-3);
+}
+
+/* Cards: brand edge on hover, and a colour-graded top rule on flagged cards. */
+.card--flag {
+  border-block-start: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--coral) 0%, var(--coral-strong) 100%) 1;
+  border-image-slice: 1;
+  border-inline-width: 1px;
+  border-block-end-width: 1px;
+}
+.card--flag-green {
+  border-block-start: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--green-bright) 0%, var(--green) 100%) 1;
+  border-image-slice: 1;
+  border-inline-width: 1px;
+  border-block-end-width: 1px;
+}
+
+/* The CTA band: brand gradient rather than flat ink. */
+.cta-band {
+  background:
+    radial-gradient(680px 320px at 88% 0%, rgb(11 215 151 / 0.22), transparent 62%),
+    radial-gradient(560px 300px at 4% 100%, rgb(245 105 101 / 0.2), transparent 60%),
+    var(--ink);
+}
+
+/* Footer: a brand hairline along the top edge. */
+.site-footer {
+  border-block-start: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--coral) 0%, var(--green) 100%) 1;
+}
+
+/* Pills alternate warm and cool so tag rows are not a wall of one colour. */
+.tag-row > .pill:nth-child(even) {
+  background: var(--green-tint);
+  color: var(--green-dark);
+  border-color: rgb(13 149 97 / 0.2);
+}
+
+/* Stat values in brand colour, alternating. */
+.stat:nth-child(odd) .stat__value {
+  color: var(--coral-strong);
+}
+.stat:nth-child(even) .stat__value {
+  color: var(--green-dark);
+}
+.section--ink .stat__value {
+  color: var(--green-bright);
+}

@@ -20,7 +20,6 @@ import CourseCard from '~/components/CourseCard.astro';
 import Faq from '~/components/Faq.astro';
 import CtaBand from '~/components/CtaBand.astro';
 import LogoWall from '~/components/LogoWall.astro';
-import TodoNote from '~/components/TodoNote.astro';
 
 interface Props {
   lang: Locale;
@@ -142,13 +141,6 @@ const jsonLd = graph([
     <div class="container container--narrow">
       <h2 id="geo-faq" style="margin-block-end:1.5rem">{t('heading.faq')}</h2>
       <Faq lang={lang} faqs={d.faqs} showHeading={false} />
-      {
-        d.todos.length > 0 && (
-          <div style="margin-block-start:2.5rem">
-            <TodoNote lang={lang} items={d.todos} />
-          </div>
-        )
-      }
     </div>
   </section>
 

@@ -43,6 +43,16 @@ const markUri = `data:image/png;base64,${markPng.toString('base64')}`;
 const MARK_H = 40;
 const MARK_W = Math.round((160 / 103) * MARK_H);
 
+/**
+ * The headshot, inlined as a data URI. Satori cannot fetch over the network,
+ * so the bytes have to be embedded. Read once at module scope rather than per
+ * card — there are 50+ cards per build.
+ */
+const headshot = (() => {
+  const file = path.resolve(process.cwd(), 'public', 'images', 'ahmed-amrousy-headshot.jpg');
+  return `data:image/jpeg;base64,${fs.readFileSync(file).toString('base64')}`;
+})();
+
 const fonts = [
   { name: 'Plex', data: fontFile('latin', 400), weight: 400 as const, style: 'normal' as const },
   { name: 'Plex', data: fontFile('latin', 700), weight: 700 as const, style: 'normal' as const },
@@ -62,7 +72,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return keys.flatMap((entry) =>
     locales.map((lang) => ({
       params: { name: ogName(entry.key, lang) },
-      props: { title: entry.title[lang] || entry.title.en, lang },
+      props: {
+        title: entry.title[lang] || entry.title.en,
+        lang,
+        // The homepage and the About page are the links Ahmed actually shares,
+        // so those two get the profile card — portrait plus bio — rather than
+        // the generic title card every other page uses.
+        profile: entry.key === '' || entry.key === 'about',
+      },
     })),
   );
 };
@@ -127,7 +144,7 @@ function rtlLines(text: string, maxChars: number): string[] {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const { title, lang } = props as { title: string; lang: Locale };
+  const { title, lang, profile } = props as { title: string; lang: Locale; profile?: boolean };
   const isRtl = lang === 'ar';
   const family = isRtl ? 'PlexAr, Plex' : 'Plex, PlexAr';
 
@@ -153,6 +170,125 @@ export const GET: APIRoute = async ({ props }) => {
   // English wraps natively; Arabic is pre-wrapped so the reversal stays
   // per-line. Both end up as an array of lines rendered in a column.
   const headingLines = isRtl ? rtlLines(title, maxChars) : [title];
+
+  // ── Profile card: portrait left, biography right ───────────────────────
+  if (profile) {
+    // English uses the first two sentences of the medium bio — the exact
+    // wording Ahmed asked to appear when the link is shared. Arabic uses the
+    // short bio instead: Arabic sentences here are much longer, and slicing
+    // the medium one overflowed the card.
+    const shortened = isRtl
+      ? person.bios.ar.short
+      : person.bios.en.medium.split('. ').slice(0, 2).join('. ') + '.';
+    const bioLines = isRtl ? rtlLines(shortened, 44) : [shortened];
+
+    const profileSvg = await satori(
+      el('div', {
+        style: {
+          width: 1200,
+          height: 630,
+          display: 'flex',
+          flexDirection: isRtl ? 'row-reverse' : 'row',
+          backgroundColor: brand.colors.ink,
+          fontFamily: family,
+        },
+        children: [
+          // Portrait — full-bleed on its side, with a brand edge
+          el('div', {
+            style: { display: 'flex', width: 430, height: 630, position: 'relative' },
+            children: [
+              el('img', {
+                src: headshot,
+                width: 430,
+                height: 630,
+                style: { width: 430, height: 630, objectFit: 'cover' },
+              }),
+              el('div', {
+                style: {
+                  display: 'flex',
+                  position: 'absolute',
+                  top: 0,
+                  [isRtl ? 'left' : 'right']: 0,
+                  width: 8,
+                  height: 630,
+                  backgroundColor: brand.colors.coral,
+                },
+              }),
+            ],
+          }),
+
+          // Text column
+          el('div', {
+            style: {
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: 18,
+              padding: '56px 60px',
+              width: 770,
+            },
+            children: [
+              el('div', {
+                style: {
+                  display: 'flex',
+                  flexDirection: isRtl ? 'row-reverse' : 'row',
+                  alignItems: 'center',
+                  gap: 12,
+                },
+                children: [
+                  el('div', {
+                    style: { display: 'flex', width: 34, height: 6, backgroundColor: brand.colors.green },
+                  }),
+                  el('div', {
+                    style: {
+                      color: brand.colors.coral,
+                      fontSize: 22,
+                      fontWeight: 700,
+                      letterSpacing: isRtl ? '0' : '0.08em',
+                    },
+                    children: isRtl ? 'مِنوفا' : 'MENOVA',
+                  }),
+                ],
+              }),
+              el('div', {
+                style: {
+                  display: 'flex',
+                  color: '#fff',
+                  fontSize: 52,
+                  fontWeight: 700,
+                  letterSpacing: isRtl ? '0' : '-0.02em',
+                  textAlign: isRtl ? 'right' : 'left',
+                  justifyContent: isRtl ? 'flex-end' : 'flex-start',
+                },
+                children: isRtl ? person.nameAr : person.name,
+              }),
+              el('div', {
+                style: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 4,
+                  color: 'rgba(255,255,255,0.82)',
+                  fontSize: isRtl ? 21 : 23,
+                  lineHeight: isRtl ? 1.5 : 1.45,
+                  alignItems: isRtl ? 'flex-end' : 'flex-start',
+                },
+                children: bioLines.map((line) => el('div', { style: { display: 'flex' }, children: line })),
+              }),
+            ],
+          }),
+        ],
+      }) as Parameters<typeof satori>[0],
+      { width: 1200, height: 630, fonts },
+    );
+
+    const profilePng = new Resvg(profileSvg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
+    return new Response(new Uint8Array(profilePng), {
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
+    });
+  }
 
   const svg = await satori(
     el('div', {

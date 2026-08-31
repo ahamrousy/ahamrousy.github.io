@@ -158,6 +158,6 @@ optional either way is the data boundary at the front.
 
 ---
 
-*Ahmed Amrousy is an Egyptian AI-for-Business instructor, Executive Education Instructor at the
+*Ahmed Amrousy is an Egyptian AI-for-Business Expert, Executive Education Instructor at the
 American University in Cairo's Onsi Sawiris School of Business, Head of Marketing & PR at Nile Air,
 and the founder of Menova.*

@@ -19,7 +19,6 @@ import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import PageHeader from '~/components/PageHeader.astro';
 import Faq from '~/components/Faq.astro';
 import CtaBand from '~/components/CtaBand.astro';
-import TodoNote from '~/components/TodoNote.astro';
 
 interface Props {
   lang: Locale;
@@ -92,29 +91,6 @@ const hasLinks = Boolean(contact.youtube || contact.spotify);
           </dl>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--tinted">
-    <div class="container container--narrow">
-      <TodoNote
-        lang={lang}
-        items={
-          lang === 'ar'
-            ? [
-                'أضف روابط يوتيوب وسبوتيفاي في src/site.config.ts — تظهر الأزرار تلقائيًا.',
-                'أضف قائمة الحلقات بعناوينها وضيوفها وتواريخها.',
-                'أضف صور جلسات التسجيل إلى public/images/gallery/.',
-                'أضف رابطًا عكسيًا من ملاحظات حلقات البودكاست إلى هذه الصفحة — انظر LAUNCH-CHECKLIST.md.',
-              ]
-            : [
-                'Add the YouTube and Spotify URLs in src/site.config.ts — the buttons appear automatically.',
-                'Add the episode list with titles, guests and dates.',
-                'Add podcast shoot photographs to public/images/gallery/.',
-                'Add a back-link from the podcast show notes to this page — see LAUNCH-CHECKLIST.md.',
-              ]
-        }
-      />
     </div>
   </section>
 

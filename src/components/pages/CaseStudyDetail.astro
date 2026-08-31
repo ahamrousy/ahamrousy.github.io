@@ -12,7 +12,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import PageHeader from '~/components/PageHeader.astro';
 import CtaBand from '~/components/CtaBand.astro';
-import TodoNote from '~/components/TodoNote.astro';
 
 interface Props {
   lang: Locale;
@@ -102,14 +101,6 @@ const jsonLd = graph([
         <div class="prose" style="margin-block-start:3rem">
           <Content />
         </div>
-
-        {
-          d.todos.length > 0 && (
-            <div style="margin-block-start:2.5rem">
-              <TodoNote lang={lang} items={d.todos} />
-            </div>
-          )
-        }
       </div>
 
       <aside class="stack" style="--flow:1.5rem">

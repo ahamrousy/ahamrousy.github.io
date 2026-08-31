@@ -12,7 +12,6 @@ import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import PageHeader from '~/components/PageHeader.astro';
 import Faq from '~/components/Faq.astro';
 import CtaBand from '~/components/CtaBand.astro';
-import TodoNote from '~/components/TodoNote.astro';
 
 interface Props {
   lang: Locale;
@@ -117,27 +116,6 @@ const formats =
           </a>
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container container--narrow">
-      <TodoNote
-        lang={lang}
-        items={
-          lang === 'ar'
-            ? [
-                'أضف قائمة الفعاليات والمؤتمرات السابقة بأسمائها وتواريخها.',
-                'أضف صور المحاضرات إلى public/images/gallery/ — انظر ملف images/README.md.',
-                'أضف رابط فيديو أو مقطعًا من محاضرة سابقة إن وُجد.',
-              ]
-            : [
-                'Add a list of past events and conferences with names and dates.',
-                'Add speaking photographs to public/images/gallery/ — see images/README.md.',
-                'Add a showreel or clip from a previous talk, if one exists.',
-              ]
-        }
-      />
     </div>
   </section>
 

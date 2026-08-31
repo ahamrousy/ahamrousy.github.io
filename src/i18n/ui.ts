@@ -42,7 +42,7 @@ export const ui = {
     'cta.allCourses': 'See all seven programmes',
     'cta.readCase': 'Read the case study',
     'cta.readArticle': 'Read the article',
-    'cta.download': 'Download one-page profile (PDF)',
+    'cta.download': 'Download Ahmed Amrousy Profile',
     'cta.method': 'How Ahmed teaches',
     'cta.backHome': 'Back to home',
 
@@ -138,7 +138,7 @@ export const ui = {
     'cta.allCourses': 'تصفَّح البرامج السبعة',
     'cta.readCase': 'اقرأ دراسة الحالة',
     'cta.readArticle': 'اقرأ المقال',
-    'cta.download': 'حمِّل الملف التعريفي (PDF)',
+    'cta.download': 'حمِّل ملف أحمد عمروسي التعريفي',
     'cta.method': 'كيف يُدرِّس أحمد',
     'cta.backHome': 'العودة إلى الرئيسية',
 

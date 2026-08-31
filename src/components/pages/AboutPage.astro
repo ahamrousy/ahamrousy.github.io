@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '~/site.config';
+import { contact } from '~/site.config';
 import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { copy } from '~/data/pages';
@@ -97,6 +98,35 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
     </div>
   </section>
 
+  {/* ── Trainings in action ─────────────────────────────────────────────── */}
+  <section class="section" aria-labelledby="in-action-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="in-action-heading">{lang === 'ar' ? 'من داخل القاعات' : 'Trainings in action'}</h2>
+      </div>
+      <div class="grid grid--2">
+        {
+          casePhotos.map((entry) => (
+            <a class="action-photo" href={path(`case-studies/${entry.slug}`, lang)}>
+              {/* alt is empty on purpose: the visible caption right below
+                  carries the same text, and duplicating it fails WCAG 1.1.1
+                  (redundant alt). */}
+              <img
+                src={asset(entry.data.photos[0]!.src)}
+                alt=""
+                width={entry.data.photos[0]!.width}
+                height={entry.data.photos[0]!.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="action-photo__caption">{entry.data.title}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="section section--tinted" aria-labelledby="roles-heading">
     <div class="container">
       <div class="section-head">
@@ -159,35 +189,6 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
     </div>
   </section>
 
-  {/* ── Trainings in action ─────────────────────────────────────────────── */}
-  <section class="section" aria-labelledby="in-action-heading">
-    <div class="container">
-      <div class="section-head">
-        <h2 id="in-action-heading">{lang === 'ar' ? 'من داخل القاعات' : 'Trainings in action'}</h2>
-      </div>
-      <div class="grid grid--2">
-        {
-          casePhotos.map((entry) => (
-            <a class="action-photo" href={path(`case-studies/${entry.slug}`, lang)}>
-              {/* alt is empty on purpose: the visible caption right below
-                  carries the same text, and duplicating it fails WCAG 1.1.1
-                  (redundant alt). */}
-              <img
-                src={asset(entry.data.photos[0]!.src)}
-                alt=""
-                width={entry.data.photos[0]!.width}
-                height={entry.data.photos[0]!.height}
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="action-photo__caption">{entry.data.title}</span>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <LogoWall lang={lang} />
 
   {/* ── Media kit ───────────────────────────────────────────────────────── */}
@@ -224,40 +225,72 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
     </div>
   </section>
 
+  {/* ── Watch and listen ────────────────────────────────────────────────── */}
   <section class="section section--tinted" aria-labelledby="other-heading">
-    <div class="container grid grid--3">
-      <article>
-        <h2 id="other-heading">{person.otherWork.podcast.name}</h2>
-        <p style="margin-block-start:0.75rem">{person.otherWork.podcast.description[lang]}</p>
-        <p style="margin-block-start:1rem">
-          <a class="btn btn--ghost" href={path('podcast', lang)}>{t('nav.podcast')}</a>
-        </p>
-      </article>
-      <article>
-        <h2>{person.otherWork.television.label[lang]}</h2>
-        <p style="margin-block-start:0.75rem">{person.otherWork.television.description[lang]}</p>
-        <p style="margin-block-start:1rem">
-          <a class="btn btn--secondary" href={person.otherWork.television.url} rel="noopener" target="_blank">
-            {lang === 'ar' ? 'شاهد المقابلة' : 'Watch the interview'}
+    <div class="container">
+      <div class="section-head">
+        <h2 id="other-heading">{lang === 'ar' ? 'شاهد واستمع' : 'Watch and listen'}</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="media-card">
+          <a class="media-card__thumb" href={person.otherWork.television.url} rel="noopener" target="_blank" tabindex="-1" aria-hidden="true">
+            <img
+              src={asset('images/media/tv-interview.jpg')}
+              alt=""
+              width="800"
+              height="450"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="media-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
           </a>
-        </p>
-      </article>
+          <h3>{person.otherWork.television.label[lang]}</h3>
+          <p>{person.otherWork.television.description[lang]}</p>
+          <p style="margin-block-start:auto;padding-block-start:0.75rem">
+            <a class="btn btn--ghost" href={person.otherWork.television.url} rel="noopener" target="_blank">
+              {lang === 'ar' ? 'شاهد المقابلة' : 'Watch the interview'}
+            </a>
+          </p>
+        </article>
 
-      <article class="athlete">
-        <img
-          class="athlete__photo"
-          src={asset('images/ahmed-amrousy-running.jpg')}
-          alt={lang === 'ar' ? 'أحمد عمروسي أثناء أحد السباقات' : 'Ahmed Amrousy mid-race'}
-          width="900"
-          height="1641"
-          loading="lazy"
-          decoding="async"
-        />
-        <div>
-          <h2>{lang === 'ar' ? 'خارج العمل' : 'Outside work'}</h2>
-          <p style="margin-block-start:0.75rem">{person.otherWork.sport[lang]}</p>
-        </div>
-      </article>
+        <article class="media-card">
+          <a class="media-card__thumb" href={contact.youtube} rel="noopener" target="_blank" tabindex="-1" aria-hidden="true">
+            <img
+              src={asset('images/media/podcast-3aash-ya-wa7sh.jpg')}
+              alt=""
+              width="800"
+              height="450"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="media-card__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+          </a>
+          <h3>{person.otherWork.podcast.name}</h3>
+          <p>{person.otherWork.podcast.description[lang]}</p>
+          <p style="margin-block-start:auto;padding-block-start:0.75rem">
+            <a class="btn btn--ghost" href={path('podcast', lang)}>{t('nav.podcast')}</a>
+          </p>
+        </article>
+
+        <article class="media-card">
+          <div class="media-card__thumb media-card__thumb--static">
+            <img
+              src={asset('images/ahmed-amrousy-running.jpg')}
+              alt=""
+              width="900"
+              height="1641"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <h3>{lang === 'ar' ? 'خارج العمل' : 'Outside work'}</h3>
+          <p>{person.otherWork.sport[lang]}</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -328,5 +361,64 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
     border-radius: var(--radius-l);
     border: 1px solid var(--line);
     box-shadow: var(--shadow-m);
+  }
+
+  /* ── Watch and listen ─────────────────────────────────────────────────── */
+  .media-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    padding: 0 var(--space-m) var(--space-m);
+    height: 100%;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .media-card:hover {
+    border-color: var(--coral);
+    box-shadow: var(--shadow-m);
+    transform: translateY(-2px);
+  }
+  .media-card__thumb {
+    position: relative;
+    display: block;
+    width: calc(100% + 2 * var(--space-m));
+    margin-inline: calc(-1 * var(--space-m));
+    margin-block-end: var(--space-2xs);
+    overflow: hidden;
+  }
+  .media-card__thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .media-card:hover .media-card__thumb img {
+    transform: scale(1.03);
+  }
+  /* Play affordance, so a thumbnail reads as video rather than decoration. */
+  .media-card__play {
+    position: absolute;
+    inset-block-end: 0.6rem;
+    inset-inline-start: 0.6rem;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    background: rgb(20 21 26 / 0.78);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+  .media-card:hover .media-card__play {
+    background: var(--coral-strong);
+    transform: scale(1.08);
+  }
+  .media-card h3 {
+    font-size: var(--step-1);
   }
 </style>
