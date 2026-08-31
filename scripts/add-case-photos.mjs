@@ -26,7 +26,8 @@ const OUT = path.join(ROOT, 'public', 'images', 'case-studies');
 /** source file → output slug. Two photos belong to the Copilot engagement. */
 const jobs = [
   { from: 'Copilot Training.jpeg', to: 'kahraba-1.jpg', maxWidth: 1600 },
-  { from: 'Copilot Training 2.jpeg', to: 'kahraba-2.jpg', maxWidth: 1000 },
+  { from: 'Kahraba Cohort 2.jpg.jpeg', to: 'kahraba-2.jpg', maxWidth: 1000 },
+  { from: 'Kahraba Cohort 3.jpg.png', to: 'kahraba-3.jpg', maxWidth: 1000 },
   { from: 'EEC Training.jpeg', to: 'eece.jpg', maxWidth: 1600 },
   { from: 'FEPS Logic Training.png', to: 'feps-logic.jpg', maxWidth: 1600 },
 ];

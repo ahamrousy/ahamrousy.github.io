@@ -42,7 +42,29 @@ const updated = new Date('2026-08-27');
 // strip. Each ships as a branded placeholder until Ahmed drops the real
 // photograph at the same path (see public/images/README.md).
 const cases = await entriesFor('caseStudies', lang);
-const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
+/**
+ * Everything with real photography, wherever it lives. This used to read only
+ * case studies, which silently excluded the courses — the Vodafone Spark
+ * bootcamp photos were live on the course page but never surfaced here, so the
+ * strip looked incomplete.
+ */
+const courses = await entriesFor('courses', lang);
+const inAction = [
+  ...cases
+    .filter((entry) => entry.data.photos.length > 0)
+    .map((entry) => ({
+      href: `case-studies/${entry.slug}`,
+      title: entry.data.title,
+      photo: entry.data.photos[0]!,
+    })),
+  ...courses
+    .filter((entry) => entry.data.photos.length > 0)
+    .map((entry) => ({
+      href: `courses/${entry.slug}`,
+      title: entry.data.title,
+      photo: entry.data.photos[0]!,
+    })),
+];
 ---
 
 <BaseLayout
@@ -104,22 +126,22 @@ const casePhotos = cases.filter((entry) => entry.data.photos.length > 0);
       <div class="section-head">
         <h2 id="in-action-heading">{lang === 'ar' ? 'من داخل القاعات' : 'Trainings in action'}</h2>
       </div>
-      <div class="grid grid--2">
+      <div class="grid grid--3">
         {
-          casePhotos.map((entry) => (
-            <a class="action-photo" href={path(`case-studies/${entry.slug}`, lang)}>
+          inAction.map((item) => (
+            <a class="action-photo" href={path(item.href, lang)}>
               {/* alt is empty on purpose: the visible caption right below
                   carries the same text, and duplicating it fails WCAG 1.1.1
                   (redundant alt). */}
               <img
-                src={asset(entry.data.photos[0]!.src)}
+                src={asset(item.photo.src)}
                 alt=""
-                width={entry.data.photos[0]!.width}
-                height={entry.data.photos[0]!.height}
+                width={item.photo.width}
+                height={item.photo.height}
                 loading="lazy"
                 decoding="async"
               />
-              <span class="action-photo__caption">{entry.data.title}</span>
+              <span class="action-photo__caption">{item.title}</span>
             </a>
           ))
         }

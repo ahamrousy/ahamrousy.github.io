@@ -32,6 +32,10 @@ photos:
     width: 1000
     height: 1333
     caption: Working through the Copilot use cases on real Kahraba documents
+  - src: images/case-studies/kahraba-3.jpg
+    width: 1000
+    height: 1334
+    caption: A later cohort — the workshop ran three times in total
 challenge: >-
   Kahraba is Egypt’s largest private-sector power generation and distribution company. Its
   executives handle tender documents, budget
