@@ -17,8 +17,8 @@ summary: >-
   coding required. It runs on-site in Egypt, Saudi Arabia and the UAE, or live online.
 updated: 2026-08-24
 order: 5
-duration: 12 hours across two days
-durationISO: PT12H
+duration: 16 hours across two days
+durationISO: PT16H
 format: 70% hands-on, 30% theory
 audience: Operations, finance, HR, admin and shared-services teams
 teachingLanguage: Arabic delivery with English slides, or full English
@@ -72,8 +72,6 @@ frameworksTaught:
   - Chain-of-verification
 relatedCase: eece
 relatedGeo: corporate-ai-training-egypt
-todos:
-  - Confirm the standard duration for this programme — currently shown as 12 hours across two days.
 faqs:
   - q: Does AI for Automation require coding?
     a: >-
@@ -101,7 +99,7 @@ faqs:
       identifying the decisions that must stay with a person.
   - q: How long is the programme?
     a: >-
-      12 hours across two days. Operations teams frequently prefer four half-days so that cover can
+      16 hours across two days. Operations teams frequently prefer four half-days so that cover can
       be maintained.
   - q: What does it cost?
     a: >-

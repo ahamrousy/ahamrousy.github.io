@@ -65,11 +65,11 @@ frameworksTaught:
   - GCSE-F
 relatedGeo: corporate-ai-training-egypt
 photos:
-  - src: images/courses/vodafone-spark-1.jpg
+  - src: images/courses/vodafone-spark-1.webp
     width: 1000
     height: 1500
     caption: Ahmed Amrousy delivering the Spark Entrepreneurship Bootcamp with Vodafone Egypt Foundation
-  - src: images/courses/vodafone-spark-2.jpg
+  - src: images/courses/vodafone-spark-2.webp
     width: 1000
     height: 1347
     caption: Working through the programme learning outcomes with the founders in the room

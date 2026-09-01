@@ -22,7 +22,7 @@ summary: >-
 updated: 2026-08-27
 order: 4
 photos:
-  - src: images/case-studies/feps-logic.jpg
+  - src: images/case-studies/feps-logic.webp
     width: 1539
     height: 645
     caption: أعضاء هيئة التدريس بالكلية في جلسة «إتقان الذكاء الاصطناعي لتدريس أذكى»

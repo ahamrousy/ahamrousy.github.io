@@ -46,8 +46,6 @@ featuredCourses:
   - ai-for-marketing-and-sales
   - ai-for-executives
   - ai-for-business-strategy
-todos:
-  - Confirm typical lead time for UAE engagements — currently stated as 3–4 weeks.
 faqs:
   - q: Does Menova deliver AI training in the UAE?
     a: >-

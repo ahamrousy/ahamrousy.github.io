@@ -75,7 +75,7 @@ export function personSchema(lang: Locale): Json {
       lang === 'ar' ? 'مؤسس مِنوفا' : 'Founder, Menova',
     ],
     url: absolute(path('about', lang)),
-    image: absolute(asset('images/ahmed-amrousy-headshot.jpg')),
+    image: absolute(asset('images/ahmed-amrousy-headshot.webp')),
     email: `mailto:${contact.email}`,
     telephone: `+${contact.whatsappNumber}`,
     knowsLanguage: [

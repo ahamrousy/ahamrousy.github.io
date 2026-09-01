@@ -24,15 +24,15 @@ summary: >-
 updated: 2026-08-27
 order: 1
 photos:
-  - src: images/case-studies/kahraba-1.jpg
+  - src: images/case-studies/kahraba-1.webp
     width: 1280
     height: 960
     caption: مجموعة كهرباء في ختام ورشة كوبايلوت
-  - src: images/case-studies/kahraba-2.jpg
+  - src: images/case-studies/kahraba-2.webp
     width: 1000
     height: 1333
     caption: العمل على حالات استخدام كوبايلوت على مستندات كهرباء الحقيقية
-  - src: images/case-studies/kahraba-3.jpg
+  - src: images/case-studies/kahraba-3.webp
     width: 1000
     height: 1334
     caption: دفعة لاحقة — نُفِّذت الورشة ثلاث مرات إجمالًا

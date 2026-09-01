@@ -18,8 +18,8 @@ summary: >-
   live online, delivered verbally in Arabic with English slides.
 updated: 2026-08-24
 order: 1
-duration: 12 hours across two days
-durationISO: PT12H
+duration: 16 hours across two days
+durationISO: PT16H
 format: 70% hands-on, 30% theory
 audience: Managers and professional teams, no technical background required
 teachingLanguage: Arabic delivery with English slides, or full English
@@ -73,8 +73,6 @@ frameworksTaught:
   - Chain-of-verification
 relatedCase: kahraba
 relatedGeo: corporate-ai-training-egypt
-todos:
-  - Confirm the standard duration for this programme — currently shown as 12 hours across two days.
 faqs:
   - q: Who is the AI for Business course for?
     a: >-
@@ -83,7 +81,7 @@ faqs:
       experience. Sessions work best with 10 to 25 people from the same organisation.
   - q: How long is the AI for Business course?
     a: >-
-      The standard format is 12 hours delivered across two days. It can be compressed into a single
+      The standard format is 16 hours delivered across two days. It can be compressed into a single
       intensive day or spread over four half-days where operational cover is difficult. Exact
       scheduling is agreed with the client.
   - q: Is the course delivered in Arabic?

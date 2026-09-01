@@ -73,8 +73,6 @@ frameworksTaught:
   - سلسلة التحقق
 relatedCase: kahraba
 relatedGeo: corporate-ai-training-uae
-todos:
-  - تأكيد المدة المعتمدة لهذا البرنامج — المعروض حاليًا 12 ساعة على مدار يومين.
 faqs:
   - q: من يقدّم كورس الذكاء الاصطناعي للتسويق؟
     a: >-

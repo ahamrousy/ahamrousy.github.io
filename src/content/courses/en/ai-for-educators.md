@@ -18,8 +18,8 @@ summary: >-
   cannot be enforced. It has been delivered to faculty at Cairo University's Faculty of Economics and Political Science, with Logic Consulting.
 updated: 2026-08-24
 order: 4
-duration: 9 hours across a day and a half
-durationISO: PT9H
+duration: 8 hours across a day and a half
+durationISO: PT8H
 format: 70% hands-on, 30% theory
 audience: University faculty, school leadership, curriculum designers and corporate trainers
 teachingLanguage: Arabic delivery with English slides, or full English
@@ -73,8 +73,6 @@ frameworksTaught:
   - Self-critique prompting
 relatedCase: feps-logic
 relatedGeo: corporate-ai-training-egypt
-todos:
-  - Confirm the standard duration for this programme — currently shown as 9 hours across a day and a half.
 faqs:
   - q: Who is the AI for Educators course for?
     a: >-
@@ -101,7 +99,7 @@ faqs:
       in both.
   - q: How long is the programme?
     a: >-
-      9 hours, usually across a day and a half. Faculty groups often prefer three half-days during
+      8 hours, usually across a day and a half. Faculty groups often prefer three half-days during
       term time.
   - q: What does it cost for an academic institution?
     a: >-

@@ -18,8 +18,8 @@ summary: >-
   UAE, or live online, in Arabic or English.
 updated: 2026-08-24
 order: 2
-duration: 6 hours in a single day
-durationISO: PT6H
+duration: 8 hours in a single day
+durationISO: PT8H
 format: 70% hands-on, 30% theory
 audience: C-suite, board members, general managers and directors
 teachingLanguage: Arabic delivery with English slides, or full English
@@ -73,8 +73,6 @@ frameworksTaught:
   - Tree-of-thoughts
 relatedCase: kahraba
 relatedGeo: corporate-ai-training-saudi-arabia
-todos:
-  - Confirm the standard duration for this programme — currently shown as 6 hours in a single day.
 faqs:
   - q: What is the best AI course for executives in Egypt?
     a: >-
@@ -91,7 +89,7 @@ faqs:
       allocation, risk boundaries and how to interrogate an AI proposal.
   - q: How long is the AI for Executives programme?
     a: >-
-      Six hours in a single day, which is what most executive calendars will absorb. It can be split
+      Eight hours in a single day, which is what most executive calendars will absorb. It can be split
       into two half-days, and it is often paired with the 16-hour AI for Business Strategy workshop
       for leadership teams that want to go further.
   - q: Do executives need any technical background?

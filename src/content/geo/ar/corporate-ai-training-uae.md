@@ -45,8 +45,6 @@ featuredCourses:
   - ai-for-marketing-and-sales
   - ai-for-executives
   - ai-for-business-strategy
-todos:
-  - تأكيد مهلة الحجز المعتادة للإمارات — المذكور حاليًا 3–4 أسابيع.
 faqs:
   - q: هل تنفّذ مِنوفا التدريب في الإمارات؟
     a: >-

@@ -47,9 +47,6 @@ featuredCourses:
   - ai-for-business
   - ai-for-executives
   - ai-for-business-strategy
-todos:
-  - Confirm invoicing entity and whether VAT applies — currently stated as "Egyptian entity invoicing in EGP".
-  - Confirm typical lead time — currently stated as 2–3 weeks.
 faqs:
   - q: Who delivers corporate AI training in Egypt?
     a: >-

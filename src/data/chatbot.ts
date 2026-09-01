@@ -67,8 +67,8 @@ export const intents: Intent[] = [
       ar: ['مدة', 'كام ساعة', 'كم ساعة', 'كام يوم', 'كم يوم', 'المدة', 'ساعات', 'جدول'],
     },
     answer: {
-      en: 'Most programmes run 6 to 12 hours, delivered as one or two days. The flagship AI for Business Strategy workshop is 16 hours, usually split across two days. Exact scheduling is set with the client.',
-      ar: 'معظم البرامج بين 6 و12 ساعة تُنفَّذ في يوم أو يومين. أما ورشة استراتيجية الذكاء الاصطناعي الرئيسية فمدتها 16 ساعة، تُقسَّم عادةً على يومين. ويُتَّفق على الجدول الدقيق مع الجهة.',
+      en: 'Most programmes run 8 to 16 hours, delivered as one or two days. The flagship AI for Business Strategy workshop is 16 hours, usually split across two days. Exact scheduling is set with the client.',
+      ar: 'معظم البرامج بين 8 و16 ساعة تُنفَّذ في يوم أو يومين. أما ورشة استراتيجية الذكاء الاصطناعي الرئيسية فمدتها 16 ساعة، تُقسَّم عادةً على يومين. ويُتَّفق على الجدول الدقيق مع الجهة.',
     },
     links: [{ key: 'courses/ai-for-business-strategy', label: { en: 'The 16-hour workshop', ar: 'ورشة الـ16 ساعة' } }],
   },

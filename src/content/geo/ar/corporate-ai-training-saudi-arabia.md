@@ -45,9 +45,6 @@ featuredCourses:
   - ai-for-executives
   - ai-for-business-strategy
   - ai-for-marketing-and-sales
-todos:
-  - تأكيد مهلة الحجز المعتادة للسعودية — المذكور حاليًا من ثلاثة إلى أربعة أسابيع.
-  - تأكيد وجود ترتيب فوترة سعودي أو شريك محلي من عدمه.
 faqs:
   - q: هل تنفّذ مِنوفا تدريبًا في السعودية؟
     a: >-

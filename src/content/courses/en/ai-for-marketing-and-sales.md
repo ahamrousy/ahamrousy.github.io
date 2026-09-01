@@ -73,8 +73,6 @@ frameworksTaught:
   - Chain-of-verification
 relatedCase: kahraba
 relatedGeo: corporate-ai-training-uae
-todos:
-  - Confirm the standard duration for this programme — currently shown as 12 hours across two days.
 faqs:
   - q: Who teaches the AI for Marketing course?
     a: >-

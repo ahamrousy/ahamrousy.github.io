@@ -23,7 +23,7 @@ summary: >-
 updated: 2026-08-27
 order: 3
 photos:
-  - src: images/case-studies/eece.jpg
+  - src: images/case-studies/eece.webp
     width: 1280
     height: 720
     caption: تنفيذيو شركات المجلس التصديري للصناعات الهندسية في ورشة الاستراتيجية

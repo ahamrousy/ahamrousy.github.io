@@ -45,9 +45,6 @@ featuredCourses:
   - ai-for-executives
   - ai-for-business-strategy
   - ai-for-marketing-and-sales
-todos:
-  - Confirm typical lead time for Saudi engagements — currently stated as 3–4 weeks.
-  - Confirm whether a Saudi invoicing arrangement or local partner is in place.
 faqs:
   - q: Does Menova deliver AI training in Saudi Arabia?
     a: >-
