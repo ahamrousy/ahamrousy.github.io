@@ -63,8 +63,10 @@ export function mailtoUrl(subject: string, body?: string): string {
 export const analytics = {
   /** TODO: replace with your GA4 Measurement ID, e.g. "G-XXXXXXXXXX". */
   ga4MeasurementId: '',
-  /** TODO: paste the content value from Google Search Console's HTML-tag method. */
-  googleSiteVerification: '',
+  /** Google Search Console, HTML-tag method. The HTML-file method is also in
+      place at public/google91b3f50c2bc74aa9.html — either one verifies, and
+      having both means a single point of failure cannot un-verify the site. */
+  googleSiteVerification: '0OT3OT86rkOopcNHm24aomiIq7DB8bZRUS2i74Ly0Lo',
   /** TODO: paste the content value from Bing Webmaster Tools. */
   bingSiteVerification: '',
 } as const;
