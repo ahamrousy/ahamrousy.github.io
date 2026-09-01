@@ -52,7 +52,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'What is Menova?',
-          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It offers seven AI programmes to companies, universities, entrepreneurs and government-related organisations across Egypt, Saudi Arabia and the UAE, in Arabic or English. All delivery to date has been in Egypt.',
+          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It offers eight AI programmes to companies, universities, entrepreneurs and government-related organisations across Egypt, Saudi Arabia and the UAE, in Arabic or English. All delivery to date has been in Egypt.',
         },
         {
           q: 'What AI courses does Menova offer?',
@@ -100,7 +100,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'ما هي مِنوفا؟',
-          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تُقدِّم سبعة برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية. وكل التنفيذ حتى الآن كان في مصر.',
+          a: 'مِنوفا جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تُقدِّم ثمانية برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات، بالعربية أو الإنجليزية. وكل التنفيذ حتى الآن كان في مصر.',
         },
         {
           q: 'ما البرامج التي تقدّمها مِنوفا؟',
@@ -507,7 +507,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'Courses',
       title: 'The Menova course catalogue',
       summary:
-        'Menova offers seven AI courses: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop. All are taught by Ahmed Amrousy, are hands-on first, and are delivered on-site in Egypt, Saudi Arabia and the UAE or live online, in Arabic or English.',
+        'Menova offers eight AI courses: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, Data as a Strategic Asset, and the flagship 16-hour AI for Business Strategy workshop. All are taught by Ahmed Amrousy, are hands-on first, and are delivered on-site in Egypt, Saudi Arabia and the UAE or live online, in Arabic or English.',
       faqs: [
         {
           q: 'Which Menova course should we start with?',
@@ -534,7 +534,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'الدورات',
       title: 'برامج مِنوفا التدريبية',
       summary:
-        'تقدّم مِنوفا سبعة برامج ذكاء اصطناعي: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. ويقدّمها جميعًا أحمد عمروسي، و70% منها تطبيق عملي، وتُنفَّذ حضوريًا في مصر والسعودية والإمارات أو أونلاين مباشر، بالعربية أو الإنجليزية.',
+        'تقدّم مِنوفا ثمانية برامج ذكاء اصطناعي: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، والبيانات كأصل استراتيجي، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. ويقدّمها جميعًا أحمد عمروسي، و70% منها تطبيق عملي، وتُنفَّذ حضوريًا في مصر والسعودية والإمارات أو أونلاين مباشر، بالعربية أو الإنجليزية.',
       faqs: [
         {
           q: 'بأي برنامج نبدأ؟',

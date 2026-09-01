@@ -55,8 +55,8 @@ export const intents: Intent[] = [
       ar: ['دورة', 'دورات', 'كورس', 'كورسات', 'برنامج', 'برامج', 'تدريب', 'ورشة', 'خدمات'],
     },
     answer: {
-      en: 'Menova runs seven programmes: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop. All corporate programmes are 70% hands-on.',
-      ar: 'تقدّم مِنوفا سبعة برامج: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. جميعها تطبيق عملي في المقام الأول.',
+      en: 'Menova runs eight programmes: AI for Business, AI for Executives, AI for Marketing & Sales, AI for Educators, AI for Automation, AI for Entrepreneurs, and the flagship 16-hour AI for Business Strategy workshop. All corporate programmes are 70% hands-on.',
+      ar: 'تقدّم مِنوفا ثمانية برامج: الذكاء الاصطناعي للأعمال، وللقيادات التنفيذية، وللتسويق والمبيعات، وللمعلمين، وللأتمتة، ولروّاد الأعمال، وورشة «استراتيجية الذكاء الاصطناعي» الرئيسية ومدتها 16 ساعة. جميعها تطبيق عملي في المقام الأول.',
     },
     links: [{ key: 'courses', label: { en: 'See all six', ar: 'تصفَّح البرامج' } }],
   },

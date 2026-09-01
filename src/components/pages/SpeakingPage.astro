@@ -56,20 +56,40 @@ const formats =
   <PageHeader lang={lang} eyebrow={c.eyebrow} title={c.title} summary={c.summary} updated={new Date('2026-08-24')} />
 
   <section class="section section--tight">
-    <div class="container">
-      <div class="section-head">
-        <h2>{lang === 'ar' ? 'الموضوعات' : 'Topics'}</h2>
+    <div class="container grid grid--sidebar">
+      <div>
+        <div class="section-head">
+          <h2>{lang === 'ar' ? 'الموضوعات' : 'Topics'}</h2>
+        </div>
+        <div class="grid grid--2">
+          {
+            topics.map((topic) => (
+              <article class="card card--flag">
+                <h3>{topic.title}</h3>
+                <p>{topic.body}</p>
+              </article>
+            ))
+          }
+        </div>
       </div>
-      <div class="grid grid--3">
-        {
-          topics.map((topic) => (
-            <article class="card card--flag">
-              <h3>{topic.title}</h3>
-              <p>{topic.body}</p>
-            </article>
-          ))
-        }
-      </div>
+
+      <aside>
+        <figure class="talk-photo">
+          <img
+            src={asset('images/giving-talks.jpg')}
+            alt={lang === 'ar'
+              ? 'أحمد عمروسي متحدثًا في جلسة حوارية'
+              : 'Ahmed Amrousy speaking on a panel'}
+            width="853"
+            height="1280"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            {lang === 'ar' ? 'على المنصة — جلسة حوارية' : 'On a panel'}
+          </figcaption>
+        </figure>
+      </aside>
     </div>
   </section>
 
@@ -128,3 +148,23 @@ const formats =
 
   <CtaBand lang={lang} subject={lang === 'ar' ? 'دعوة للتحدث' : 'a speaking invitation'} />
 </BaseLayout>
+
+<style>
+  .talk-photo {
+    margin: 0;
+    position: sticky;
+    top: 5.5rem;
+  }
+  .talk-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+  }
+  .talk-photo figcaption {
+    margin-block-start: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--ink-3);
+  }
+</style>

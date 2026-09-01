@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '~/site.config';
-import { path } from '~/i18n/routing';
+import { asset, path } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
 import { copy } from '~/data/pages';
 import { frameworks, promptingTechniques, tools, person } from '~/data/person';
@@ -76,6 +76,28 @@ const frameworkList = [frameworks.pocab, frameworks.gcsef];
           <span class="stat__label">{lang === 'ar' ? 'شرح عربي وشرائح إنجليزية' : 'Arabic delivery, English slides'}</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <figure class="method-photo">
+        <img
+          src={asset('images/teaching-session.jpg')}
+          alt={lang === 'ar'
+            ? 'أحمد عمروسي مع المشاركين في ختام جلسة تدريبية'
+            : 'Ahmed Amrousy with participants at the close of a session'}
+          width="1200"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          {lang === 'ar'
+            ? 'ختام جلسة — تُقاس الجلسة بما بناه المشاركون فيها لا بما عُرِض عليهم'
+            : 'The close of a session — measured by what the room built, not by what was presented to it'}
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -188,3 +210,9 @@ const frameworkList = [frameworks.pocab, frameworks.gcsef];
 
   <CtaBand lang={lang} />
 </BaseLayout>
+
+<style>
+  .method-photo { margin: 0; }
+  .method-photo img { width: 100%; max-width: 900px; height: auto; display: block; border-radius: var(--radius-l); border: 1px solid var(--line); }
+  .method-photo figcaption { margin-block-start: var(--space-2xs); font-size: var(--step--1); color: var(--ink-3); }
+</style>

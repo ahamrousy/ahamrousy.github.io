@@ -169,6 +169,28 @@ const inAction = [
     </div>
   </section>
 
+  <section class="section section--tight">
+    <div class="container">
+      <figure class="wide-photo">
+        <img
+          src={asset('images/teaching-at-auc.jpg')}
+          alt={lang === 'ar'
+            ? 'أحمد عمروسي مع مجموعة من المشاركين في الجامعة الأمريكية بالقاهرة'
+            : 'Ahmed Amrousy with a cohort at the American University in Cairo'}
+          width="1156"
+          height="521"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          {lang === 'ar'
+            ? 'التعليم التنفيذي بالجامعة الأمريكية بالقاهرة، حيث يُدرِّس أحمد إدارة التسويق'
+            : 'Executive education at the American University in Cairo, where Ahmed teaches Marketing Management'}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="credentials-heading">
     <div class="container grid grid--2">
       <div>
@@ -303,8 +325,8 @@ const inAction = [
             <img
               src={asset('images/ahmed-amrousy-running.jpg')}
               alt=""
-              width="900"
-              height="1641"
+              width="800"
+              height="1000"
               loading="lazy"
               decoding="async"
             />
@@ -442,5 +464,24 @@ const inAction = [
   }
   .media-card h3 {
     font-size: var(--step-1);
+  }
+
+  /* Full-width documentary photo with a caption — used for the AUC teaching
+     shot, which is a 2.2:1 panorama and would be badly cropped in a card. */
+  .wide-photo {
+    margin: 0;
+  }
+  .wide-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+  }
+  .wide-photo figcaption {
+    margin-block-start: var(--space-2xs);
+    font-size: var(--step--1);
+    color: var(--ink-3);
+    line-height: 1.45;
   }
 </style>
