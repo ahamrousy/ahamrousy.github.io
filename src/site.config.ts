@@ -40,6 +40,8 @@ export const contact = {
   youtube: 'https://youtube.com/playlist?list=PLQxF77ekFr2KoZKmR5c8YepdnyEghTzJM',
   spotify: '', // TODO: podcast on Spotify
   googleScholar: '', // TODO: Google Scholar profile (strong entity signal — see LAUNCH-CHECKLIST.md)
+  /** ResearchGate — an already-indexed academic profile that ranks for the name. */
+  researchGate: 'https://www.researchgate.net/profile/Ahmed-Amrousy-2',
   github: '', // TODO: GitHub profile URL
   orcid: '', // TODO: ORCID iD
 } as const;

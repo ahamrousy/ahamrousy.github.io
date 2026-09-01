@@ -46,6 +46,7 @@ function sameAs(): string[] {
     // the entity, which is exactly what sameAs is for.
     person.otherWork.television.url,
     contact.googleScholar,
+    contact.researchGate,
     contact.youtube,
     contact.spotify,
     contact.github,
