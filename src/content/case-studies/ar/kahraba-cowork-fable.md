@@ -4,7 +4,6 @@ client: كهرباء — أكبر شركة خاصة لتوليد وتوزيع ا
 sector: الطاقة والمرافق
 participants: الرئيس التنفيذي وكبار المديرين
 programme: إتقان Claude Cowork وFable 5 — جلسة تنفيذية من يوم واحد
-period: يُستكمل — تأكيد تاريخ التنفيذ
 seoTitle: تدريب Cowork وFable 5 في كهرباء | مِنوفا
 metaDescription: جلسة متقدمة من يوم واحد للرئيس التنفيذي وكبار مديري كهرباء عن تفويض العمل الحقيقي إلى Claude Cowork وFable 5 — مع ضبط حوكمة البيانات أولًا.
 primaryKeyword: تدريب Claude Cowork

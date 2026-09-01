@@ -4,7 +4,7 @@ client: Engineering Export Council of Egypt (EECE)
 sector: Manufacturing & export
 participants: Executives of EECE member companies
 programme: AI for Business Strategy — two-day workshop (16 hours)
-period: TODO — confirm delivery dates
+period: June–July 2026
 seoTitle: AI Strategy Workshop for Egyptian Exporters | Menova
 metaDescription: A two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies — SOSTAC end to end, from PESTEL to a 90-day plan.
 primaryKeyword: AI training Egyptian exporters
@@ -47,7 +47,7 @@ result:
   - The closing pitch-back turned private plans into public commitments in front of peer companies.
 relatedCourse: ai-for-business-strategy
 todos:
-  - Confirm delivery dates and the number of participating companies.
+  - Confirm the number of participating companies.
   - Add a quotable testimonial with name and title, if EECE approves one.
 ---
 

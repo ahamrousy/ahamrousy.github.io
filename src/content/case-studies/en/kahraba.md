@@ -5,7 +5,7 @@ sector: Energy & utilities
 participants: 65 executives across three runs — 20 to 23 per run
 rating: 4.8/5
 programme: AI Foundation Workshop — 16 hours over two days, Microsoft Copilot focused, run three times
-period: TODO — confirm delivery dates
+period: June–July 2026
 seoTitle: AI Foundation Workshop for 65 Kahraba Executives
 metaDescription: How Menova trained 65 Kahraba executives on Microsoft Copilot across three runs of a 16-hour workshop — on real tenders and budgets. Rated 4.8/5.
 primaryKeyword: Microsoft Copilot training Egypt
@@ -56,7 +56,6 @@ result:
   - Day two ended with working Copilot patterns for the documents Kahraba actually produces — tender summaries, variance dashboards, compliance matrices and board-ready decks.
 relatedCourse: ai-for-business
 todos:
-  - Confirm the delivery dates of the three runs.
   - Add a quotable testimonial with name and title, if Kahraba approves one.
 ---
 

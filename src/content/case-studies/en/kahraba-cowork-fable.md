@@ -4,7 +4,6 @@ client: Kahraba — Egypt's largest private-sector power company
 sector: Energy & utilities
 participants: CEO and senior managers
 programme: Mastering Claude Cowork & Fable 5 — one-day executive session
-period: TODO — confirm delivery date
 seoTitle: Claude Cowork & Fable 5 Training at Kahraba | Menova
 metaDescription: A one-day advanced session for Kahraba's CEO and senior managers on delegating real work to Claude Cowork and Fable 5 — with data governance set first.
 primaryKeyword: Claude Cowork training

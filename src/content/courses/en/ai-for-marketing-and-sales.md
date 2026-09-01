@@ -18,8 +18,8 @@ summary: >-
   own brand and data. It runs on-site in Egypt, Saudi Arabia and the UAE, or live online.
 updated: 2026-08-24
 order: 3
-duration: 12 hours across two days
-durationISO: PT12H
+duration: 16 hours across two days
+durationISO: PT16H
 format: 70% hands-on, 30% theory
 audience: Marketing, communications, brand, digital and sales teams
 teachingLanguage: Arabic delivery with English slides, or full English
@@ -96,7 +96,7 @@ faqs:
       concepts and copy, a sales objection library, and a shared prompt library the team keeps.
   - q: How long is the programme?
     a: >-
-      12 hours across two days. It can also be delivered as four half-days, which suits commercial
+      16 hours across two days. It can also be delivered as four half-days, which suits commercial
       teams that cannot leave the pipeline unattended for two consecutive days.
   - q: Can it be delivered for an agency rather than a brand?
     a: >-
