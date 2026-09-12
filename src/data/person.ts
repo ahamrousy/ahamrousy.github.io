@@ -176,6 +176,78 @@ export const person = {
     },
   },
 
+  /**
+   * Press coverage of Nile Air — the airline where Ahmed is Head of Marketing
+   * & PR — from the El Alamein International Air Show (EIAS 2026).
+   *
+   * One story, carried by three national outlets. The articles report on the
+   * company, not on Ahmed personally, so they are presented here as the work
+   * of the function he leads rather than as personal press. Nothing here is
+   * claimed in Person JSON-LD for that reason.
+   *
+   * Headlines are Arabic in the original; the English strings are translations
+   * and the cards say so, so an English reader knows what they are clicking.
+   */
+  press: {
+    event: {
+      en: 'El Alamein International Air Show (EIAS 2026)',
+      ar: 'معرض العلمين الدولي للطيران (EIAS 2026)',
+    },
+    items: [
+      {
+        url: 'https://gate.ahram.org.eg/News/5924741.aspx',
+        publisher: { en: 'Ahram Gate', ar: 'بوابة الأهرام' },
+        logo: 'images/press/ahram-gate.png',
+        logoWidth: 158,
+        logoHeight: 96,
+        image: 'images/press/nile-air-eias-ahram.webp',
+        date: '2026-09-10',
+        headline: {
+          en: 'Civil Aviation Minister visits the Nile Air stand and hears its expansion plans',
+          ar: 'وزير الطيران المدني يزور جناح النيل للطيران ويستمع لخططها التوسعية',
+        },
+        alt: {
+          en: 'Dr Sameh El-Hefny, Minister of Civil Aviation, being briefed at the Nile Air stand at the El Alamein International Air Show.',
+          ar: 'الدكتور سامح الحفني وزير الطيران المدني خلال زيارته جناح النيل للطيران بمعرض العلمين الدولي للطيران.',
+        },
+      },
+      {
+        url: 'https://www.sada-elarab.com/818989',
+        publisher: { en: 'Sada El-Arab', ar: 'صدى العرب' },
+        logo: 'images/press/sada-elarab.png',
+        logoWidth: 129,
+        logoHeight: 96,
+        image: 'images/press/nile-air-eias-sada.webp',
+        date: '2026-09-11',
+        headline: {
+          en: 'Nile Air presents its expansion plans and signs strategic agreements at the El Alamein International Air Show',
+          ar: '«النيل للطيران» تستعرض خططها التوسعية وتُبرم اتفاقيات استراتيجية في معرض العلمين الدولي',
+        },
+        alt: {
+          en: 'The Minister of Civil Aviation at the Nile Air stand during the El Alamein International Air Show.',
+          ar: 'وزير الطيران المدني في جناح النيل للطيران خلال معرض العلمين الدولي للطيران.',
+        },
+      },
+      {
+        url: 'https://m.gomhuriaonline.com/Gomhuria/1794868.html',
+        publisher: { en: 'Al-Gomhuria Gate', ar: 'بوابة الجمهورية' },
+        logo: 'images/press/gomhuria.png',
+        logoWidth: 205,
+        logoHeight: 96,
+        image: 'images/press/nile-air-eias-gomhuria.webp',
+        date: '2026-09-11',
+        headline: {
+          en: 'Nile Air presents its expansion plans and signs strategic agreements',
+          ar: 'النيل للطيران تستعرض خططها التوسعية وتُبرم اتفاقيات استراتيجية',
+        },
+        alt: {
+          en: 'Nile Air leadership with officials at the airline’s stand during the El Alamein International Air Show.',
+          ar: 'قيادات النيل للطيران مع المسؤولين في جناح الشركة بمعرض العلمين الدولي للطيران.',
+        },
+      },
+    ],
+  },
+
   /** Approved titles for press use — stops publications inventing their own. */
   approvedTitles: {
     en: [
