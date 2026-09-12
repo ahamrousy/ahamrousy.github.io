@@ -13,7 +13,7 @@ export const ui = {
   en: {
     'skip.content': 'Skip to main content',
     'nav.home': 'Home',
-    'nav.about': 'About',
+    'nav.about': 'Ahmed Amrousy',
     'nav.courses': 'Courses',
     'nav.method': 'Method',
     'nav.cases': 'Case studies',

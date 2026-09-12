@@ -70,6 +70,11 @@ const jsonLd = graph([
           </a>
           <a class="btn btn--secondary" href={path('courses', lang)}>{t('cta.allCourses')}</a>
         </div>
+        <p class="hero__meet">
+          <a href={path('about', lang)}>
+            {lang === 'ar' ? 'من هو أحمد عمروسي؟ ←' : 'Who is Ahmed Amrousy? →'}
+          </a>
+        </p>
       </div>
       <div class="hero__side">
         <img
@@ -211,5 +216,21 @@ const jsonLd = graph([
     width: clamp(6rem, 34%, 8.5rem);
     height: auto;
     filter: drop-shadow(0 2px 6px rgb(20 21 26 / 0.12));
+  }
+  /* Named link to the profile: the nav says "About", which reads as boilerplate;
+     a question with his name in it is what people actually click. */
+  .hero__meet {
+    margin-block-start: var(--space-s);
+    font-weight: 650;
+  }
+  .hero__meet a {
+    color: var(--coral-strong);
+    text-decoration: none;
+    text-underline-offset: 4px;
+    min-height: 24px;
+    display: inline-block;
+  }
+  .hero__meet a:hover {
+    text-decoration: underline;
   }
 </style>
