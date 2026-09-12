@@ -176,8 +176,8 @@ const inAction = [
         <h2 id="press-heading">{lang === 'ar' ? 'نايل إير في الصحافة' : 'Nile Air in the press'}</h2>
         <p>
           {lang === 'ar'
-            ? `تغطية صحفية لنايل إير — حيث يقود أحمد التسويق والعلاقات العامة — من ${person.press.event.ar}. الخبر نفسه نشرته ثلاث منصات وطنية.`
-            : `Coverage of Nile Air, where Ahmed leads Marketing & PR, from the ${person.press.event.en}. The same story, carried by three national outlets.`}
+            ? `تغطية صحفية لنايل إير من ${person.press.event.ar}. يقود أحمد التسويق والعلاقات العامة في الشركة، ويظهر في الصور مع وزير الطيران المدني في جناحها. الخبر نفسه نشرته ثلاث منصات وطنية.`
+            : `Coverage of Nile Air from the ${person.press.event.en}. Ahmed leads Marketing & PR at the airline and is pictured with the Minister of Civil Aviation at its stand. One story, carried by three national outlets.`}
         </p>
       </div>
       <div class="grid grid--3">
@@ -187,6 +187,7 @@ const inAction = [
               <a class="press-card__thumb" href={item.url} rel="noopener" target="_blank" tabindex="-1" aria-hidden="true">
                 <img src={asset(item.image)} alt="" width="800" height="450" loading="lazy" decoding="async" />
               </a>
+              <p class="press-card__caption">{item.caption[lang]}</p>
               <div class="press-card__head">
                 <img
                   class="press-card__logo"
@@ -572,12 +573,18 @@ const inAction = [
     transform: scale(1.03);
   }
   /* The masthead, at a fixed height so three different logos sit on one line. */
+  .press-card__caption {
+    margin: var(--space-xs) 0 0;
+    font-size: var(--step--1);
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
   .press-card__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-xs);
-    margin-block: var(--space-xs) 0.2rem;
+    margin-block: var(--space-2xs) 0.2rem;
   }
   .press-card__logo {
     height: 2.7rem;

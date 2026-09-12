@@ -210,6 +210,10 @@ export const person = {
           en: 'Dr Sameh El-Hefny, Minister of Civil Aviation, being briefed at the Nile Air stand at the El Alamein International Air Show.',
           ar: 'الدكتور سامح الحفني وزير الطيران المدني خلال زيارته جناح النيل للطيران بمعرض العلمين الدولي للطيران.',
         },
+        caption: {
+          en: 'Ahmed Amrousy with Dr Sameh El-Hefny, Minister of Civil Aviation, at the Nile Air stand.',
+          ar: 'أحمد عمروسي مع الدكتور سامح الحفني، وزير الطيران المدني، في جناح النيل للطيران.',
+        },
       },
       {
         url: 'https://www.sada-elarab.com/818989',
@@ -227,6 +231,10 @@ export const person = {
           en: 'The Minister of Civil Aviation at the Nile Air stand during the El Alamein International Air Show.',
           ar: 'وزير الطيران المدني في جناح النيل للطيران خلال معرض العلمين الدولي للطيران.',
         },
+        caption: {
+          en: 'Ahmed Amrousy at the Nile Air stand during the Minister of Civil Aviation’s visit.',
+          ar: 'أحمد عمروسي في جناح النيل للطيران خلال زيارة وزير الطيران المدني.',
+        },
       },
       {
         url: 'https://m.gomhuriaonline.com/Gomhuria/1794868.html',
@@ -243,6 +251,10 @@ export const person = {
         alt: {
           en: 'Nile Air leadership with officials at the airline’s stand during the El Alamein International Air Show.',
           ar: 'قيادات النيل للطيران مع المسؤولين في جناح الشركة بمعرض العلمين الدولي للطيران.',
+        },
+        caption: {
+          en: 'Ahmed Amrousy (centre) with the Minister of Civil Aviation and Nile Air leadership.',
+          ar: 'أحمد عمروسي (في الوسط) مع وزير الطيران المدني وقيادات النيل للطيران.',
         },
       },
     ],
