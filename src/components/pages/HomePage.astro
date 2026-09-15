@@ -52,7 +52,11 @@ const jsonLd = graph([
     <div class="container hero__grid">
       <div>
         <p class="eyebrow">{c.eyebrow}</p>
-        <h1>{c.title}</h1>
+        <h1 class="split" aria-label={c.title}>
+          {c.title.split(' ').map((word, i) => (
+            <><span class="w" aria-hidden="true" style={`--i:${i}`}>{word}</span>{' '}</>
+          ))}
+        </h1>
         {/* The GEO payload: a self-contained entity definition, first prose on
             the page, quotable without any surrounding context. */}
         <p class="lede">{c.summary}</p>

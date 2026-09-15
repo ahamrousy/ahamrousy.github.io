@@ -22,7 +22,11 @@ const { lang, eyebrow, title, summary, updated } = Astro.props;
 <header class="page-header">
   <div class="container">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h1>{title}</h1>
+    <h1 class="split" aria-label={title}>
+          {title.split(' ').map((word, i) => (
+            <><span class="w" aria-hidden="true" style={`--i:${i}`}>{word}</span>{' '}</>
+          ))}
+        </h1>
     <p class="lede" style="margin-block-start:1rem">{summary}</p>
     {updated && <LastUpdated lang={lang} date={updated} />}
   </div>

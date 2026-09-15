@@ -1,4 +1,6 @@
 ---
+import path from 'node:path';
+import sharp from 'sharp';
 import type { Locale } from '~/site.config';
 import { asset } from '~/i18n/routing';
 import { useTranslations } from '~/i18n/ui';
@@ -8,18 +10,36 @@ interface Props {
   lang: Locale;
   heading?: string;
 }
+
 const { lang, heading } = Astro.props;
 const t = useTranslations(lang);
 
 /**
- * "As taught at" credibility strip.
+ * "As taught at" credibility strip, as an infinite marquee.
  *
- * Every file below ships as a neutral placeholder SVG carrying the
- * organisation's name as text — so the wall is never broken, never fabricates
- * a logo, and is legible to screen readers from day one. Replacing a file with
- * the real mark at the same path is the whole update procedure.
- * See public/images/README.md.
+ * The marks have very different proportions, so their intrinsic dimensions
+ * are read from the files at build time. With width and height on every
+ * <img>, the browser reserves each logo's exact width before it loads — a
+ * moving strip of unsized images would shift as they arrive.
+ *
+ * The second set exists only to make the loop seamless: it is aria-hidden
+ * with empty alt text, so assistive tech announces each organisation once.
  */
+const logos = await Promise.all(
+  logoWall.map(async (logo) => {
+    try {
+      const meta = await sharp(path.join(process.cwd(), 'public', logo.file)).metadata();
+      return { ...logo, width: meta.width, height: meta.height };
+    } catch {
+      return { ...logo, width: undefined, height: undefined };
+    }
+  }),
+);
+
+const labels =
+  lang === 'ar'
+    ? { pause: 'إيقاف حركة الشعارات', play: 'تشغيل حركة الشعارات' }
+    : { pause: 'Pause logos', play: 'Play logos' };
 ---
 
 <section class="section section--tight section--tinted" aria-labelledby="logos-heading">
@@ -28,22 +48,36 @@ const t = useTranslations(lang);
       <h2 id="logos-heading">{heading ?? t('heading.logos')}</h2>
       <p class="muted">{t('note.logos')}</p>
     </div>
-    <div class="logo-wall">
-      {
-        logoWall.map((logo) => (
-          <div class="logo-wall__item">
-            {/* The marks have very different proportions, so intrinsic
-                dimensions are not hard-coded; the tile reserves the space. */}
-            <img
-              src={asset(logo.file)}
-              alt={logo.name}
-              data-portrait={logo.file.includes('cairo-university') ? '' : undefined}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        ))
-      }
+    <div class="logo-marquee-wrap">
+      <div class="logo-marquee">
+        <div class="logo-marquee__track">
+          {
+            [false, true].map((duplicate) => (
+              <ul class="logo-marquee__set" role="list" aria-hidden={duplicate ? 'true' : undefined}>
+                {logos.map((logo) => (
+                  <li class="logo-marquee__item">
+                    <img
+                      src={asset(logo.file)}
+                      alt={duplicate ? '' : logo.name}
+                      width={logo.width}
+                      height={logo.height}
+                      data-portrait={logo.file.includes('cairo-university') ? '' : undefined}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </li>
+                ))}
+              </ul>
+            ))
+          }
+        </div>
+      </div>
+      {/* Revealed by src/scripts/motion.ts; without JavaScript there is
+          nothing to pause, because the strip is CSS-only and still moves —
+          hover and keyboard focus pause it in that case. */}
+      <button type="button" class="logo-marquee__toggle" data-pause={labels.pause} data-play={labels.play} hidden>
+        {labels.pause}
+      </button>
     </div>
   </div>
 </section>

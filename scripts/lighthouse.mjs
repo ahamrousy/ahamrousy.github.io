@@ -119,6 +119,21 @@ async function main() {
   let failed = false;
 
   try {
+    // Warm-up pass, not scored. The first Lighthouse run in a freshly launched
+    // Chrome is consistently slower — cold disk and font caches, unoptimised
+    // JIT — and whichever route is listed first absorbed that penalty. In an
+    // A/B run the identical home page scored 91 first and 98 last, so the
+    // first result was measuring the browser starting up, not the site.
+    await lighthouse(`http://localhost:${PORT}${ROUTES[0].url}`, {
+      port: chrome.port,
+      output: 'json',
+      logLevel: 'error',
+      formFactor: 'mobile',
+      screenEmulation: { mobile: true, width: 412, height: 823, deviceScaleFactor: 1.75 },
+      throttlingMethod: 'simulate',
+      onlyCategories: ['performance'],
+    });
+
     for (const route of ROUTES) {
       const result = await lighthouse(
         `http://localhost:${PORT}${route.url}`,

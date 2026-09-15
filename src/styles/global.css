@@ -549,45 +549,6 @@ a.card,
 }
 
 /* --- Logo wall ---------------------------------------------------------- */
-.logo-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-l);
-  overflow: hidden;
-}
-.logo-wall__item {
-  background: var(--paper);
-  display: grid;
-  place-items: center;
-  padding: var(--space-m) var(--space-s);
-  min-height: 6.5rem;
-}
-/* Full colour, not greyscale. The AUC mark is a white-on-navy lockup whose
-   background cannot be removed without destroying the wordmark, so a
-   desaturated wall would read as one dark box among ten pale ones. Colour
-   also suits the brighter brand. Sizes are capped near the artwork's native
-   resolution — the supplied files are 74–298 px wide, so displaying them
-   larger would only blur them. */
-.logo-wall__item img {
-  max-height: 2.35rem;
-  max-width: 100%;
-  width: auto;
-  opacity: 0.92;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.logo-wall__item:hover img {
-  opacity: 1;
-  transform: scale(1.04);
-}
-/* Portrait marks (Cairo University) would otherwise shrink to a sliver when
-   capped by height alone. */
-.logo-wall__item img[data-portrait] {
-  max-height: 3.6rem;
-}
-
 /* --- Header / nav ------------------------------------------------------- */
 .site-header {
   position: sticky;
@@ -1146,4 +1107,198 @@ html[dir='rtl'] .section-head > h2::before {
 }
 .section--ink .stat__value {
   color: var(--green-bright);
+}
+
+/* ══ Motion system ════════════════════════════════════════════════════════
+   Modelled on Section AI (enterprise AI training), measured from their live
+   GSAP configuration: fade-up 50px over 0.9s on power3.out, staggered, once;
+   an infinite logo marquee; word-by-word headline; 0.3s eased hovers.
+   Rebuilt in CSS plus ~2 kB of script (src/scripts/motion.ts).
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  /* GSAP power3.out */
+  --ease-power3: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Scroll reveal. The pending state is only ever applied by the script, to
+   elements below the fold, so the page is complete without JavaScript. */
+.motion-pending {
+  opacity: 0;
+  transform: translate3d(0, 50px, 0);
+}
+.motion-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s var(--ease-power3),
+    transform 0.9s var(--ease-power3);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+@media (max-width: 640px) {
+  .motion-pending {
+    transform: translate3d(0, 28px, 0);
+  }
+}
+
+/* Headline, word by word. Words never split into letters — Arabic letters
+   join, and cutting them apart would break the script's shaping. */
+@keyframes menova-word {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.45em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero h1.split,
+.page-header h1.split {
+  animation: none;
+}
+.split .w {
+  display: inline-block;
+  animation: menova-word 0.9s var(--ease-power3) backwards;
+  animation-delay: calc(0.08s + var(--i, 0) * 0.045s);
+}
+
+/* Hovers at Section's 0.3s, on the same curve. Longhands only, so each
+   component keeps its own list of transitioned properties. */
+.btn,
+.card,
+.btn--ghost::after {
+  transition-duration: 0.3s;
+  transition-timing-function: var(--ease-power3);
+}
+.btn--ghost:hover::after {
+  transform: translateX(5px);
+}
+html[dir='rtl'] .btn--ghost:hover::after {
+  transform: translateX(-5px);
+}
+
+/* Stats keep a fixed digit width while counting, so labels never twitch. */
+.stat__value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Logo marquee. Two identical sets; the track slides exactly one set width
+   (-50%), so the loop is seamless. Spacing lives inside each item rather
+   than as a gap, otherwise the halfway point would be off by one gap. */
+.logo-marquee-wrap {
+  position: relative;
+}
+.logo-marquee {
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: menova-marquee 48s linear infinite;
+}
+.logo-marquee__set {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.logo-marquee__item {
+  display: grid;
+  place-items: center;
+  padding: var(--space-m) clamp(1.5rem, 3vw, 2.75rem);
+  min-height: 6.5rem;
+}
+.logo-marquee__item img {
+  height: 2.35rem;
+  width: auto;
+  max-width: none;
+  opacity: 0.92;
+  transition: opacity 0.3s var(--ease-power3), transform 0.3s var(--ease-power3);
+}
+.logo-marquee__item img[data-portrait] {
+  height: 3.6rem;
+}
+.logo-marquee__item:hover img {
+  opacity: 1;
+  transform: scale(1.06);
+}
+.logo-marquee:hover .logo-marquee__track,
+.logo-marquee:focus-within .logo-marquee__track,
+.logo-marquee-wrap.is-paused .logo-marquee__track {
+  animation-play-state: paused;
+}
+@keyframes menova-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+/* In Arabic the sets lay out right to left, so the loop runs the other way. */
+html[dir='rtl'] .logo-marquee__track {
+  animation-name: menova-marquee-rtl;
+}
+@keyframes menova-marquee-rtl {
+  to {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+.logo-marquee__toggle {
+  margin-block-start: var(--space-2xs);
+  margin-inline-start: auto;
+  display: flex;
+  min-height: 24px;
+  padding: 0.2rem 0.7rem;
+  font: inherit;
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.logo-marquee__toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split .w {
+    animation: none;
+  }
+  /* No motion: the marquee becomes a static, wrapped wall of logos. */
+  .logo-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .logo-marquee__track {
+    animation: none;
+    width: auto;
+    justify-content: center;
+  }
+  .logo-marquee__set {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logo-marquee__set[aria-hidden='true'],
+  .logo-marquee__toggle {
+    display: none;
+  }
+}
+
+/* Header fit, 1024–1199px. The desktop nav appears at 1024px, and since the
+   first item became "Ahmed Amrousy" the English row ran 18px past the
+   viewport at that width. Tightening the gaps in this band only recovers
+   ~56px and keeps the full nav visible, rather than hiding it behind the
+   menu button on small laptops and iPad landscape. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .site-header__inner {
+    gap: var(--space-s);
+  }
+  .nav ul {
+    gap: var(--space-s);
+  }
 }
