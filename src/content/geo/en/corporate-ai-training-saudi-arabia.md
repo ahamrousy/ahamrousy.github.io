@@ -16,7 +16,7 @@ summary: >-
   Riyadh, Jeddah, Dhahran and the wider Kingdom, or live online, delivered verbally in Arabic with
   English materials and 70% hands-on. The flagship offering for Saudi leadership teams is the
   16-hour AI for Business Strategy workshop, built on SOSTAC and Playing to Win.
-updated: 2026-08-24
+updated: 2026-10-25
 order: 2
 cities:
   - Riyadh
@@ -79,6 +79,19 @@ faqs:
       Pricing depends on team size, seniority, duration and city, with travel quoted separately.
       Email ahmedamrousy@aucegypt.edu with your team size, city and preferred dates for a written
       proposal within two working days.
+  - q: Our team has no technical background. Will this work for them?
+    a: >-
+      Yes — that is who the programmes are built for. Nothing in them requires code. Participants
+      work on their own documents and processes, and the measure of a session is whether a
+      non-technical manager leaves able to do something on Monday that they could not do on Friday.
+      Where a team does have technical people, they are usually put to work helping the rest.
+  - q: What happens to our documents and data during the training?
+    a: >-
+      The first session of every programme sets the boundary before any tool is opened: what may be
+      pasted into a general-purpose tool, what must have identifying details removed first, and what
+      must never leave the organisation. Exercises can run on anonymised versions of real documents,
+      so the work is realistic without the identity travelling. Any confidentiality undertaking or
+      retention arrangement you need is agreed in writing before delivery.
 ---
 
 ## Arabic delivery, without an interpreter
@@ -104,3 +117,5 @@ to do.
 Energy and petrochemicals, financial services, telecoms, government-related entities, retail and
 FMCG, real estate and giga-projects, and higher education. Where data-residency or confidentiality
 constraints apply, the boundary session is expanded before any exercise runs on real material.
+
+Pricing is set per programme rather than per seat. How that number is built, what belongs inside the fee, and what should never appear as an extra are set out in [what corporate AI training costs in Egypt and the Gulf](/insights/what-corporate-ai-training-costs/).

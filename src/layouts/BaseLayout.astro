@@ -68,12 +68,22 @@ const direction = dir(lang);
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
 
     {
-      /* hreflang: every locale plus x-default, on every page, pointing at the
-         same route key. Reciprocal by construction — see i18n/routing.ts. */
-      hreflangs.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)
+      /* A noindex page gets neither. 404 is the only one on the site, and it is
+         served by GitHub Pages at every unmatched path — so /404/ and /ar/404/
+         are route keys that resolve to nothing. Emitting a canonical to a URL
+         that 404s, and two hreflang links to URLs that do not exist, is an
+         error Search Console reports and a crawler has to reconcile. A page
+         that must never be indexed does not need either tag. */
+      !noindex && <link rel="canonical" href={canonicalUrl} />
+    }
+
+    {
+      /* hreflang: every locale plus x-default, on every indexable page, pointing
+         at the same route key. Reciprocal by construction — see i18n/routing.ts. */
+      !noindex &&
+        hreflangs.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)
     }
 
     <meta

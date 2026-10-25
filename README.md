@@ -4,7 +4,7 @@ The website for **Menova**, the AI-for-Business training practice of Eng. Ahmed 
 Static site, built with [Astro](https://astro.build), deployed to GitHub Pages, fully mirrored
 in English and Arabic.
 
-- **53 pages** — 26 routes, each in English and Arabic, plus a 404
+- **57 pages** — 28 routes, each in English and Arabic, plus a 404
 - **Zero client-side framework.** The only JavaScript that ships is the chat widget (~5 kB)
   and the analytics consent gate, both of which are optional
 - **Lighthouse 100 / 100 / 100 / 100** on English pages, 97+ on Arabic
@@ -248,6 +248,36 @@ and the Markdown collections.
 
 All four read from the same route registry ([`src/lib/routes.ts`](src/lib/routes.ts)) that the
 pages use, so they cannot fall out of sync with the site.
+
+---
+
+## Search-engine submission (IndexNow)
+
+Microsoft Copilot grounds its answers in Bing's index, and a new site on a shared `github.io` host
+sits low in every crawler's queue. [IndexNow](https://www.indexnow.org/documentation) is the free,
+account-less protocol for *pushing* a URL list to Bing (and Yandex, Seznam, Naver) instead of waiting
+to be found.
+
+- `public/c5a7a8746c6e71271c5e21b7debfc993.txt` proves ownership. **It is meant to be public** —
+  that is how the protocol works. Do not delete it.
+- `.github/workflows/deploy.yml` submits every live URL after each deploy. The step is
+  `continue-on-error`, because a search-engine ping is never a reason to fail a deployment.
+- To run it by hand: `npm run build && npm run indexnow`, or `node scripts/indexnow.mjs --live`
+  to read the published sitemap instead of `dist/`. Add `--dry-run` to see the list first.
+
+It speeds up crawling. It is **not** a ranking or citation signal, and nothing should be claimed
+for it beyond discovery. To switch it off, delete the three IndexNow steps from the deploy workflow.
+
+---
+
+## Audit and research files
+
+- `reports/website-aeo-geo-audit.md` — the SEO/AEO/GEO audit (25 Oct 2026), with what was verified,
+  what was researched, and what is still unknown.
+- `reports/implementation-roadmap.md` — the prioritised backlog, including the items only Ahmed can
+  do.
+- `research/` — competitor records, the question database, and a reusable AI-visibility prompt set
+  with its scoring method.
 
 ---
 

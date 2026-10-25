@@ -68,4 +68,35 @@ console.log(
     ? '\n✓ All titles ≤ 60 and descriptions ≤ 155 characters.'
     : `\n✗ ${problems} field(s) over limit.`,
 );
+
+// -- Outstanding todos ------------------------------------------------------
+// The `todos:` field in content.config.ts is documented as rendering a visible
+// panel "so a placeholder can never quietly harden into a fact". No component
+// renders it, so unconfirmed facts were invisible everywhere. Rendering them on
+// the live site would show buyers an unfinished page; reporting them in the
+// build log keeps the guarantee without that cost. Never fails the build.
+const todoFiles = [];
+for (const file of walk(path.join('src', 'content'))) {
+  const frontmatter = fs.readFileSync(file, 'utf8').split('---')[1] ?? '';
+  // JavaScript has no \Z, so the end-of-string case is spelled out explicitly.
+  const matched = frontmatter.match(/^todos:[^\S\r\n]*\n([\s\S]*?)(?=\n\S|$)/m);
+  if (!matched) continue;
+  const items = matched[1]
+    .split('\n')
+    .filter((line) => /^\s+-\s/.test(line))
+    .map((line) => line.replace(/^\s*-\s*/, '').trim())
+    .filter(Boolean);
+  if (items.length) todoFiles.push([file.split(path.sep).join('/'), items]);
+}
+
+if (todoFiles.length) {
+  const count = todoFiles.reduce((sum, [, items]) => sum + items.length, 0);
+  console.log(`\n! ${count} unconfirmed fact(s) still flagged in content todos:`);
+  for (const [file, items] of todoFiles) {
+    console.log(`  ${file}`);
+    for (const item of items) console.log(`    - ${item}`);
+  }
+  console.log('  They are not rendered anywhere. Confirm them, then clear the field.');
+}
+
 process.exit(problems === 0 ? 0 : 1);

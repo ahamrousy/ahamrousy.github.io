@@ -17,7 +17,7 @@ summary: >-
   verbally in Arabic with English materials or fully in English, and are 70% hands-on on the
   client's own data. The executive track record includes 65 executives trained at Kahraba, rated
   4.8 out of 5.
-updated: 2026-08-27
+updated: 2026-10-25
 order: 3
 cities:
   - Dubai
@@ -77,6 +77,19 @@ faqs:
       Pricing depends on team size, seniority, duration and city, with travel quoted separately.
       Email ahmedamrousy@aucegypt.edu with your team size, city and preferred dates for a written
       proposal within two working days.
+  - q: Our team has no technical background. Will this work for them?
+    a: >-
+      Yes — that is who the programmes are built for. Nothing in them requires code. Participants
+      work on their own documents and processes, and the measure of a session is whether a
+      non-technical manager leaves able to do something on Monday that they could not do on Friday.
+      Where a team does have technical people, they are usually put to work helping the rest.
+  - q: What happens to our documents and data during the training?
+    a: >-
+      The first session of every programme sets the boundary before any tool is opened: what may be
+      pasted into a general-purpose tool, what must have identifying details removed first, and what
+      must never leave the organisation. Exercises can run on anonymised versions of real documents,
+      so the work is realistic without the identity travelling. Any confidentiality undertaking or
+      retention arrangement you need is agreed in writing before delivery.
 ---
 
 ## Built for the UAE's bilingual workplace
@@ -98,3 +111,5 @@ workshop built on SOSTAC and Playing to Win.
 Retail and consumer electronics, financial services including DIFC and ADGM firms, real estate,
 logistics and trade, hospitality, and family conglomerates. Where confidentiality constraints
 apply, the data-boundary session comes first — before any exercise touches real material.
+
+Pricing is set per programme rather than per seat. How that number is built, what belongs inside the fee, and what should never appear as an extra are set out in [what corporate AI training costs in Egypt and the Gulf](/insights/what-corporate-ai-training-costs/).

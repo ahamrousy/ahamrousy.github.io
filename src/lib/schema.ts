@@ -322,3 +322,30 @@ export function graph(nodes: Array<Json | null | undefined>): string {
     0,
   );
 }
+
+/**
+ * ProfilePage — the type Google defines for a page that *is* a profile of one
+ * person, as opposed to a page that merely mentions them.
+ *
+ * https://developers.google.com/search/docs/appearance/structured-data/profile-page
+ *
+ * It does nothing on its own. Its value is that it names /about/ as the
+ * authoritative page for the Person node rather than leaving a crawler to infer
+ * that from 57 pages that all carry the same Person. `mainEntity` points at the
+ * existing @id, so there is still exactly one Person on the site.
+ */
+export function profilePageSchema(lang: Locale, updated: Date): Json {
+  const url = absolute(path('about', lang));
+  return {
+    '@type': 'ProfilePage',
+    '@id': `${url}#profilepage`,
+    url,
+    name: person.name,
+    inLanguage: lang,
+    dateModified: updated.toISOString().slice(0, 10),
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: { '@id': PERSON_ID },
+    about: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+  };
+}

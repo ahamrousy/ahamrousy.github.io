@@ -6,7 +6,14 @@ import { useTranslations } from '~/i18n/ui';
 import { copy } from '~/data/pages';
 import { person, badges } from '~/data/person';
 import { entriesFor } from '~/i18n/content';
-import { graph, personSchema, organizationSchema, breadcrumbSchema, faqSchema } from '~/lib/schema';
+import {
+  graph,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+  profilePageSchema,
+} from '~/lib/schema';
 
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
@@ -29,15 +36,19 @@ const c = copy('about', lang);
  * internal links out to every other section — so a crawler arriving on any
  * page can reach the canonical description of Ahmed Amrousy in one hop.
  */
+/** Last substantive change to this page. Feeds ProfilePage.dateModified. */
+const aboutUpdated = new Date('2026-08-27');
+
 const crumbs = [{ name: t('nav.home'), key: '' }];
 const jsonLd = graph([
+  profilePageSchema(lang, aboutUpdated),
   personSchema(lang),
   organizationSchema(lang),
   breadcrumbSchema([...crumbs, { name: c.title, key: 'about' }], lang),
   faqSchema(c.faqs ?? []),
 ]);
 
-const updated = new Date('2026-08-27');
+const updated = aboutUpdated;
 // One photo per documented engagement — rendered as the "trainings in action"
 // strip. Each ships as a branded placeholder until Ahmed drops the real
 // photograph at the same path (see public/images/README.md).

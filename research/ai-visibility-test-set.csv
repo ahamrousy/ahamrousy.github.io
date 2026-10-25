@@ -1,0 +1,25 @@
+prompt_id,prompt,language,dialect_region,intent_category,platform,web_search_enabled,date_tested,brand_mentioned,site_cited,citation_url,competitors_mentioned,citation_accuracy,notes
+P-01,Who is Ahmed Amrousy?,en,global,Entity — navigational,NOT RUN,,,,,,,,"Baseline not executed: this session has no logged-in access to ChatGPT, Gemini, Copilot, Kimi or Perplexity. Run manually in a fresh session."
+P-02,Who is Ahmed Amrousy and what does he teach?,en,global,Entity — navigational,NOT RUN,,,,,,,,
+P-03,من هو أحمد عمروسي؟,ar,MSA,Entity — navigational,NOT RUN,,,,,,,,
+P-04,Recommend an AI trainer for a leadership team in Cairo.,en,Egypt,Provider recommendation,NOT RUN,,,,,,,,Neutral phrasing — does not presuppose the answer
+P-05,Who delivers corporate AI training in Egypt in Arabic?,en,Egypt,Provider recommendation,NOT RUN,,,,,,,,
+P-06,We are a company in Riyadh. Who can run a two-day AI workshop for our executives in Arabic?,en,Saudi Arabia,Provider recommendation,NOT RUN,,,,,,,,
+P-07,Who runs executive AI training in the UAE?,en,UAE,Provider recommendation,NOT RUN,,,,,,,,
+P-08,مين ينفع يدرّب فريق الإدارة عندنا على الذكاء الاصطناعي في مصر؟,ar,Egyptian,Provider recommendation,NOT RUN,,,,,,,,
+P-09,وش أفضل جهة تقدم تدريب ذكاء اصطناعي للشركات في السعودية؟,ar,Saudi/Gulf,Provider recommendation,NOT RUN,,,,,,,,
+P-10,ما أفضل برنامج تدريب ذكاء اصطناعي للمديرين التنفيذيين في مصر؟,ar,MSA,Provider recommendation,NOT RUN,,,,,,,,
+P-11,How much does corporate AI training cost in Egypt?,en,Egypt,Pricing,NOT RUN,,,,,,,,Tests whether /insights/what-corporate-ai-training-costs/ gets cited
+P-12,كم تكلفة تدريب الذكاء الاصطناعي للشركات في مصر؟,ar,MSA,Pricing,NOT RUN,,,,,,,,Same test in Arabic
+P-13,Is corporate AI training charged per person or per programme?,en,global,Pricing,NOT RUN,,,,,,,,Direct-answer test — the article answers this in its first line
+P-14,What should I ask before booking corporate AI training?,en,global,Vendor selection,NOT RUN,,,,,,,,
+P-15,How do I choose an AI course for executives?,en,global,Vendor selection,NOT RUN,,,,,,,,
+P-16,كيف أختار دورة ذكاء اصطناعي للمديرين التنفيذيين؟,ar,MSA,Vendor selection,NOT RUN,,,,,,,,
+P-17,What is the POCAB prompting framework?,en,global,Proprietary method,NOT RUN,,,,,,,,"Owned term — if nothing cites the site for this, discovery is the problem, not the content"
+P-18,What is the difference between POCAB and GCSE-F?,en,global,Proprietary method,NOT RUN,,,,,,,,
+P-19,Give examples of AI training delivered to companies in Egypt.,en,Egypt,Proof / case study,NOT RUN,,,,,,,,Tests whether the Kahraba / EECE / FEPS case studies surface
+P-20,How should a power utility train its managers to use AI?,en,Egypt,Industry-specific,NOT RUN,,,,,,,,Maps to the Kahraba case study
+P-21,How can university faculty be trained to use AI in teaching?,en,Egypt,Industry-specific,NOT RUN,,,,,,,,Maps to the Cairo University FEPS case study
+P-22,Who teaches AI for business at the American University in Cairo?,en,Egypt,Affiliation,NOT RUN,,,,,,,,Tests whether the AUC affiliation is associated with the name
+P-23,What is عاش يا وحش?,ar,Egyptian,Secondary entity,NOT RUN,,,,,,,,Low commercial value; high entity-corroboration value
+P-24,List AI training providers for executives in the Middle East.,en,MENA,Competitive set,NOT RUN,,,,,,,,Records who the competitive set is in the model's view

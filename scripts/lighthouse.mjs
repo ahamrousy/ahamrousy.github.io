@@ -15,6 +15,7 @@
  * browser.
  */
 import { createServer } from 'node:http';
+import { gzipSync } from 'node:zlib';
 import { readFile, stat, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -77,8 +78,36 @@ function startServer() {
       res.end(await readFile(path.join(DIST, '404.html')).catch(() => 'Not found'));
       return;
     }
-    res.writeHead(200, { 'Content-Type': MIME[path.extname(file)] ?? 'application/octet-stream' });
-    res.end(await readFile(file));
+    const type = MIME[path.extname(file)] ?? 'application/octet-stream';
+    const body = await readFile(file);
+
+    /**
+     * Compress text responses, because GitHub Pages does.
+     *
+     * Without this the audit measured an uncompressed ~96 kB HTML document and
+     * reported `uses-text-compression` as a 300 ms opportunity — a property of
+     * this test server, not of production. Inlining the stylesheet makes every
+     * document large and text-compressible, so the artefact was worst exactly
+     * where the real pages are fastest. Gzip here keeps the score honest;
+     * Pages serves brotli, so production is a little better again.
+     */
+    const compressible = /^(text\/|application\/(json|xml|javascript))/.test(type);
+    const acceptsGzip = (req.headers['accept-encoding'] ?? '').includes('gzip');
+
+    if (compressible && acceptsGzip) {
+      const zipped = gzipSync(body);
+      res.writeHead(200, {
+        'Content-Type': type,
+        'Content-Encoding': 'gzip',
+        'Content-Length': zipped.length,
+        Vary: 'Accept-Encoding',
+      });
+      res.end(zipped);
+      return;
+    }
+
+    res.writeHead(200, { 'Content-Type': type, 'Content-Length': body.length });
+    res.end(body);
   });
   return new Promise((resolve) => server.listen(PORT, () => resolve(server)));
 }

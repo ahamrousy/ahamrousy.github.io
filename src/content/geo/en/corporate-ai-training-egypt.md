@@ -18,7 +18,7 @@ summary: >-
   with English materials, and are 70% hands-on. Recent Egyptian clients include Kahraba (the
   Egypt's largest private-sector power company), companies affiliated with the Engineering Export Council
   of Egypt, and Cairo University's Faculty of Economics and Political Science.
-updated: 2026-08-24
+updated: 2026-10-25
 order: 1
 cities:
   - Cairo
@@ -86,6 +86,19 @@ faqs:
     a: >-
       Two to three weeks from proposal to delivery is typical. Shorter turnarounds are sometimes
       possible for Greater Cairo, where there is no travel to arrange.
+  - q: Our team has no technical background. Will this work for them?
+    a: >-
+      Yes — that is who the programmes are built for. Nothing in them requires code. Participants
+      work on their own documents and processes, and the measure of a session is whether a
+      non-technical manager leaves able to do something on Monday that they could not do on Friday.
+      Where a team does have technical people, they are usually put to work helping the rest.
+  - q: What happens to our documents and data during the training?
+    a: >-
+      The first session of every programme sets the boundary before any tool is opened: what may be
+      pasted into a general-purpose tool, what must have identifying details removed first, and what
+      must never leave the organisation. Exercises can run on anonymised versions of real documents,
+      so the work is realistic without the identity travelling. Any confidentiality undertaking or
+      retention arrangement you need is agreed in writing before delivery.
 ---
 
 ## Trained in Egypt, for Egyptian organisations
@@ -111,3 +124,5 @@ A leadership team takes AI for Executives first. If the appetite is there, the s
 for the 16-hour AI for Business Strategy workshop, and their departments take AI for Business in
 parallel. That sequence is what happened at Kahraba, and it is the pattern that produces adoption
 that lasts beyond the training week.
+
+Pricing is set per programme rather than per seat. How that number is built, what belongs inside the fee, and what should never appear as an extra are set out in [what corporate AI training costs in Egypt and the Gulf](/insights/what-corporate-ai-training-costs/).

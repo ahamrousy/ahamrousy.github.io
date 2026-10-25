@@ -16,6 +16,13 @@ const t = useTranslations(lang);
 
 /** The mirror of the current page — the language switch never dumps you home. */
 const otherLang: Locale = lang === 'en' ? 'ar' : 'en';
+/**
+ * ...with one exception. GitHub Pages serves /404.html at every unmatched path,
+ * so there is no /ar/404/ file to mirror to: switching language from the 404
+ * page used to land on another 404, in English again. Home is the honest
+ * destination when the current page has no counterpart.
+ */
+const switchHref = routeKey === '404' ? path('', otherLang) : path(routeKey, otherLang);
 const isCurrent = (key: string) => key === routeKey;
 ---
 
@@ -43,7 +50,7 @@ const isCurrent = (key: string) => key === routeKey;
     <div class="header-actions">
       <a
         class="lang-switch"
-        href={path(routeKey, otherLang)}
+        href={switchHref}
         hreflang={otherLang}
         lang={otherLang === 'ar' ? 'ar' : 'en'}
         aria-label={t('lang.switchLabel')}

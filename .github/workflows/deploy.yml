@@ -65,3 +65,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Pushes the live URL list to Bing via IndexNow once Pages has published.
+      # Copilot grounds its answers in Bing's index, so faster crawling here is
+      # the cheapest discovery win available on a brand-new github.io host.
+      # A search-engine ping is never a reason to fail a deployment.
+      - name: Checkout for IndexNow
+        continue-on-error: true
+        uses: actions/checkout@v4
+
+      - name: Set up Node for IndexNow
+        continue-on-error: true
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Submit URLs to IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs --live

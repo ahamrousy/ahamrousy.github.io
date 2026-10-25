@@ -15,7 +15,7 @@ summary: >-
   delivery language, hands-on ratio, who actually stands in the room, and how confidential data will
   be handled.
 published: 2026-06-15
-updated: 2026-08-24
+updated: 2026-10-25
 order: 1
 readingTime: 8
 relatedCourse: ai-for-executives
@@ -155,6 +155,10 @@ The honest caveat: it can work in the other order. At Kahraba the foundation wor
 times — 65 executives, rated 4.8 out of 5 — and the CEO and senior managers booked their own
 advanced session afterwards, once the organisation had proved what it could do. What is not
 optional either way is the data boundary at the front.
+
+Once you have settled what to buy, the next question is what it should cost and how it is quoted.
+That is answered separately in
+[what corporate AI training costs in Egypt and the Gulf](/insights/what-corporate-ai-training-costs/).
 
 ---
 
