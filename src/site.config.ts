@@ -61,8 +61,8 @@ export function mailtoUrl(subject: string, body?: string): string {
 
 /** Analytics + webmaster verification placeholders. Empty = tag not rendered. */
 export const analytics = {
-  /** TODO: replace with your GA4 Measurement ID, e.g. "G-XXXXXXXXXX". */
-  ga4MeasurementId: '',
+  /** GA4 property "ahmedamrousy.com" in the Menova account (separate from Nile Air). */
+  ga4MeasurementId: 'G-5VRZ6EPT24',
   /** Google Search Console, HTML-tag method. The HTML-file method is also in
       place at public/google91b3f50c2bc74aa9.html — either one verifies, and
       having both means a single point of failure cannot un-verify the site. */
