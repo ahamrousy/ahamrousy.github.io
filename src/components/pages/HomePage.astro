@@ -13,6 +13,7 @@ import {
   organizationSchema,
   websiteSchema,
   faqSchema,
+  offerCatalogSchema,
 } from '~/lib/schema';
 
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -38,6 +39,10 @@ const jsonLd = graph([
   organizationSchema(lang),
   websiteSchema(lang),
   faqSchema(c.faqs ?? []),
+  offerCatalogSchema(
+    courses.map((entry) => ({ slug: entry.slug, title: entry.data.title })),
+    lang,
+  ),
 ]);
 ---
 

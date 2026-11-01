@@ -100,17 +100,19 @@ export const intents: Intent[] = [
   {
     id: 'locations',
     patterns: {
-      en: ['where', 'egypt', 'cairo', 'saudi', 'riyadh', 'uae', 'dubai', 'abu dhabi', 'gcc', 'gulf', 'travel', 'country', 'location'],
-      ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الخليج', 'مكان'],
+      en: ['where', 'egypt', 'cairo', 'saudi', 'riyadh', 'uae', 'dubai', 'abu dhabi', 'kuwait', 'oman', 'muscat', 'gcc', 'gulf', 'travel', 'country', 'location'],
+      ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الكويت', 'عمان', 'عُمان', 'مسقط', 'الخليج', 'مكان'],
     },
     answer: {
-      en: 'Menova is based in Cairo and has delivered on-site across Egypt. It is available for on-site delivery in Saudi Arabia and the UAE, and live online anywhere.',
-      ar: 'مقر مِنوفا القاهرة وقد نفَّذت حضوريًا في أنحاء مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات، وأونلاين مباشر في أي مكان.',
+      en: 'Menova is based in Cairo and has delivered on-site across Egypt. It is available for on-site delivery in Saudi Arabia, the UAE, Kuwait and Oman, and live online anywhere.',
+      ar: 'مقر مِنوفا القاهرة وقد نفَّذت حضوريًا في أنحاء مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات والكويت وعُمان، وأونلاين مباشر في أي مكان.',
     },
     links: [
       { key: 'corporate-ai-training-egypt', label: { en: 'Egypt', ar: 'مصر' } },
       { key: 'corporate-ai-training-saudi-arabia', label: { en: 'Saudi Arabia', ar: 'السعودية' } },
       { key: 'corporate-ai-training-uae', label: { en: 'UAE', ar: 'الإمارات' } },
+      { key: 'corporate-ai-training-kuwait', label: { en: 'Kuwait', ar: 'الكويت' } },
+      { key: 'corporate-ai-training-oman', label: { en: 'Oman', ar: 'عُمان' } },
     ],
   },
   {
@@ -216,13 +218,13 @@ export const starterQuestions: Record<Locale, Array<{ label: string; intent: str
     { label: 'What courses do you run?', intent: 'courses' },
     { label: 'Do you train in Arabic?', intent: 'language' },
     { label: 'How much does it cost?', intent: 'price' },
-    { label: 'Do you deliver in Saudi or the UAE?', intent: 'locations' },
+    { label: 'Do you deliver in the Gulf?', intent: 'locations' },
   ],
   ar: [
     { label: 'مَن هو أحمد عمروسي؟', intent: 'who' },
     { label: 'ما البرامج المتاحة؟', intent: 'courses' },
     { label: 'هل التدريب بالعربية؟', intent: 'language' },
     { label: 'ما التكلفة؟', intent: 'price' },
-    { label: 'هل تنفّذون في السعودية والإمارات؟', intent: 'locations' },
+    { label: 'هل تنفّذون في الخليج؟', intent: 'locations' },
   ],
 };

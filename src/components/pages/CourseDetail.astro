@@ -142,6 +142,13 @@ const jsonLd = graph([
             <div><dt>{t('label.language')}</dt><dd>{d.teachingLanguage}</dd></div>
             <div><dt>{t('label.delivery')}</dt><dd>{d.delivery}</dd></div>
           </dl>
+          {/* Price is the question every buyer has and no course page answered;
+              the guide explains how a programme fee is built. */}
+          <p style="margin-block-start:1rem">
+            <a class="btn btn--ghost" href={path('insights/what-corporate-ai-training-costs', lang)}>
+              {lang === 'ar' ? 'كيف يُسعَّر البرنامج' : 'How programmes are priced'}
+            </a>
+          </p>
         </div>
 
         {

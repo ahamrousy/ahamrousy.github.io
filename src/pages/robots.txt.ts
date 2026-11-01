@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { absolute } from '~/i18n/routing';
 import { asset } from '~/i18n/routing';
+import { SITE_URL } from '~/site.config';
 
 /**
  * robots.txt
@@ -47,7 +48,7 @@ export const GET: APIRoute = async () => {
   ];
 
   const body = [
-    '# Menova — ahamrousy.github.io',
+    `# Menova — ${new URL(SITE_URL).host}`,
     '# Search and AI crawlers are both welcome. See /llms.txt for a plain-text',
     '# summary written specifically for language models.',
     '',

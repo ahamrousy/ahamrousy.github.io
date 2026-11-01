@@ -15,16 +15,24 @@ summary: >-
   structures work over your own documents and data, where the model must answer from a named source
   rather than from memory. Choosing between them depends on one question: is there a source?
 published: 2026-07-08
-updated: 2026-08-24
+updated: 2026-11-01
 order: 2
 readingTime: 9
 relatedCourse: ai-for-business
 answers:
+  - What is prompt engineering for business?
   - What is the POCAB framework?
   - What is the GCSE-F prompting framework?
   - What is the difference between POCAB and GCSE-F?
   - Which prompting framework should a manager use?
 faqs:
+  - q: What is prompt engineering for business?
+    a: >-
+      Writing the instructions you give a generative AI tool so the output is usable on the first or
+      second attempt rather than the tenth. In a business setting it is not about tricks or magic
+      words — it is a structured brief: who the model should be, what decision the output serves,
+      what it must know, who will read it, what is off-limits, and, when working from your documents,
+      which source the answer must come from.
   - q: What does POCAB stand for?
     a: >-
       Persona, Objective, Context, Audience, Boundaries. It structures a single prompt so the model

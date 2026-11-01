@@ -161,6 +161,8 @@ export function organizationSchema(lang: Locale): Json {
       { '@type': 'Country', name: 'Egypt' },
       { '@type': 'Country', name: 'Saudi Arabia' },
       { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Kuwait' },
+      { '@type': 'Country', name: 'Oman' },
       { '@type': 'Place', name: 'Gulf Cooperation Council' },
     ],
     knowsLanguage: ['ar', 'en'],
@@ -170,7 +172,7 @@ export function organizationSchema(lang: Locale): Json {
       email: contact.email,
       telephone: `+${contact.whatsappNumber}`,
       availableLanguage: ['ar', 'en'],
-      areaServed: ['EG', 'SA', 'AE'],
+      areaServed: ['EG', 'SA', 'AE', 'KW', 'OM'],
     },
     sameAs: sameAs(),
   });
@@ -227,6 +229,31 @@ interface CourseSchemaInput {
   teachingLanguage: string;
   level: string;
   audience: string;
+}
+
+/**
+ * The programme catalogue as an OfferCatalog, for the home page. Each offer
+ * points at the Course node on its own page by @id, so the catalogue adds a
+ * map of what Menova sells without duplicating the course data.
+ */
+export function offerCatalogSchema(courses: Array<{ slug: string; title: string }>, lang: Locale): Json {
+  return {
+    '@type': 'OfferCatalog',
+    '@id': `${absolute(path('courses', lang))}#catalog`,
+    name: lang === 'ar' ? 'برامج مِنوفا لتدريب الذكاء الاصطناعي' : 'Menova AI training programmes',
+    url: absolute(path('courses', lang)),
+    itemListElement: courses.map((course, index) => ({
+      '@type': 'Offer',
+      position: index + 1,
+      offeredBy: { '@id': ORG_ID },
+      areaServed: ['EG', 'SA', 'AE', 'KW', 'OM'],
+      itemOffered: {
+        '@type': 'Course',
+        '@id': `${absolute(path(`courses/${course.slug}`, lang))}#course`,
+        name: course.title,
+      },
+    })),
+  };
 }
 
 export function courseSchema(course: CourseSchemaInput, lang: Locale): Json {

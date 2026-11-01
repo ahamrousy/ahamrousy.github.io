@@ -1,3 +1,6 @@
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import fs from 'node:fs';
 /**
  * Live SEO + GEO audit.
  *
@@ -12,7 +15,9 @@
  * Exits non-zero if any ERROR-level check fails, so it can gate a deploy.
  */
 
-const BASE = (process.argv[2] ?? 'https://ahamrousy.github.io').replace(/\/$/, '');
+// Read from src/site.config.ts so a domain change is a one-line edit there.
+const SITE_URL = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'site.config.ts'), 'utf8').match(/SITE_URL = '([^']+)'/)[1];
+const BASE = (process.argv[2] ?? SITE_URL).replace(/\/$/, '');
 const CONCURRENCY = 6;
 
 const errors = [];
@@ -39,8 +44,13 @@ const decodeEntities = (value) =>
 const text = (html, re) => decodeEntities((html.match(re)?.[1] ?? '').trim());
 const all = (html, re) => [...html.matchAll(re)].map((m) => m[1]);
 
+/**
+ * Against a local build (npm run seo http://localhost:4321) the sitemap still
+ * lists production URLs, because canonicals must always name the real origin.
+ * Fetch from BASE instead, while every comparison keeps using SITE_URL.
+ */
 async function get(url) {
-  const res = await fetch(url, { redirect: 'follow' });
+  const res = await fetch(url.replace(SITE_URL, BASE), { redirect: 'follow' });
   return { status: res.status, body: res.headers.get('content-type')?.includes('image') ? '' : await res.text() };
 }
 
@@ -82,7 +92,7 @@ for (const [file, label] of [
 }
 
 const robots = (await get(`${BASE}/robots.txt`)).body;
-if (!robots.includes(`Sitemap: ${BASE}/sitemap.xml`)) fail('/robots.txt', 'sitemap URL missing or wrong origin');
+if (!robots.includes(`Sitemap: ${SITE_URL}/sitemap.xml`)) fail('/robots.txt', 'sitemap URL missing or wrong origin');
 for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'CCBot']) {
   if (!robots.includes(bot)) warn('/robots.txt', `${bot} not named — it may not crawl`);
 }
@@ -200,7 +210,7 @@ for (const [url, alternates] of hreflangMap) {
 
 // ── 4. OG images resolve ───────────────────────────────────────────────────
 const ogUrls = [...new Set(ok.map((p) => p.ogImage))];
-const ogResults = await pool(ogUrls, async (u) => ({ u, status: (await fetch(u, { method: 'HEAD' })).status }));
+const ogResults = await pool(ogUrls, async (u) => ({ u, status: (await fetch(u.replace(SITE_URL, BASE), { method: 'HEAD' })).status }));
 const brokenOg = ogResults.filter((r) => r.status !== 200);
 for (const r of brokenOg) fail(r.u, `og:image returned ${r.status}`);
 

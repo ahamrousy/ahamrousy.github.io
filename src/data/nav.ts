@@ -38,4 +38,6 @@ export const geoKeys = [
   'corporate-ai-training-egypt',
   'corporate-ai-training-saudi-arabia',
   'corporate-ai-training-uae',
+  'corporate-ai-training-kuwait',
+  'corporate-ai-training-oman',
 ] as const;

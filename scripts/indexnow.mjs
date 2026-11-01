@@ -28,9 +28,12 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const KEY = 'c5a7a8746c6e71271c5e21b7debfc993';
-const HOST = 'ahamrousy.github.io';
+// Read from src/site.config.ts so a domain change is a one-line edit there.
+const SITE_URL = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'site.config.ts'), 'utf8').match(/SITE_URL = '([^']+)'/)[1];
+const HOST = new URL(SITE_URL).host;
 const ENDPOINT = 'https://api.indexnow.org/IndexNow';
 const SITEMAP = path.join('dist', 'sitemap.xml');
 
