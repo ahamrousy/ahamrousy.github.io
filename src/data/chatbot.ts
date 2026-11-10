@@ -100,12 +100,12 @@ export const intents: Intent[] = [
   {
     id: 'locations',
     patterns: {
-      en: ['where', 'egypt', 'cairo', 'saudi', 'riyadh', 'uae', 'dubai', 'abu dhabi', 'kuwait', 'oman', 'muscat', 'gcc', 'gulf', 'travel', 'country', 'location'],
-      ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الكويت', 'عمان', 'عُمان', 'مسقط', 'الخليج', 'مكان'],
+      en: ['where', 'egypt', 'cairo', 'saudi', 'riyadh', 'uae', 'dubai', 'abu dhabi', 'kuwait', 'oman', 'muscat', 'iraq', 'baghdad', 'erbil', 'basra', 'qatar', 'doha', 'lusail', 'gcc', 'gulf', 'travel', 'country', 'location'],
+      ar: ['فين', 'أين', 'مصر', 'القاهرة', 'السعودية', 'الرياض', 'الامارات', 'الإمارات', 'دبي', 'ابوظبي', 'الكويت', 'عمان', 'عُمان', 'مسقط', 'العراق', 'بغداد', 'أربيل', 'اربيل', 'البصرة', 'قطر', 'الدوحة', 'لوسيل', 'الخليج', 'مكان'],
     },
     answer: {
-      en: 'Menova is based in Cairo and has delivered on-site across Egypt. It is available for on-site delivery in Saudi Arabia, the UAE, Kuwait and Oman, and live online anywhere.',
-      ar: 'مقر مِنوفا القاهرة وقد نفَّذت حضوريًا في أنحاء مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات والكويت وعُمان، وأونلاين مباشر في أي مكان.',
+      en: 'Menova is based in Cairo and has delivered on-site across Egypt. It is available for on-site delivery in Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, and live online anywhere.',
+      ar: 'مقر مِنوفا القاهرة وقد نفَّذت حضوريًا في أنحاء مصر. وهي متاحة للتنفيذ الحضوري في العراق والسعودية والإمارات وقطر والكويت وعُمان، وأونلاين مباشر في أي مكان.',
     },
     links: [
       { key: 'corporate-ai-training-egypt', label: { en: 'Egypt', ar: 'مصر' } },
@@ -113,6 +113,8 @@ export const intents: Intent[] = [
       { key: 'corporate-ai-training-uae', label: { en: 'UAE', ar: 'الإمارات' } },
       { key: 'corporate-ai-training-kuwait', label: { en: 'Kuwait', ar: 'الكويت' } },
       { key: 'corporate-ai-training-oman', label: { en: 'Oman', ar: 'عُمان' } },
+      { key: 'corporate-ai-training-iraq', label: { en: 'Iraq', ar: 'العراق' } },
+      { key: 'corporate-ai-training-qatar', label: { en: 'Qatar', ar: 'قطر' } },
     ],
   },
   {

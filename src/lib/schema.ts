@@ -163,6 +163,8 @@ export function organizationSchema(lang: Locale): Json {
       { '@type': 'Country', name: 'United Arab Emirates' },
       { '@type': 'Country', name: 'Kuwait' },
       { '@type': 'Country', name: 'Oman' },
+      { '@type': 'Country', name: 'Qatar' },
+      { '@type': 'Country', name: 'Iraq' },
       { '@type': 'Place', name: 'Gulf Cooperation Council' },
     ],
     knowsLanguage: ['ar', 'en'],
@@ -172,7 +174,7 @@ export function organizationSchema(lang: Locale): Json {
       email: contact.email,
       telephone: `+${contact.whatsappNumber}`,
       availableLanguage: ['ar', 'en'],
-      areaServed: ['EG', 'SA', 'AE', 'KW', 'OM'],
+      areaServed: ['EG', 'IQ', 'SA', 'AE', 'QA', 'KW', 'OM'],
     },
     sameAs: sameAs(),
   });
@@ -246,7 +248,7 @@ export function offerCatalogSchema(courses: Array<{ slug: string; title: string 
       '@type': 'Offer',
       position: index + 1,
       offeredBy: { '@id': ORG_ID },
-      areaServed: ['EG', 'SA', 'AE', 'KW', 'OM'],
+      areaServed: ['EG', 'IQ', 'SA', 'AE', 'QA', 'KW', 'OM'],
       itemOffered: {
         '@type': 'Course',
         '@id': `${absolute(path(`courses/${course.slug}`, lang))}#course`,

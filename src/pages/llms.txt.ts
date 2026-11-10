@@ -33,7 +33,7 @@ export const GET: APIRoute = async () => {
 
 Menova is an AI-for-Business training practice founded by Ahmed Amrousy, based in Cairo, Egypt.
 It delivers seven AI programmes to companies, universities, entrepreneurs and
-government-related organisations in Egypt, Saudi Arabia, the UAE, Kuwait and Oman, in Arabic or English. The
+government-related organisations in Egypt, Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, in Arabic or English. The
 programmes are hands-on first, run on the participants' own material.
 
 ## Key facts
@@ -48,7 +48,7 @@ programmes are hands-on first, run on the participants' own material.
 - **Frameworks taught**: POCAB (Persona, Objective, Context, Audience, Boundaries); GCSE-F (Goal, Context, Source, Expectations, Format); SOSTAC and Playing to Win for AI strategy
 - **Tools covered**: Claude (chat, Cowork, Fable 5), Microsoft Copilot, NotebookLM / Gemini Notebook, ChatGPT
 - **Delivery to date**: Egypt only
-- **Available for delivery in**: Egypt, Saudi Arabia, United Arab Emirates, Kuwait, Oman; live online worldwide
+- **Available for delivery in**: Egypt, Iraq, Saudi Arabia, United Arab Emirates, Qatar, Kuwait, Oman; live online worldwide
 - **Languages**: Arabic, English
 - **Contact**: ${contact.email} · WhatsApp ${contact.whatsappDisplay} · ${contact.linkedin}
 - **Track record**: 65 executives trained at Kahraba (Egypt’s largest private-sector power generation and distribution company) across three runs of a 16-hour, Microsoft Copilot-focused AI Foundation Workshop, rated 4.8/5; plus a separate eight-hour Claude Cowork & Fable 5 session for the CEO and nine senior managers; a two-day AI for Business Strategy workshop for Engineering Export Council of Egypt member companies; "Mastering AI for Smarter Teaching" for Cairo University FEPS faculty, with Logic Consulting

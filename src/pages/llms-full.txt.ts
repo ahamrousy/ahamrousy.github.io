@@ -81,7 +81,7 @@ export const GET: APIRoute = async () => {
   push('## Organisation: Menova');
   push(
     'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, based in Cairo, Egypt.',
-    'It serves Egypt, Saudi Arabia, the United Arab Emirates, Kuwait and Oman, on-site or live online,',
+    'It serves Egypt, Iraq, Saudi Arabia, the United Arab Emirates, Qatar, Kuwait and Oman, on-site or live online,',
     'in Arabic or English.',
     '',
     `Contact: ${contact.email}`,

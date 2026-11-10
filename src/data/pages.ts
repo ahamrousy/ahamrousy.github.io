@@ -39,7 +39,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'Menova — AI for Business',
       title: 'I teach leaders how to think with AI — not how to use it.',
       summary:
-        'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, Executive Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air. It offers executive AI programmes to companies across Egypt, Saudi Arabia, the UAE, Kuwait and Oman, in Arabic or English, built on a 70% hands-on structure and taught on the client’s own data.',
+        'Menova is an AI-for-Business training practice founded by Ahmed Amrousy, Executive Education Instructor at the American University in Cairo and Head of Marketing & PR at Nile Air. It offers executive AI programmes to companies across Egypt, Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, in Arabic or English, built on a 70% hands-on structure and taught on the client’s own data.',
       intro:
         'Seven programmes, delivered on-site or live online — for organisations and entrepreneurs who want output, not licences.',
       proofHeading: 'What that looks like in practice',
@@ -52,7 +52,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'What is Menova?',
-          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It offers eight AI programmes to companies, universities, entrepreneurs and government-related organisations across Egypt, Saudi Arabia, the UAE, Kuwait and Oman, in Arabic or English. All delivery to date has been in Egypt.',
+          a: 'Menova is an AI-for-Business training practice founded by Ahmed Amrousy and based in Cairo. It offers eight AI programmes to companies, universities, entrepreneurs and government-related organisations across Egypt, Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, in Arabic or English. All delivery to date has been in Egypt.',
         },
         {
           q: 'What AI courses does Menova offer?',
@@ -64,7 +64,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Where does Menova deliver training?',
-          a: 'Menova is based in Cairo and all delivery to date has been in Egypt. It is available for on-site delivery in Saudi Arabia, the UAE, Kuwait and Oman, and live online anywhere.',
+          a: 'Menova is based in Cairo and all delivery to date has been in Egypt. It is available for on-site delivery in Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, and live online anywhere.',
         },
         {
           q: 'How much does Menova training cost?',
@@ -87,7 +87,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
       eyebrow: 'مِنوفا — الذكاء الاصطناعي للأعمال',
       title: 'أُعلِّم القيادات كيف تُفكِّر بالذكاء الاصطناعي — لا كيف تستخدمه.',
       summary:
-        'مِنوفا (Menova) جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي، محاضر التعليم التنفيذي بالجامعة الأمريكية بالقاهرة ومدير التسويق والعلاقات العامة في نايل إير. تُقدِّم برامج تنفيذية للشركات في مصر والسعودية والإمارات والكويت وعُمان، بالعربية أو الإنجليزية، مبنية على 70% تطبيق عملي وتُنفَّذ على بيانات الجهة نفسها. وكل ما نُفِّذ حتى الآن كان في مصر.',
+        'مِنوفا (Menova) جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي، محاضر التعليم التنفيذي بالجامعة الأمريكية بالقاهرة ومدير التسويق والعلاقات العامة في نايل إير. تُقدِّم برامج تنفيذية للشركات في مصر والعراق والسعودية والإمارات وقطر والكويت وعُمان، بالعربية أو الإنجليزية، مبنية على 70% تطبيق عملي وتُنفَّذ على بيانات الجهة نفسها. وكل ما نُفِّذ حتى الآن كان في مصر.',
       intro:
         'سبعة برامج، تُنفَّذ حضوريًا أو أونلاين مباشر، للمؤسسات وروّاد الأعمال على السواء.',
       proofHeading: 'كيف يبدو ذلك عمليًا',
@@ -100,7 +100,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'ما هي مِنوفا؟',
-          a: 'مِنوفا (Menova) جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تُقدِّم ثمانية برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والسعودية والإمارات والكويت وعُمان، بالعربية أو الإنجليزية. وكل التنفيذ حتى الآن كان في مصر.',
+          a: 'مِنوفا (Menova) جهة تدريب متخصصة في الذكاء الاصطناعي للأعمال أسّسها أحمد عمروسي ومقرها القاهرة. تُقدِّم ثمانية برامج للشركات والجامعات وروّاد الأعمال والجهات المرتبطة بالحكومة في مصر والعراق والسعودية والإمارات وقطر والكويت وعُمان، بالعربية أو الإنجليزية. وكل التنفيذ حتى الآن كان في مصر.',
         },
         {
           q: 'ما البرامج التي تقدّمها مِنوفا؟',
@@ -112,7 +112,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'أين تُنفِّذ مِنوفا التدريب؟',
-          a: 'مقر مِنوفا (Menova) القاهرة، وكل التنفيذ حتى الآن كان في مصر. وهي متاحة للتنفيذ الحضوري في السعودية والإمارات والكويت وعُمان، وأونلاين مباشر في أي مكان.',
+          a: 'مقر مِنوفا (Menova) القاهرة، وكل التنفيذ حتى الآن كان في مصر. وهي متاحة للتنفيذ الحضوري في العراق والسعودية والإمارات وقطر والكويت وعُمان، وأونلاين مباشر في أي مكان.',
         },
         {
           q: 'كم تكلفة التدريب؟',
@@ -453,7 +453,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'Do you deliver outside Egypt?',
-          a: 'Menova is available for on-site delivery in Saudi Arabia, the UAE, Kuwait and Oman, and live online anywhere — though every engagement to date has been delivered in Egypt. Travel and accommodation are quoted separately and charged at cost.',
+          a: 'Menova is available for on-site delivery in Iraq, Saudi Arabia, the UAE, Qatar, Kuwait and Oman, and live online anywhere — though every engagement to date has been delivered in Egypt. Travel and accommodation are quoted separately and charged at cost.',
         },
         {
           q: 'What is the minimum group size?',
@@ -488,7 +488,7 @@ export const pages: Record<string, Localised<PageCopy>> = {
         },
         {
           q: 'هل تنفّذون خارج مصر؟',
-          a: 'مِنوفا (Menova) متاحة للتنفيذ الحضوري في السعودية والإمارات والكويت وعُمان، وأونلاين مباشر في أي مكان — وإن كان كل ما نُفِّذ حتى الآن في مصر. ويُسعَّر السفر والإقامة على حدة ويُحمَّلان بالتكلفة الفعلية.',
+          a: 'مِنوفا (Menova) متاحة للتنفيذ الحضوري في العراق والسعودية والإمارات وقطر والكويت وعُمان، وأونلاين مباشر في أي مكان — وإن كان كل ما نُفِّذ حتى الآن في مصر. ويُسعَّر السفر والإقامة على حدة ويُحمَّلان بالتكلفة الفعلية.',
         },
         {
           q: 'ما الحد الأدنى لعدد المشاركين؟',
