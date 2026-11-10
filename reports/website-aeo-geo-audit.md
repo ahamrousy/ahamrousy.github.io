@@ -493,3 +493,38 @@ marked `unverified`, and the AI baseline is unrun.
 7. Then, and only then, write the next two articles (ROI, governance).
 
 Steps 1–3 are worth more than any further change to this repository.
+
+
+---
+
+# Addendum — 10 November 2026: §8 and §19 superseded in part
+
+**§8 said search visibility was unverified. It is now measured.** Search Console was connected via
+Windsor on 10 November 2026 as the domain property `sc-domain:ahmedamrousy.com`, which covers apex,
+`www` and both protocols.
+
+**The site is indexed and ranking.** 32 impressions, 2 clicks and 18 distinct pages surfacing in the
+30 days to 10 November. The §5 distinction between "loads", "crawlable", "indexed", "ranks" and
+"cited" can now be resolved for the first four: the site ranks, with an average position of 4.6 in
+Egypt and 1.0 in Kuwait.
+
+Pages receiving impressions include `/about/` (10 impressions, position 3 — the largest single
+page), both Egypt geo pages, Kuwait, Oman and Saudi Arabia, three course pages, `/method/`,
+`/insights/pocab-vs-gcse-f/` and both recent articles. Recent content is being picked up.
+
+**The finding that matters most is narrow eligibility.** Only two distinct queries produced
+impressions in 30 days: "pocab" (5 impressions, position 7.8) and "ai for hr workshop riyadh"
+(1 impression, position 100). The site ranks well for what it is eligible for and is eligible for
+almost nothing. See the new P1 in `implementation-roadmap.md`.
+
+**§19 partially resolved.** Search Console access is no longer missing. Google Analytics 4 was
+disconnected to free the slot — Windsor's free plan allows one data source — after its baseline was
+recorded (42 sessions, 18 users, 30 days; Egypt 37, Saudi Arabia 2, Iraq 1, India 1). GA4 continues
+collecting; reconnecting restores full history.
+
+**Bing is verified and reporting** (2 impressions, 2–7 November), so the recommendation in §14 to
+populate `analytics.bingSiteVerification` is withdrawn as unnecessary. Bing Webmaster Tools now
+exposes an **AI Performance** report showing Copilot citations — the GEO measurement §9 and §15
+described as unavailable. It has not been read yet.
+
+Semrush and Ahrefs remain unavailable, so all search-volume and backlink figures stay `unverified`.

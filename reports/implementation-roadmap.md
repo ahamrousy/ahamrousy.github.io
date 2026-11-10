@@ -117,3 +117,56 @@ index and answer-engine behaviour lag by weeks, and the sample is 24 prompts.
 | Enquiries | Inbox and WhatsApp, tagged by source | Continuous |
 
 The last row is the only one that pays. The others are leading indicators for it.
+
+
+---
+
+# Addendum — 10 November 2026: first measured data
+
+Search Console was connected (Windsor, domain property `sc-domain:ahmedamrousy.com`) and returned
+the first real search data this project has had. It settles a question open since the first audit:
+**the site is indexed and ranking.** 32 impressions, 2 clicks, 18 pages surfacing in 30 days.
+
+Full per-question figures are in `research/ai-training-questions.csv`, which now carries four
+measured columns (`gsc_impressions_30d`, `gsc_clicks_30d`, `gsc_avg_position`, `gsc_measured_on`).
+`search_volume` deliberately still reads `unverified`: GSC impressions count how often *this site*
+appeared, which is not search volume and must not be presented as it.
+
+## New P1 — own the POCAB term
+
+| | |
+|---|---|
+| **Problem** | "pocab" is the only real query the site receives: 5 impressions, **average position 7.8**, zero clicks. Ahmed invented the framework and ranks eighth for it. |
+| **Why it matters** | An entity that does not own its own coined term has an authority problem no amount of geo-page work fixes. It is also the cheapest win available — there is no competing authority on this word. |
+| **Proposed change** | A dedicated POCAB definition page at `/method/pocab/` (EN + AR) carrying `DefinedTerm` schema tied to the existing `DefinedTermSet`, linked from every course that teaches it and from `/method/`. Answer-first: what POCAB stands for, what each element does, a worked example, and when to use GCSE-F instead. |
+| **Expected benefit** | Position 1 for a zero-competition branded term, and a citable definition for answer engines. |
+| **Effort** | 3 h |
+| **Validation** | Re-measure the "pocab" query in GSC after 30 days. |
+
+## Baselines recorded, so later claims can be checked
+
+| Market | Impressions (30 d to 2026-11-10) | Avg position |
+|---|---|---|
+| Egypt | 10 (2 clicks) | 4.6 |
+| Kuwait | 4 | **1.0** |
+| Saudi Arabia | 3 | 40.3 |
+| Oman | 3 (page-level) | 34.3 |
+| **Iraq** | **0** | — |
+| **Qatar** | **0** | — |
+
+Iraq and Qatar went live on 2026-11-10, so their zeros are clean pre-launch baselines. Anything
+from here is attributable. Kuwait at position 1.0 is the proof that the geo-page model works; the
+constraint is query volume, not ranking.
+
+## What this changes about the diagnosis
+
+The earlier audits concluded the constraint was off-site corroboration. That still holds, but the
+data sharpens it: the site ranks well where it is eligible (Egypt 4.6, `/about/` position 3, Kuwait
+1.0) and is eligible for almost nothing — **two distinct queries in 30 days**. The bottleneck is
+query surface, not ranking ability.
+
+## Still unavailable
+
+Real search volume and keyword difficulty (Semrush subscription is active but out of API units) and
+backlink data (Ahrefs not authorised). Every volume cell remains `unverified` until one of those
+opens.
